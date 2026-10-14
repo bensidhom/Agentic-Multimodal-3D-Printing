@@ -13,3 +13,5 @@ Figure captions are short. Panel and measurement descriptions remain in the surr
 Author checks remain for affiliations, corresponding-author contact, declarations, author approval and image/logo rights. The editable authoring document retains caption and cross-reference fields. A static-field submission copy can be prepared after author sign-off; automatic page numbers can remain.
 
 The source document is retained locally outside the Git publication so an older placeholder-bearing copy is not confused with the revised paper. The `revise_manuscript.py` script accepts that source through `--source`; the paragraph revision log records every text change.
+
+The final 25-page layout review corrected two small articles in the prose, improved the quantized-package wording, printed the consolidated repository URL in Data and code availability, and fixed web-reference title italics without italicizing retrieval dates. The final Word copy is now included in the repository. Figures, numerical tables and native equations remain unchanged.

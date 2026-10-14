@@ -40,7 +40,7 @@ Camera monitoring has moved from direct image checks to learned defect recogniti
 
 To move from finding a defect to fixing it, a test must include the printing action. Brion and Pattinson (2022) linked images to controlled changes in printer settings and tested correction under different conditions. Fu et al. (2023) connected process observations to checks of part structure. Yu et al. (2025) used several views and combined information for monitoring and automatic correction. These studies show why we should check both recognition and its effect on the part. Scores depend on the defect being studied, the sensor setup and what counts as one test sample.
 
-Other optical tools can measure more than a ordinary color image. Lin et al. (2019) used laser scanning to measure deposited shape. Sadaf and Ahmed (2026) studied thermal image sequences and printer-setting changes. These methods add direct shape or temperature measurements. Our system uses a webcam for visible appearance and printer readings for temperature context. We therefore choose visual models for that sensor setup.
+Other optical tools can measure more than an ordinary color image. Lin et al. (2019) used laser scanning to measure deposited shape. Sadaf and Ahmed (2026) studied thermal image sequences and printer-setting changes. These methods add direct shape or temperature measurements. Our system uses a webcam for visible appearance and printer readings for temperature context. We therefore choose visual models for that sensor setup.
 
 ### 2.3 Acoustic emission and other signals
 
@@ -100,7 +100,7 @@ Table 2 Agent tasks and step limits
 
 The agents share one local model service and run code through local Python. Their step limits do not set a printer-response deadline. They do not provide separate operating-system sandboxes.
 
-We choose Qwen3.6-35B-A3B through Ollama for the upgraded deployment. It has about 35 billion model parameters, with about 3 billion active for each token, or small piece of text. Its model card reports better results than Qwen3.5-35B-A3B on several coding and tool tests, but not on every task (Qwen Team, 2026). Ollama offers a package using the Q4_K_M quantization format of about 24 GB, including related components (Ollama, n.d.-b). This is a practical candidate for the 64 GB AMD computer. The package size is not the total memory needed while running. We use the model for text and code tasks. We do not claim that the LLM directly interprets AE waveforms.
+We choose Qwen3.6-35B-A3B through Ollama for the upgraded deployment. It has about 35 billion model parameters, with about 3 billion active for each token, or a small piece of text. Its model card reports better results than Qwen3.5-35B-A3B on several coding and tool tests, but not on every task (Qwen Team, 2026). Ollama offers a package of about 24 GB using the Q4_K_M quantization format, including related components (Ollama, n.d.-b). This is a practical candidate for the 64 GB AMD computer. The package size is not the total memory needed while running. We use the model for text and code tasks. We do not claim that the LLM directly interprets AE waveforms.
 
 ![Figure 2](../assets/figures/figure_02.png)
 
@@ -399,7 +399,7 @@ Supporting tests compare six visual models and five acoustic models on fixed dat
 
 ### Data and code availability
 
-The benchmark code, archived AE feature data, frozen split lists, model settings, saved predictions, training logs, figures and reproduction instructions are available in the consolidated evidence repository: [Consolidated evidence repository](https://github.com/bensidhom/Agentic-Multimodal-3D-Printing). Raw external images are obtained through the named dataset provider under its access and reuse conditions; large visual checkpoints are not bundled. The repository records software versions, provenance and reuse conditions. The original system and acquisition implementations remain available in [MultiAgent SCADA](https://github.com/bensidhom/MultiAgent_SCADA), [AI-driven analytics and digital twins](https://github.com/bensidhom/Novel-Cyber-Infrastructure-Enabling-AI-Driven-Analytics-and-Digital-Twins-for-Real-Time-3D-Printing) and [Acoustic emission monitoring at the edge](https://github.com/bensidhom/Acoustic-Emission-Monitoring-at-the-Edge-for-Real-Time-Artificial-Intelligence-Applications).
+The benchmark code, archived AE feature data, frozen split lists, model settings, saved predictions, training logs, figures and reproduction instructions are available at [https://github.com/bensidhom/Agentic-Multimodal-3D-Printing](https://github.com/bensidhom/Agentic-Multimodal-3D-Printing). Raw external images are obtained through the named dataset provider under its access and reuse conditions; large visual checkpoints are not bundled. The repository records software versions, provenance and reuse conditions. The original system and acquisition implementations remain available in [MultiAgent SCADA](https://github.com/bensidhom/MultiAgent_SCADA), [AI-driven analytics and digital twins](https://github.com/bensidhom/Novel-Cyber-Infrastructure-Enabling-AI-Driven-Analytics-and-Digital-Twins-for-Real-Time-3D-Printing) and [Acoustic emission monitoring at the edge](https://github.com/bensidhom/Acoustic-Emission-Monitoring-at-the-Edge-for-Real-Time-Artificial-Intelligence-Applications).
 
 ### Research ethics
 
@@ -407,15 +407,15 @@ The study uses manufacturing records and software outputs. It does not collect m
 
 ## References
 
-AMD. (n.d.). AMD Ryzen AI Max+ 395 product specifications. *Retrieved October 2*, 2026, from [https://www.amd.com/en/products/processors/laptop/ryzen/ai-300-series/amd-ryzen-ai-max-plus-395.html](https://www.amd.com/en/products/processors/laptop/ryzen/ai-300-series/amd-ryzen-ai-max-plus-395.html)
+AMD. (n.d.). *AMD Ryzen AI Max+ 395 product specifications*. Retrieved October 2, 2026, from [https://www.amd.com/en/products/processors/laptop/ryzen/ai-300-series/amd-ryzen-ai-max-plus-395.html](https://www.amd.com/en/products/processors/laptop/ryzen/ai-300-series/amd-ryzen-ai-max-plus-395.html)
 
 Banadaki, Y., Razaviarab, N., Fekrmandi, H., Li, G., Mensah, P., Bai, S., & Sharifi, S. (2022). Automated quality and process control for additive manufacturing using deep convolutional neural networks. *Recent Progress in Materials*, 04, 1–19. [https://doi.org/10.21926/rpm.2201005](https://doi.org/10.21926/rpm.2201005)
 
-Ben Sidhom, A. (n.d.-a). *Acoustic Emission Monitoring at the Edge for Real-Time Artificial Intelligence Applications [Software and acquisition repository]*. GitHub. [https://github.com/bensidhom/Acoustic-Emission-Monitoring-at-the-Edge-for-Real-Time-Artificial-Intelligence-Applications](https://github.com/bensidhom/Acoustic-Emission-Monitoring-at-the-Edge-for-Real-Time-Artificial-Intelligence-Applications)
+Ben Sidhom, A. (n.d.-a). *Acoustic Emission Monitoring at the Edge for Real-Time Artificial Intelligence Applications* [Software and acquisition repository]. GitHub. [https://github.com/bensidhom/Acoustic-Emission-Monitoring-at-the-Edge-for-Real-Time-Artificial-Intelligence-Applications](https://github.com/bensidhom/Acoustic-Emission-Monitoring-at-the-Edge-for-Real-Time-Artificial-Intelligence-Applications)
 
-Ben Sidhom, A. (n.d.-b). *MultiAgent_SCADA [Software and data repository]*. GitHub. [https://github.com/bensidhom/MultiAgent_SCADA](https://github.com/bensidhom/MultiAgent_SCADA)
+Ben Sidhom, A. (n.d.-b). *MultiAgent_SCADA* [Software and data repository]. GitHub. [https://github.com/bensidhom/MultiAgent_SCADA](https://github.com/bensidhom/MultiAgent_SCADA)
 
-Ben Sidhom, A. (n.d.-c). *Novel Cyber Infrastructure Enabling AI-Driven Analytics and Digital Twins for Real-Time 3D Printing [Software and data repository]*. GitHub. [https://github.com/bensidhom/Novel-Cyber-Infrastructure-Enabling-AI-Driven-Analytics-and-Digital-Twins-for-Real-Time-3D-Printing](https://github.com/bensidhom/Novel-Cyber-Infrastructure-Enabling-AI-Driven-Analytics-and-Digital-Twins-for-Real-Time-3D-Printing)
+Ben Sidhom, A. (n.d.-c). *Novel Cyber Infrastructure Enabling AI-Driven Analytics and Digital Twins for Real-Time 3D Printing* [Software and data repository]. GitHub. [https://github.com/bensidhom/Novel-Cyber-Infrastructure-Enabling-AI-Driven-Analytics-and-Digital-Twins-for-Real-Time-3D-Printing](https://github.com/bensidhom/Novel-Cyber-Infrastructure-Enabling-AI-Driven-Analytics-and-Digital-Twins-for-Real-Time-3D-Printing)
 
 Brion, D. A. J., & Pattinson, S. W. (2022). Generalisable 3D printing error detection and correction via multi-head neural networks. *Nature Communications*, 13, 4654. [https://doi.org/10.1038/s41467-022-31985-y](https://doi.org/10.1038/s41467-022-31985-y)
 
@@ -445,7 +445,7 @@ Holzmond, O., & Li, X. (2017). In situ real time defect detection of 3D printed 
 
 Howard, A., Sandler, M., Chu, G., Chen, L.-C., Chen, B., Tan, M., Wang, W., Zhu, Y., Pang, R., Vasudevan, V., Le, Q. V., & Adam, H. (2019). Searching for MobileNetV3. *Proceedings of the IEEE/CVF International Conference on Computer Vision*, 1314–1324. [https://doi.org/10.1109/ICCV.2019.00140](https://doi.org/10.1109/ICCV.2019.00140)
 
-Hugging Face. (n.d.). Secure code execution. *smolagents documentation. Retrieved October 1*, 2026, from [https://huggingface.co/docs/smolagents/v1.22.0/en/tutorials/secure_code_execution](https://huggingface.co/docs/smolagents/v1.22.0/en/tutorials/secure_code_execution)
+Hugging Face. (n.d.). *Secure code execution*. smolagents documentation. Retrieved October 1, 2026, from [https://huggingface.co/docs/smolagents/v1.22.0/en/tutorials/secure_code_execution](https://huggingface.co/docs/smolagents/v1.22.0/en/tutorials/secure_code_execution)
 
 Hugging Face. (2025). *smolagents version 1.22.0: Agent implementation*. [https://github.com/huggingface/smolagents/blob/v1.22.0/src/smolagents/agents.py](https://github.com/huggingface/smolagents/blob/v1.22.0/src/smolagents/agents.py)
 
@@ -467,21 +467,21 @@ Lin, W., Shen, H., Fu, J., & Wu, S. (2019). Online quality monitoring in materia
 
 Liu, J., Hu, Y., Wu, B., & Wang, Y. (2018). An improved fault diagnosis approach for FDM process with acoustic emission. *Journal of Manufacturing Processes*, 35, 570–579. [https://doi.org/10.1016/j.jmapro.2018.08.038](https://doi.org/10.1016/j.jmapro.2018.08.038)
 
-Logitech. (n.d.). C270 HD webcam specifications. *Retrieved October 2*, 2026, from [https://www.logitech.com/en-us/shop/p/c270-hd-webcam.960-000694](https://www.logitech.com/en-us/shop/p/c270-hd-webcam.960-000694)
+Logitech. (n.d.). *C270 HD webcam specifications*. Retrieved October 2, 2026, from [https://www.logitech.com/en-us/shop/p/c270-hd-webcam.960-000694](https://www.logitech.com/en-us/shop/p/c270-hd-webcam.960-000694)
 
 Lu, Q. Y., & Wong, C. H. (2018). Additive manufacturing process monitoring and control by non-destructive testing techniques: challenges and in-process monitoring. *Virtual and Physical Prototyping*, 13, 39–48. [https://doi.org/10.1080/17452759.2017.1351201](https://doi.org/10.1080/17452759.2017.1351201)
 
-Mermaid. (n.d.). Entity relationship diagrams. *Retrieved October 4*, 2026, from [https://mermaid.js.org/syntax/entityRelationshipDiagram.html](https://mermaid.js.org/syntax/entityRelationshipDiagram.html)
+Mermaid. (n.d.). *Entity relationship diagrams*. Retrieved October 4, 2026, from [https://mermaid.js.org/syntax/entityRelationshipDiagram.html](https://mermaid.js.org/syntax/entityRelationshipDiagram.html)
 
-OctoPrint Project. (n.d.). Job operations. *OctoPrint REST API documentation. Retrieved October 1*, 2026, from [https://docs.octoprint.org/en/main/api/job.html](https://docs.octoprint.org/en/main/api/job.html)
+OctoPrint Project. (n.d.). *Job operations*. OctoPrint REST API documentation. Retrieved October 1, 2026, from [https://docs.octoprint.org/en/main/api/job.html](https://docs.octoprint.org/en/main/api/job.html)
 
 Oleff, A., Küster, B., Stonis, M., & Overmeyer, L. (2021). Process monitoring for material extrusion additive manufacturing: a state-of-the-art review. *Progress in Additive Manufacturing*, 6, 705–730. [https://doi.org/10.1007/s40964-021-00192-4](https://doi.org/10.1007/s40964-021-00192-4)
 
-Ollama. (n.d.-a). Hardware support. *Retrieved October 2*, 2026, from [https://docs.ollama.com/gpu](https://docs.ollama.com/gpu)
+Ollama. (n.d.-a). *Hardware support*. Retrieved October 2, 2026, from [https://docs.ollama.com/gpu](https://docs.ollama.com/gpu)
 
-Ollama. (n.d.-b). Qwen3.6 35B model library entry. *Retrieved October 2*, 2026, from [https://ollama.com/library/qwen3.6:35b](https://ollama.com/library/qwen3.6:35b)
+Ollama. (n.d.-b). *Qwen3.6 35B model library entry*. Retrieved October 2, 2026, from [https://ollama.com/library/qwen3.6:35b](https://ollama.com/library/qwen3.6:35b)
 
-Ollama. (n.d.-c). Qwen3-Coder 30B model library entry. *Retrieved October 2*, 2026, from [https://ollama.com/library/qwen3-coder:30b](https://ollama.com/library/qwen3-coder:30b)
+Ollama. (n.d.-c). *Qwen3-Coder 30B model library entry*. Retrieved October 2, 2026, from [https://ollama.com/library/qwen3-coder:30b](https://ollama.com/library/qwen3-coder:30b)
 
 Petsiuk, A. L., & Pearce, J. M. (2020). Open source computer vision-based layer-wise 3D printing analysis. *Additive Manufacturing*, 36, 101473. [https://doi.org/10.1016/j.addma.2020.101473](https://doi.org/10.1016/j.addma.2020.101473)
 
@@ -493,11 +493,11 @@ Qwen Team. (2026). *Qwen3.6-35B-A3B model card*. [https://huggingface.co/Qwen/Qw
 
 Rachmawati, S. M., Putra, M. A. P., Lee, J. M., & Kim, D. S. (2023). Digital twin-enabled 3D printer fault detection for smart additive manufacturing. *Engineering Applications of Artificial Intelligence*, 124, 106430. [https://doi.org/10.1016/j.engappai.2023.106430](https://doi.org/10.1016/j.engappai.2023.106430)
 
-Raspberry Pi Ltd. (n.d.). Raspberry Pi 4 Model B specifications. *Retrieved October 2*, 2026, from [https://www.raspberrypi.com/products/raspberry-pi-4-model-b/specifications/](https://www.raspberrypi.com/products/raspberry-pi-4-model-b/specifications/)
+Raspberry Pi Ltd. (n.d.). *Raspberry Pi 4 Model B specifications*. Retrieved October 2, 2026, from [https://www.raspberrypi.com/products/raspberry-pi-4-model-b/specifications/](https://www.raspberrypi.com/products/raspberry-pi-4-model-b/specifications/)
 
-Roboflow. (n.d.). Image annotation and dataset management. *Retrieved October 2*, 2026, from [https://roboflow.com/annotate](https://roboflow.com/annotate)
+Roboflow. (n.d.). *Image annotation and dataset management*. Retrieved October 2, 2026, from [https://roboflow.com/annotate](https://roboflow.com/annotate)
 
-Roeder, L. (n.d.). Netron [Model visualization software]. *Retrieved October 4*, 2026, from [https://github.com/lutzroeder/netron](https://github.com/lutzroeder/netron)
+Roeder, L. (n.d.). *Netron* [Model visualization software]. Retrieved October 4, 2026, from [https://github.com/lutzroeder/netron](https://github.com/lutzroeder/netron)
 
 Rooney, S., Pitz, E., & Pochiraju, K. (2025). AutoML-driven diagnostics of the feeder motor in fused filament fabrication machines from direct current signals. *Journal of Intelligent Manufacturing*, 36, 1999–2016. [https://doi.org/10.1007/s10845-024-02332-3](https://doi.org/10.1007/s10845-024-02332-3)
 
@@ -511,17 +511,17 @@ Tan, M., & Le, Q. (2019). EfficientNet: Rethinking model scaling for convolution
 
 Tao, F., Zhang, H., Liu, A., & Nee, A. Y. C. (2019). Digital twin in industry: State-of-the-art. *IEEE Transactions on Industrial Informatics*, 15, 2405–2415. [https://doi.org/10.1109/tii.2018.2873186](https://doi.org/10.1109/tii.2018.2873186)
 
-Ultralytics. (n.d.-a). Object detection with Ultralytics YOLO. *Retrieved October 2*, 2026, from [https://docs.ultralytics.com/tasks/detect/](https://docs.ultralytics.com/tasks/detect/)
+Ultralytics. (n.d.-a). *Object detection with Ultralytics YOLO*. Retrieved October 2, 2026, from [https://docs.ultralytics.com/tasks/detect/](https://docs.ultralytics.com/tasks/detect/)
 
-Ultralytics. (n.d.-b). Ultralytics YOLO26. *Documentation. Retrieved October 1*, 2026, from [https://docs.ultralytics.com/models/yolo26/](https://docs.ultralytics.com/models/yolo26/)
+Ultralytics. (n.d.-b). *Ultralytics YOLO26*. Documentation. Retrieved October 1, 2026, from [https://docs.ultralytics.com/models/yolo26/](https://docs.ultralytics.com/models/yolo26/)
 
-Ultralytics. (n.d.-c). YOLO11 model configuration. *Retrieved October 4*, 2026, from [https://github.com/ultralytics/ultralytics/blob/main/ultralytics/cfg/models/11/yolo11.yaml](https://github.com/ultralytics/ultralytics/blob/main/ultralytics/cfg/models/11/yolo11.yaml)
+Ultralytics. (n.d.-c). *YOLO11 model configuration*. Retrieved October 4, 2026, from [https://github.com/ultralytics/ultralytics/blob/main/ultralytics/cfg/models/11/yolo11.yaml](https://github.com/ultralytics/ultralytics/blob/main/ultralytics/cfg/models/11/yolo11.yaml)
 
 Vallen Systeme. (n.d.-a). *VS600-Z1 piezoelectric AE sensor: Technical data*. [https://www.vallen.de/wp-content/uploads/2019/03/VS600-Z1_1512.pdf](https://www.vallen.de/wp-content/uploads/2019/03/VS600-Z1_1512.pdf)
 
-Vallen Systeme. (n.d.-b). WaveLine products: spotWave 201. *Retrieved October 1*, 2026, from [https://www.vallen.de/products/data-acquisiton-units/waveline-products/](https://www.vallen.de/products/data-acquisiton-units/waveline-products/)
+Vallen Systeme. (n.d.-b). *WaveLine products: spotWave 201*. Retrieved October 1, 2026, from [https://www.vallen.de/products/data-acquisiton-units/waveline-products/](https://www.vallen.de/products/data-acquisiton-units/waveline-products/)
 
-Vallen Systeme. (n.d.-c). *WaveLine spotWave acquisition implementation [Software]*. [https://github.com/vallen-systems/waveline/blob/70b56d4387e7e58f45ffe4662ed51da83ef09709/src/waveline/spotwave.py](https://github.com/vallen-systems/waveline/blob/70b56d4387e7e58f45ffe4662ed51da83ef09709/src/waveline/spotwave.py)
+Vallen Systeme. (n.d.-c). *WaveLine spotWave acquisition implementation* [Software]. [https://github.com/vallen-systems/waveline/blob/70b56d4387e7e58f45ffe4662ed51da83ef09709/src/waveline/spotwave.py](https://github.com/vallen-systems/waveline/blob/70b56d4387e7e58f45ffe4662ed51da83ef09709/src/waveline/spotwave.py)
 
 Vyas, J., & Mercangöz, M. (2025). Autonomous Industrial Control using an Agentic Framework with Large Language Models. *IFAC-PapersOnLine*, 59, 349–354. [https://doi.org/10.1016/j.ifacol.2025.07.170](https://doi.org/10.1016/j.ifacol.2025.07.170)
 

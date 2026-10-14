@@ -27,7 +27,7 @@ FULL = {
 82: "4.1 Data and evaluation splits",
 115: "4.6 Agent evaluation protocol",
 132: "5.2 Acoustic classification and probability checks",
-164: "The benchmark code, archived AE feature data, frozen split lists, model settings, saved predictions, training logs, figures and reproduction instructions are available in the consolidated evidence repository: [[LINK:Consolidated evidence repository]]. Raw external images are obtained through the named dataset provider under its access and reuse conditions; large visual checkpoints are not bundled. The repository records software versions, provenance and reuse conditions. The original system and acquisition implementations remain available in [[LINK:MultiAgent SCADA]], [[LINK:AI-driven analytics and digital twins]] and [[LINK:Acoustic emission monitoring at the edge]].",
+164: "The benchmark code, archived AE feature data, frozen split lists, model settings, saved predictions, training logs, figures and reproduction instructions are available at [[LINK:https://github.com/bensidhom/Agentic-Multimodal-3D-Printing]]. Raw external images are obtained through the named dataset provider under its access and reuse conditions; large visual checkpoints are not bundled. The repository records software versions, provenance and reuse conditions. The original system and acquisition implementations remain available in [[LINK:MultiAgent SCADA]], [[LINK:AI-driven analytics and digital twins]] and [[LINK:Acoustic emission monitoring at the edge]].",
 }
 
 EDITS = {
@@ -37,12 +37,12 @@ EDITS = {
 11: [("The agent workflow and the recognition tests belong in the same paper, but they need different measures of success.", "The recognition models supply evidence to the agents, so the components and agent tasks require separate evaluation.")],
 15: [("agent teamwork", "agent coordination"), ("written production requests", "natural-language operator requests")],
 17: [("chance estimate", "probability estimate"), ("choose decision cutoffs", "choose decision thresholds")],
-21: [("normal color image", "ordinary color image")],
+21: [("a normal color image", "an ordinary color image")],
 31: [("the AMD computer that runs the language model from the NVIDIA computer used to develop visual models", "the designated AMD deployment host from the NVIDIA visual-training host")],
 32: [("16 CPU cores", "16 central processing unit (CPU) cores"), ("This AMD computer hosts the LLM.", "The AMD computer is the designated local LLM deployment host."), ("RTX 3050 Laptop GPU", "RTX 3050 Laptop graphics processing unit (GPU)")],
 37: [("REST API, a software request-and-reply interface", "REST application programming interface (API), a software request-and-reply interface")],
 38: [("rated sample rate", "rated sampling rate")],
-43: [("a Q4_K_M package", "a package using the Q4_K_M quantization format")],
+43: [("or small piece of text", "or a small piece of text"), ("a Q4_K_M package of about 24 GB", "a package of about 24 GB using the Q4_K_M quantization format")],
 46: [("We have not shown that it wins a manufacturing-agent comparison.", "The upgrade has not yet been evaluated on manufacturing-agent tasks."), ("to the NPU", "to the neural processing unit (NPU)")],
 49: [("It checks the statement and uses a table library to get SQLite rows.", "It checks SQL syntax by parsing the statement, then uses a table library to execute the query and return SQLite rows. This syntax check is not an authorization policy.")],
 53: [("setting temperature and", "setting temperature targets and")],
@@ -75,7 +75,7 @@ EDITS = {
 }
 CAPTIONS = {36:"Hardware setup",45:"Agent workflow",55:"Tool calls",66:"Data links",
             72:"Sensing and toolpath association",86:"Model workflows",128:"Visual results",140:"Acoustic results"}
-LINKS = {"Consolidated evidence repository":URL,
+LINKS = {"Consolidated evidence repository":URL, URL:URL,
          "MultiAgent SCADA":"https://github.com/bensidhom/MultiAgent_SCADA",
          "AI-driven analytics and digital twins":"https://github.com/bensidhom/Novel-Cyber-Infrastructure-Enabling-AI-Driven-Analytics-and-Digital-Twins-for-Real-Time-3D-Printing",
          "Acoustic emission monitoring at the edge":"https://github.com/bensidhom/Acoustic-Emission-Monitoring-at-the-Edge-for-Real-Time-Artificial-Intelligence-Applications"}
@@ -195,12 +195,16 @@ def format_reference(p, text, relationships):
     after_title = text[title_end+2:]
     venue = re.match(r"([^,]+), \d",after_title)
     italic_start, italic_end = title_start,title_end
-    if venue:
+    if venue and 'Retrieved' not in venue.group(1):
         italic_start = title_end+2
         italic_end = italic_start+len(venue.group(1))
     elif after_title.startswith("The International Journal of Advanced Manufacturing Technology."):
         italic_start=title_end+2
         italic_end=italic_start+len("The International Journal of Advanced Manufacturing Technology")
+    else:
+        descriptor = text.find(' [', title_start, title_end)
+        if descriptor >= 0:
+            italic_end = descriptor
     props = p.find("./w:r/w:rPr",namespaces=NS)
     for child in list(p):
         if child.tag!=W+"pPr":

@@ -1,7 +1,9 @@
 """Report credential/path findings by location, never by secret value."""
 import json
 import re
+import subprocess
 from pathlib import Path
+from zipfile import ZipFile
 
 ROOT=Path(__file__).resolve().parents[1]
 PATTERNS={
@@ -16,16 +18,23 @@ PATTERNS={
 def audit():
     findings=[]
     count=0
-    for path in ROOT.rglob('*'):
+    public=subprocess.check_output(['git','ls-files','--cached','--others','--exclude-standard'],cwd=ROOT,text=True).splitlines()
+    for relative in sorted(set(public)):
+        path=ROOT/relative
         if not path.is_file() or any(part in {'.git','__pycache__','.venv','artifacts'} for part in path.parts):
             continue
-        if path.suffix.lower() not in {'.py','.ps1','.md','.json','.csv','.tsv','.gcode','.yaml','.yml','.txt'}:
+        if path.suffix.lower()=='.docx':
+            with ZipFile(path) as archive:
+                parts=[(name,archive.read(name).decode('utf-8-sig')) for name in archive.namelist() if name.endswith(('.xml','.rels'))]
+        elif path.suffix.lower() in {'.py','.ps1','.md','.json','.csv','.tsv','.gcode','.yaml','.yml','.txt'}:
+            parts=[('',path.read_text(encoding='utf-8-sig'))]
+        else:
             continue
-        text=path.read_text(encoding='utf-8-sig')
-        count+=1
-        for kind,pattern in PATTERNS.items():
-            for match in pattern.finditer(text):
-                findings.append({'path':path.relative_to(ROOT).as_posix(),'line':text.count('\n',0,match.start())+1,'kind':kind})
+        for part,text in parts:
+            count+=1
+            for kind,pattern in PATTERNS.items():
+                for match in pattern.finditer(text):
+                    findings.append({'path':path.relative_to(ROOT).as_posix(),'part':part,'line':text.count('\n',0,match.start())+1,'kind':kind})
     report={'text_files_scanned':count,'findings':findings,'sensitive_values_printed':False}
     print(json.dumps(report,indent=2))
     if findings:

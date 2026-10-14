@@ -2,6 +2,8 @@
 
 Reproducible evidence for a local language-model agent workflow in fused filament fabrication (FFF). This repository brings together the recognition benchmarks, experiment records, accepted journal figures, and revised manuscript. It links the original implementations rather than presenting their work as a new system built from scratch.
 
+Read the paper: [verified Word manuscript](paper/JIM_revised_manuscript_v3.docx) or [full Markdown manuscript](paper/manuscript.md).
+
 The main contribution is the supervisory workflow: an operator asks a question or requests an action, a supervisor delegates to a database or printing agent, and a registered tool returns records or an OctoPrint reply. Independent sensing services can request a pause without waiting for a language-model conversation.
 
 ![Agent roles, tools and evidence resources](assets/figures/figure_02.png)
@@ -120,6 +122,7 @@ python -m venv .venv
 python -m pip install -r requirements.txt
 python -m pip install pytest
 python scripts/verify_evidence.py
+python scripts/verify_word_release.py
 python -m pytest tests -q
 ```
 
@@ -176,7 +179,7 @@ Keep print-job context, image-level records, individual detections, acoustic fea
 
 ## Manuscript and revision policy
 
-The [readable full manuscript](paper/manuscript.md) and paragraph revision log are in `paper/`. The Markdown version includes all eight figures, eight tables and the equations. The edited Word version is held locally until its page-by-page layout verification is complete. The original local drafts are preserved outside this publication tree. The revision keeps the accepted figures and numerical tables, corrects citation punctuation and reference typography, restores precise consecutive-event and target-temperature wording, and replaces the repository placeholder with this real repository URL. The three original repository links remain in Data and code availability, without inline self-repository author-date citations.
+The [verified Word manuscript](paper/JIM_revised_manuscript_v3.docx), [readable full manuscript](paper/manuscript.md) and paragraph revision log are in `paper/`. The Word file has 25 rendered pages; every page has been visually checked. The Markdown version includes all eight figures, eight tables and the equations. The original local drafts are preserved outside this publication tree. The revision keeps the accepted figures and numerical tables, corrects citation punctuation and reference typography, restores precise consecutive-event and target-temperature wording, and replaces the repository placeholder with this real repository URL. The three original repository links remain in Data and code availability, without inline self-repository author-date citations.
 
 Before journal submission, the authors must confirm affiliations, corresponding-author details, declarations, image/logo reuse permissions and the remaining system-validation claims. The release is an evidence package and manuscript, not an assertion that every architectural requirement has been physically validated.
 
