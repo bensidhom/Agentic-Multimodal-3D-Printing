@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "purpose": "purged_chronological_sensitivity_analysis_not_independent_print_validation",
+  "purge_source_groups_each_boundary_side": 2,
+  "split_policy": "Within each acquisition-sequence/class stratum, retain the first 60% for train, next 20% for validation and last 20% for test, excluding source groups on both sides of each boundary.",
+  "source_sequences": [
+    "test2",
+    "test5",
+    "test6"
+  ],
+  "independent_print_jobs_verified": false,
+  "images_included": 1147,
+  "images_excluded_by_purge": 88,
+  "source_groups_included": 507,
+  "source_groups_excluded_by_purge": 40,
+  "counts_by_split_and_class": {
+    "train": {
+      "background": 108,
+      "spaghettification": 325,
+      "underextrusion": 295
+    },
+    "val": {
+      "background": 20,
+      "spaghettification": 93,
+      "underextrusion": 87
+    },
+    "test": {
+      "background": 28,
+      "spaghettification": 98,
+      "underextrusion": 93
+    }
+  },
+  "cross_split_source_group_leaks": 0,
+  "cross_split_exact_hash_leaks": 0,
+  "manifest": "data\\manifests\\clinic_v2_purged_manifest.csv",
+  "classification_root": "data\\processed\\clinic_v2_purged_classification",
+  "detection_yaml": "data\\processed\\clinic_v2_purged_detection\\data.yaml",
+  "limitation": "All images originate from three acquisition sequences and class is partly confounded with sequence. This split is only a temporal-overlap sensitivity analysis."
+}

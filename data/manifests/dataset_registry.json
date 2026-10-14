@@ -1,0 +1,39 @@
+{
+  "datasets": [
+    {
+      "id": "local_operational_camera",
+      "manifest": "data/manifests/vision_operational_manifest.csv",
+      "modality": "vision",
+      "status": "replay_only"
+    },
+    {
+      "id": "ae_training_with_labels",
+      "manifest": "data/manifests/ae_row_manifest.csv",
+      "modality": "acoustic_emission_features",
+      "status": "development_only_missing_groups"
+    },
+    {
+      "id": "ae_overflow",
+      "manifest": "data/manifests/ae_row_manifest.csv",
+      "modality": "acoustic_emission_features",
+      "status": "development_only_missing_groups"
+    },
+    {
+      "id": "ae_vallen_multiclass",
+      "manifest": "data/manifests/ae_row_manifest.csv",
+      "modality": "acoustic_emission_features",
+      "status": "partly_quarantined_and_missing_groups"
+    },
+    {
+      "id": "hu_fdm_external",
+      "manifest": "data/manifests/hu_fdm_classification_manifest.csv",
+      "modality": "vision",
+      "repository_commit": "432474f6ee906912632e1cab49e32cccc9a50f12",
+      "source": "https://github.com/wengmhu/FDM-3D-Printing-Defect-Dataset",
+      "status": "frozen_external_classification_split",
+      "task": "image_classification",
+      "warning": "No bounding boxes; temporal segments are not verified independent print jobs."
+    }
+  ],
+  "schema_version": 1
+}

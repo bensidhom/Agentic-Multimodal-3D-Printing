@@ -1,0 +1,23 @@
+{
+  "model": "CatBoost",
+  "seed": 17,
+  "threshold": 0.5549999999999999,
+  "validation_macro_f1": 0.8212962623335657,
+  "validation_balanced_accuracy": 0.8177083333333333,
+  "training_seconds": 0.5215380999725312,
+  "latency_ms": 0.24084997130557895,
+  "accuracy": 0.7619047619047619,
+  "balanced_accuracy": 0.7604166666666667,
+  "macro_f1": 0.7584818861414606,
+  "defect_precision": 0.7105263157894737,
+  "defect_sensitivity": 0.75,
+  "specificity": 0.7708333333333334,
+  "defect_f1": 0.7297297297297297,
+  "auroc": 0.8153935185185185,
+  "brier": 0.1719953657242536,
+  "ece_15bin": 0.1338179588032647,
+  "tn": 74,
+  "fp": 22,
+  "fn": 18,
+  "tp": 54
+}

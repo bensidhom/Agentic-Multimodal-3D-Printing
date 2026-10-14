@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "started_utc": "2026-09-23T06:40:31.207216+00:00",
+  "purpose": "pipeline_smoke_test",
+  "scientific_use": "Pipeline verification only; do not report as a paper result.",
+  "arguments": {
+    "model": "rtdetr-l.pt",
+    "data_yaml": "data\\processed\\clinic_v2_purged_detection\\data.yaml",
+    "dataset_manifest": "data\\manifests\\clinic_v2_purged_manifest.csv",
+    "epochs": 1,
+    "imgsz": 640,
+    "batch": 1,
+    "device": "0",
+    "workers": 0,
+    "seed": 17,
+    "patience": 1,
+    "project": "runs\\detection",
+    "name": "clinic_v2_purged_rtdetr_l_smoke_seed17",
+    "smoke_test": true
+  },
+  "dataset": {
+    "data_yaml": "data\\processed\\clinic_v2_purged_detection\\data.yaml",
+    "data_yaml_sha256": "d899aaa438a5fc957d9d2cf4a3767d7b123ca4c487d1fb4d435d5455522f3aa1",
+    "manifest": "data\\manifests\\clinic_v2_purged_manifest.csv",
+    "manifest_sha256": "60a40aad70e8f1c36c5a4497b0c70d9b04bcaa9a1af0d385db01e0500c55f7f8"
+  },
+  "software": {
+    "python": "3.12.14",
+    "torch": "2.11.0+cu128",
+    "ultralytics": "8.4.100",
+    "cuda_runtime": "12.8"
+  },
+  "hardware": {
+    "cuda_available": true,
+    "cuda_device": "NVIDIA GeForce RTX 3050 Laptop GPU"
+  },
+  "git_revision": null,
+  "completed_utc": "2026-09-23T06:45:26.092417+00:00",
+  "best_checkpoint": "runs\\detection\\clinic_v2_purged_rtdetr_l_smoke_seed17\\weights\\best.pt"
+}

@@ -1,0 +1,23 @@
+{
+  "model": "Logistic regression",
+  "seed": 43,
+  "threshold": 0.32499999999999996,
+  "validation_macro_f1": 0.8541666666666667,
+  "validation_balanced_accuracy": 0.8541666666666667,
+  "training_seconds": 0.0074764000019058585,
+  "latency_ms": 0.18839997937902808,
+  "accuracy": 0.7559523809523809,
+  "balanced_accuracy": 0.7621527777777778,
+  "macro_f1": 0.7549016119275522,
+  "defect_precision": 0.6823529411764706,
+  "defect_sensitivity": 0.8055555555555556,
+  "specificity": 0.71875,
+  "defect_f1": 0.7388535031847133,
+  "auroc": 0.7727141203703705,
+  "brier": 0.18938244367632245,
+  "ece_15bin": 0.15812635431589073,
+  "tn": 69,
+  "fp": 27,
+  "fn": 14,
+  "tp": 58
+}

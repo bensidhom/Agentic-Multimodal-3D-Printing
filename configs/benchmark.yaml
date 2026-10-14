@@ -1,0 +1,54 @@
+schema_version: 1
+study_label: successive_model_generation_benchmark
+
+random_seeds: [17, 41, 1337]
+
+data_policy:
+  preferred_group_unit: print_job_id
+  allowed_fallback_group_units: [specimen_id, source_sequence_id]
+  prohibited_split_units: [frame, augmented_image, ae_hit, ae_burst]
+  frozen_test_set: true
+  test_time_tuning: prohibited
+  synthetic_test_results_separate: true
+  external_test_results_separate: true
+  quarantine_rules:
+    - "Remove unresolved AE observations whose identical feature vectors carry contradictory class labels."
+    - "Exclude observations without sufficient source provenance from confirmatory testing."
+
+vision_metrics:
+  frame_level: [precision, recall, f1, ap50, ap50_95]
+  event_level: [sensitivity, specificity, false_alarms_per_scenario]
+  calibration: [brier_score, expected_calibration_error]
+  deployment: [model_size_mb, parameter_count, median_latency_ms, p95_latency_ms, maximum_latency_ms, throughput_fps, peak_vram_mb]
+  classification: [balanced_accuracy, macro_precision, macro_recall, macro_f1, macro_roc_auc, macro_pr_auc]
+  cross_task_shared: [image_level_sensitivity, image_level_specificity, false_alarms_per_scenario, brier_score, expected_calibration_error, median_latency_ms, p95_latency_ms, model_size_mb]
+  cross_task_rule: "Compare classification and detection only on shared image/event outcomes from the same frozen source split. Keep localization and box AP as detection-only outcomes."
+
+acoustic_metrics:
+  classification: [balanced_accuracy, macro_precision, macro_recall, macro_f1, roc_auc, pr_auc]
+  calibration: [brier_score, expected_calibration_error]
+  deployment: [model_size_mb, median_latency_ms, p95_latency_ms, maximum_latency_ms]
+
+fusion_metrics:
+  safety: [event_sensitivity, missed_event_rate, false_pause_rate, unsafe_action_rate]
+  timing: [median_decision_latency_ms, p95_decision_latency_ms, maximum_decision_latency_ms]
+
+selection_policy:
+  type: constrained_lexicographic
+  eligibility_gates:
+    - reproducible_run
+    - no_test_leakage
+    - complete_provenance
+    - zero_unauthorized_control_actions
+  ranking_order:
+    - maximize_job_event_sensitivity
+    - minimize_false_pause_rate
+    - minimize_p95_end_to_end_latency
+    - minimize_model_size
+
+reporting:
+  report_every_candidate: true
+  report_failed_runs: true
+  show_seed_variation: true
+  confidence_interval_unit: independent_group
+  separate_recorded_external_replayed_synthetic: true

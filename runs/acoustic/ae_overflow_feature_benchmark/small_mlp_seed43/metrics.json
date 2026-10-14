@@ -1,0 +1,23 @@
+{
+  "model": "Small MLP",
+  "seed": 43,
+  "threshold": 0.25999999999999995,
+  "validation_macro_f1": 0.8546503244412401,
+  "validation_balanced_accuracy": 0.8559027777777778,
+  "training_seconds": 0.42498070001602173,
+  "latency_ms": 0.20315003348514438,
+  "accuracy": 0.7738095238095238,
+  "balanced_accuracy": 0.7795138888888888,
+  "macro_f1": 0.7726495726495726,
+  "defect_precision": 0.7023809523809523,
+  "defect_sensitivity": 0.8194444444444444,
+  "specificity": 0.7395833333333334,
+  "defect_f1": 0.7564102564102564,
+  "auroc": 0.8182870370370371,
+  "brier": 0.17707276887508774,
+  "ece_15bin": 0.12851294670758098,
+  "tn": 71,
+  "fp": 25,
+  "fn": 13,
+  "tp": 59
+}

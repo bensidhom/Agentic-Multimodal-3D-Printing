@@ -1,0 +1,175 @@
+schema_version: 1
+
+vision_detection:
+  - id: supplied_yolov5s
+    family: yolov5s
+    role: historical_baseline
+    enabled: true
+    initialization: from_scratch
+    checkpoint_glob: "../journal_work/repo_sources/Novel_Cyber_Infrastructure_src/**/best.pt"
+    checkpoint_sha256: "bc055868a7228e0c10e6f06bc0e9e0d359239769b5cec3975bd7d2777d426b13"
+    image_size: 416
+    batch_size: 64
+    epochs: 30
+    classes: [spaghettification, underextrusion]
+    note: "Configuration recovered from the supplied notebook: custom YOLOv5s, trained from scratch. The notebook has validation only and no independent test set."
+
+  - id: yolo11n
+    family: ultralytics_yolo
+    role: mature_modern_baseline
+    enabled: true
+    initialization: pretrained
+    checkpoint: yolo11n.pt
+    image_size: 640
+    deployment_exports: [onnx]
+
+  - id: yolo26n
+    family: ultralytics_yolo
+    role: current_edge_candidate
+    enabled: true
+    initialization: pretrained
+    checkpoint: yolo26n.pt
+    image_size: 640
+    deployment_exports: [onnx]
+    licensing_review_required: true
+
+  - id: rtdetr
+    family: rt_detr
+    role: architecture_diversity
+    enabled: true
+    initialization: pretrained
+    checkpoint: rtdetr-l.pt
+    image_size: 640
+    resource_note: "Use batch size 1 or external GPU compute if the local 4 GB GPU cannot train this candidate reliably."
+    deployment_exports: [onnx]
+
+vision_classification:
+  task_note: "Train on class-folder data and on image-level labels derived from box annotations. The latter enables a same-images comparison with detection."
+  candidates:
+    - id: resnet18_classifier
+      family: resnet18
+      role: conventional_cnn_baseline
+      enabled: true
+      initialization: imagenet_pretrained
+
+    - id: mobilenet_v3_small_classifier
+      family: mobilenet_v3_small
+      role: edge_efficiency_baseline
+      enabled: true
+      initialization: imagenet_pretrained
+
+    - id: efficientnet_b0_classifier
+      family: efficientnet_b0
+      role: accuracy_efficiency_baseline
+      enabled: true
+      initialization: imagenet_pretrained
+
+    - id: yolo11n_classifier
+      family: ultralytics_yolo_classification
+      role: mature_modern_classifier
+      enabled: true
+      initialization: pretrained
+      checkpoint: yolo11n-cls.pt
+
+    - id: yolo26n_classifier
+      family: ultralytics_yolo_classification
+      role: current_edge_classifier
+      enabled: true
+      initialization: pretrained
+      checkpoint: yolo26n-cls.pt
+      licensing_review_required: true
+
+vision_task_comparison:
+  enabled: true
+  shared_dataset_requirement: "Use the box-annotated detection images. Derive image-level binary and multi-label targets from the boxes without changing the frozen source split."
+  shared_endpoints:
+    - image_level_sensitivity
+    - image_level_specificity
+    - macro_f1
+    - false_alarms_per_scenario
+    - brier_score
+    - expected_calibration_error
+    - median_latency_ms
+    - p95_latency_ms
+    - model_size_mb
+  classification_specific_endpoints:
+    - balanced_accuracy
+    - macro_roc_auc
+    - macro_pr_auc
+  detection_specific_endpoints:
+    - precision
+    - recall
+    - ap50
+    - ap50_95
+    - localization_iou
+  selection_rule: "Classification and detection may be compared on shared image/event endpoints, but detection mAP must not be equated with classification accuracy."
+
+acoustic_engineered_features:
+  required_features: [amplitude, duration, energy, rms, rise_time, counts]
+  candidates:
+    - id: ae_logistic
+      family: logistic_regression
+      role: interpretable_baseline
+      enabled: true
+      probability_calibration: sigmoid
+
+    - id: ae_random_forest
+      family: random_forest
+      role: nonlinear_baseline
+      enabled: true
+      probability_calibration: sigmoid
+
+    - id: ae_xgboost
+      family: xgboost
+      role: boosted_tree_candidate
+      enabled: true
+      probability_calibration: sigmoid
+
+    - id: ae_catboost
+      family: catboost
+      role: boosted_tree_candidate
+      enabled: true
+      probability_calibration: sigmoid
+
+    - id: ae_mlp
+      family: multilayer_perceptron
+      role: compact_neural_baseline
+      enabled: true
+      probability_calibration: temperature
+
+acoustic_raw_waveform:
+  gate: "Enable only when raw time-ordered waveforms, acquisition settings, trustworthy labels, and independent print/job identifiers are verified."
+  candidates:
+    - id: ae_minirocket
+      family: minirocket
+      enabled: conditional
+    - id: ae_resnet1d
+      family: residual_cnn_1d
+      enabled: conditional
+    - id: ae_inceptiontime
+      family: inceptiontime
+      enabled: conditional
+
+fusion:
+  - id: vision_only
+    family: single_modality
+    enabled: true
+  - id: ae_only
+    family: single_modality
+    enabled: true
+  - id: deterministic_or
+    family: deterministic
+    enabled: true
+  - id: deterministic_and_window
+    family: deterministic
+    enabled: true
+  - id: calibrated_logistic_late_fusion
+    family: logistic_regression
+    enabled: true
+  - id: boosted_late_fusion
+    family: gradient_boosting
+    enabled: true
+  - id: temporal_tcn
+    family: temporal_convolutional_network
+    enabled: conditional
+    gate: "Require enough independent labeled scenario sequences to fit and evaluate without source leakage."

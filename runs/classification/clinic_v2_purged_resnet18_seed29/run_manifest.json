@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "started_utc": "2026-09-23T04:21:06.549084+00:00",
+  "purpose": "torchvision_classification_benchmark",
+  "scientific_use": "Candidate benchmark; dataset limitations govern interpretation.",
+  "arguments": {
+    "model": "resnet18",
+    "data": "data\\processed\\clinic_v2_purged_classification",
+    "dataset_manifest": "data\\manifests\\clinic_v2_purged_manifest.csv",
+    "output": "runs\\classification\\clinic_v2_purged_resnet18_seed29",
+    "epochs": 30,
+    "imgsz": 224,
+    "batch": 16,
+    "workers": 0,
+    "seed": 29,
+    "patience": 8,
+    "lr": 0.0003,
+    "weight_decay": 0.0001,
+    "device": "0",
+    "no_pretrained": false
+  },
+  "dataset": {
+    "root": "data\\processed\\clinic_v2_purged_classification",
+    "manifest": "data\\manifests\\clinic_v2_purged_manifest.csv",
+    "manifest_sha256": "60a40aad70e8f1c36c5a4497b0c70d9b04bcaa9a1af0d385db01e0500c55f7f8"
+  },
+  "software": {
+    "python": "3.12.14",
+    "torch": "2.11.0+cu128",
+    "torchvision": "0.26.0+cu128",
+    "cuda_runtime": "12.8"
+  },
+  "hardware": {
+    "device": "cuda:0",
+    "cuda_device": "NVIDIA GeForce RTX 3050 Laptop GPU"
+  },
+  "git_revision": null,
+  "completed_utc": "2026-09-23T04:23:06.680545+00:00",
+  "pretrained_weights": "ResNet18_Weights.IMAGENET1K_V1",
+  "best_epoch": 4,
+  "best_val_macro_f1": 0.9786682615629984,
+  "best_checkpoint": "runs\\classification\\clinic_v2_purged_resnet18_seed29\\best.pt"
+}

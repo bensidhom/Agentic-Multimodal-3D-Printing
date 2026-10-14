@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "downloaded_utc": "2026-09-23T01:46:15.010950+00:00",
+  "source": {
+    "public_project_url": "https://universe.roboflow.com/clinic-project-peqdq/clinic-3d-printing-defect-detect",
+    "workspace": "clinic-project-peqdq",
+    "project": "clinic-3d-printing-defect-detect",
+    "version": 2,
+    "format": "yolov5pytorch"
+  },
+  "credential_handling": "User-authorized embedded notebook credential used at runtime; value not persisted or logged.",
+  "archive": {
+    "bytes": 55443725,
+    "sha256": "90a5d71aa0731134c76c63e7cd29dcdcd661795cc088fe3cdbfe1a588c4e61c4",
+    "deleted_after_verified_extraction": true
+  },
+  "extraction": {
+    "output": "data\\external\\clinic_v2_yolov5",
+    "file_count": 2473,
+    "data_yaml": "data\\external\\clinic_v2_yolov5\\data.yaml",
+    "data_yaml_sha256": "55765a78d5aa64ec04d8f9cc97fa7245935ca78837f05c794ca92259a9202b0e"
+  }
+}

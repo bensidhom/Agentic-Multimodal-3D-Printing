@@ -1,0 +1,25 @@
+schema_version: 1
+execution_status: complete_simulation_only
+scientific_role: policy_selection_and_integration_test_not_paired_physical_validation
+source_models:
+  vision: yolo11n_detector_purged_view_seeds_17_29_43
+  acoustic: small_mlp_overflow_row_split_seeds_17_29_43
+pairing:
+  method: independent_resampling_conditional_on_binary_ground_truth
+  physical_pairing: false
+scenario:
+  defect_prevalence: 0.30
+  training_events_per_seed: 6000
+  validation_events_per_seed: 2000
+  test_events_per_seed: 2000
+  seeds: [17, 29, 43]
+policies:
+  - vision_only
+  - acoustic_only
+  - deterministic_or
+  - deterministic_and
+  - logistic_late_fusion
+  - gradient_boosted_late_fusion
+threshold_selection: validation_only
+report: ../reports/metrics/multimodal_synthetic_fusion.json
+confirmatory_requirement: paired_independent_print_jobs_with_all_modalities_and_frozen_policies

@@ -1,0 +1,1213 @@
+{
+  "schema_version": 1,
+  "source_groups": 547,
+  "sequences": {
+    "test2": 205,
+    "test5": 242,
+    "test6": 100
+  },
+  "classes": {
+    "background": 80,
+    "underextrusion": 225,
+    "spaghettification": 242
+  },
+  "chronological_60_20_20_purge_sweep": [
+    {
+      "purge_source_groups_each_boundary_side": 0,
+      "kept_source_groups": 547,
+      "excluded_source_groups": 0,
+      "split_source_groups": {
+        "train": 328,
+        "val": 110,
+        "test": 109
+      },
+      "split_images": {
+        "train": 750,
+        "val": 244,
+        "test": 241
+      },
+      "split_class_images": {
+        "train": {
+          "background": 114,
+          "underextrusion": 305,
+          "spaghettification": 331
+        },
+        "val": {
+          "background": 40,
+          "underextrusion": 103,
+          "spaghettification": 101
+        },
+        "test": {
+          "background": 38,
+          "underextrusion": 101,
+          "spaghettification": 102
+        }
+      },
+      "minimum_cross_split_dhash_distance": 0,
+      "cross_split_group_pairs_at_or_below_4_bits": 1868
+    },
+    {
+      "purge_source_groups_each_boundary_side": 1,
+      "kept_source_groups": 527,
+      "excluded_source_groups": 20,
+      "split_source_groups": {
+        "train": 323,
+        "val": 100,
+        "test": 104
+      },
+      "split_images": {
+        "train": 739,
+        "val": 220,
+        "test": 232
+      },
+      "split_class_images": {
+        "train": {
+          "background": 110,
+          "underextrusion": 301,
+          "spaghettification": 328
+        },
+        "val": {
+          "background": 28,
+          "underextrusion": 95,
+          "spaghettification": 97
+        },
+        "test": {
+          "background": 34,
+          "underextrusion": 99,
+          "spaghettification": 99
+        }
+      },
+      "minimum_cross_split_dhash_distance": 0,
+      "cross_split_group_pairs_at_or_below_4_bits": 1657
+    },
+    {
+      "purge_source_groups_each_boundary_side": 2,
+      "kept_source_groups": 507,
+      "excluded_source_groups": 40,
+      "split_source_groups": {
+        "train": 318,
+        "val": 90,
+        "test": 99
+      },
+      "split_images": {
+        "train": 728,
+        "val": 200,
+        "test": 219
+      },
+      "split_class_images": {
+        "train": {
+          "background": 108,
+          "underextrusion": 295,
+          "spaghettification": 325
+        },
+        "val": {
+          "background": 20,
+          "underextrusion": 87,
+          "spaghettification": 93
+        },
+        "test": {
+          "background": 28,
+          "underextrusion": 93,
+          "spaghettification": 98
+        }
+      },
+      "minimum_cross_split_dhash_distance": 0,
+      "cross_split_group_pairs_at_or_below_4_bits": 1478
+    },
+    {
+      "purge_source_groups_each_boundary_side": 3,
+      "kept_source_groups": 487,
+      "excluded_source_groups": 60,
+      "split_source_groups": {
+        "train": 313,
+        "val": 80,
+        "test": 94
+      },
+      "split_images": {
+        "train": 715,
+        "val": 178,
+        "test": 206
+      },
+      "split_class_images": {
+        "train": {
+          "background": 102,
+          "underextrusion": 291,
+          "spaghettification": 322
+        },
+        "val": {
+          "background": 10,
+          "underextrusion": 77,
+          "spaghettification": 91
+        },
+        "test": {
+          "background": 24,
+          "underextrusion": 87,
+          "spaghettification": 95
+        }
+      },
+      "minimum_cross_split_dhash_distance": 0,
+      "cross_split_group_pairs_at_or_below_4_bits": 1264
+    },
+    {
+      "purge_source_groups_each_boundary_side": 4,
+      "kept_source_groups": 468,
+      "excluded_source_groups": 79,
+      "split_source_groups": {
+        "train": 308,
+        "test": 89,
+        "val": 71
+      },
+      "split_images": {
+        "train": 702,
+        "test": 195,
+        "val": 159
+      },
+      "split_class_images": {
+        "train": {
+          "background": 98,
+          "underextrusion": 285,
+          "spaghettification": 319
+        },
+        "test": {
+          "background": 20,
+          "underextrusion": 83,
+          "spaghettification": 92
+        },
+        "val": {
+          "underextrusion": 69,
+          "spaghettification": 87,
+          "background": 3
+        }
+      },
+      "minimum_cross_split_dhash_distance": 0,
+      "cross_split_group_pairs_at_or_below_4_bits": 1098
+    },
+    {
+      "purge_source_groups_each_boundary_side": 5,
+      "kept_source_groups": 451,
+      "excluded_source_groups": 96,
+      "split_source_groups": {
+        "train": 303,
+        "test": 84,
+        "val": 64
+      },
+      "split_images": {
+        "train": 689,
+        "test": 184,
+        "val": 140
+      },
+      "split_class_images": {
+        "train": {
+          "background": 94,
+          "underextrusion": 279,
+          "spaghettification": 316
+        },
+        "test": {
+          "background": 14,
+          "underextrusion": 79,
+          "spaghettification": 91
+        },
+        "val": {
+          "underextrusion": 57,
+          "spaghettification": 83
+        }
+      },
+      "minimum_cross_split_dhash_distance": 0,
+      "cross_split_group_pairs_at_or_below_4_bits": 981
+    },
+    {
+      "purge_source_groups_each_boundary_side": 6,
+      "kept_source_groups": 436,
+      "excluded_source_groups": 111,
+      "split_source_groups": {
+        "train": 298,
+        "test": 79,
+        "val": 59
+      },
+      "split_images": {
+        "train": 676,
+        "test": 173,
+        "val": 125
+      },
+      "split_class_images": {
+        "train": {
+          "background": 88,
+          "underextrusion": 275,
+          "spaghettification": 313
+        },
+        "test": {
+          "background": 10,
+          "underextrusion": 75,
+          "spaghettification": 88
+        },
+        "val": {
+          "underextrusion": 48,
+          "spaghettification": 77
+        }
+      },
+      "minimum_cross_split_dhash_distance": 0,
+      "cross_split_group_pairs_at_or_below_4_bits": 899
+    },
+    {
+      "purge_source_groups_each_boundary_side": 7,
+      "kept_source_groups": 422,
+      "excluded_source_groups": 125,
+      "split_source_groups": {
+        "train": 293,
+        "val": 55,
+        "test": 74
+      },
+      "split_images": {
+        "train": 661,
+        "val": 117,
+        "test": 162
+      },
+      "split_class_images": {
+        "train": {
+          "background": 82,
+          "underextrusion": 269,
+          "spaghettification": 310
+        },
+        "val": {
+          "underextrusion": 44,
+          "spaghettification": 73
+        },
+        "test": {
+          "underextrusion": 69,
+          "spaghettification": 87,
+          "background": 6
+        }
+      },
+      "minimum_cross_split_dhash_distance": 0,
+      "cross_split_group_pairs_at_or_below_4_bits": 786
+    },
+    {
+      "purge_source_groups_each_boundary_side": 8,
+      "kept_source_groups": 409,
+      "excluded_source_groups": 138,
+      "split_source_groups": {
+        "train": 288,
+        "val": 51,
+        "test": 70
+      },
+      "split_images": {
+        "train": 648,
+        "val": 109,
+        "test": 156
+      },
+      "split_class_images": {
+        "train": {
+          "background": 76,
+          "underextrusion": 265,
+          "spaghettification": 307
+        },
+        "val": {
+          "underextrusion": 40,
+          "spaghettification": 69
+        },
+        "test": {
+          "underextrusion": 67,
+          "spaghettification": 86,
+          "background": 3
+        }
+      },
+      "minimum_cross_split_dhash_distance": 0,
+      "cross_split_group_pairs_at_or_below_4_bits": 727
+    },
+    {
+      "purge_source_groups_each_boundary_side": 9,
+      "kept_source_groups": 396,
+      "excluded_source_groups": 151,
+      "split_source_groups": {
+        "train": 283,
+        "val": 47,
+        "test": 66
+      },
+      "split_images": {
+        "train": 637,
+        "val": 99,
+        "test": 146
+      },
+      "split_class_images": {
+        "train": {
+          "background": 70,
+          "underextrusion": 263,
+          "spaghettification": 304
+        },
+        "val": {
+          "underextrusion": 34,
+          "spaghettification": 65
+        },
+        "test": {
+          "underextrusion": 61,
+          "spaghettification": 85
+        }
+      },
+      "minimum_cross_split_dhash_distance": 0,
+      "cross_split_group_pairs_at_or_below_4_bits": 648
+    },
+    {
+      "purge_source_groups_each_boundary_side": 10,
+      "kept_source_groups": 384,
+      "excluded_source_groups": 163,
+      "split_source_groups": {
+        "train": 278,
+        "val": 43,
+        "test": 63
+      },
+      "split_images": {
+        "train": 622,
+        "val": 89,
+        "test": 139
+      },
+      "split_class_images": {
+        "train": {
+          "background": 64,
+          "underextrusion": 257,
+          "spaghettification": 301
+        },
+        "val": {
+          "underextrusion": 28,
+          "spaghettification": 61
+        },
+        "test": {
+          "underextrusion": 55,
+          "spaghettification": 84
+        }
+      },
+      "minimum_cross_split_dhash_distance": 0,
+      "cross_split_group_pairs_at_or_below_4_bits": 584
+    },
+    {
+      "purge_source_groups_each_boundary_side": 11,
+      "kept_source_groups": 372,
+      "excluded_source_groups": 175,
+      "split_source_groups": {
+        "train": 273,
+        "val": 39,
+        "test": 60
+      },
+      "split_images": {
+        "train": 611,
+        "val": 83,
+        "test": 132
+      },
+      "split_class_images": {
+        "train": {
+          "background": 58,
+          "underextrusion": 253,
+          "spaghettification": 300
+        },
+        "val": {
+          "underextrusion": 26,
+          "spaghettification": 57
+        },
+        "test": {
+          "underextrusion": 51,
+          "spaghettification": 81
+        }
+      },
+      "minimum_cross_split_dhash_distance": 0,
+      "cross_split_group_pairs_at_or_below_4_bits": 491
+    },
+    {
+      "purge_source_groups_each_boundary_side": 12,
+      "kept_source_groups": 361,
+      "excluded_source_groups": 186,
+      "split_source_groups": {
+        "train": 268,
+        "val": 35,
+        "test": 58
+      },
+      "split_images": {
+        "train": 602,
+        "val": 77,
+        "test": 126
+      },
+      "split_class_images": {
+        "train": {
+          "background": 54,
+          "underextrusion": 249,
+          "spaghettification": 299
+        },
+        "val": {
+          "underextrusion": 24,
+          "spaghettification": 53
+        },
+        "test": {
+          "underextrusion": 48,
+          "spaghettification": 78
+        }
+      },
+      "minimum_cross_split_dhash_distance": 0,
+      "cross_split_group_pairs_at_or_below_4_bits": 442
+    },
+    {
+      "purge_source_groups_each_boundary_side": 13,
+      "kept_source_groups": 350,
+      "excluded_source_groups": 197,
+      "split_source_groups": {
+        "train": 263,
+        "val": 31,
+        "test": 56
+      },
+      "split_images": {
+        "train": 589,
+        "val": 65,
+        "test": 122
+      },
+      "split_class_images": {
+        "train": {
+          "background": 48,
+          "underextrusion": 245,
+          "spaghettification": 296
+        },
+        "val": {
+          "underextrusion": 18,
+          "spaghettification": 47
+        },
+        "test": {
+          "underextrusion": 45,
+          "spaghettification": 77
+        }
+      },
+      "minimum_cross_split_dhash_distance": 0,
+      "cross_split_group_pairs_at_or_below_4_bits": 370
+    },
+    {
+      "purge_source_groups_each_boundary_side": 14,
+      "kept_source_groups": 339,
+      "excluded_source_groups": 208,
+      "split_source_groups": {
+        "train": 258,
+        "val": 27,
+        "test": 54
+      },
+      "split_images": {
+        "train": 576,
+        "val": 57,
+        "test": 118
+      },
+      "split_class_images": {
+        "train": {
+          "background": 44,
+          "underextrusion": 239,
+          "spaghettification": 293
+        },
+        "val": {
+          "underextrusion": 14,
+          "spaghettification": 43
+        },
+        "test": {
+          "underextrusion": 42,
+          "spaghettification": 76
+        }
+      },
+      "minimum_cross_split_dhash_distance": 0,
+      "cross_split_group_pairs_at_or_below_4_bits": 302
+    },
+    {
+      "purge_source_groups_each_boundary_side": 15,
+      "kept_source_groups": 328,
+      "excluded_source_groups": 219,
+      "split_source_groups": {
+        "train": 253,
+        "val": 23,
+        "test": 52
+      },
+      "split_images": {
+        "train": 561,
+        "val": 51,
+        "test": 114
+      },
+      "split_class_images": {
+        "train": {
+          "background": 38,
+          "underextrusion": 233,
+          "spaghettification": 290
+        },
+        "val": {
+          "underextrusion": 12,
+          "spaghettification": 39
+        },
+        "test": {
+          "underextrusion": 41,
+          "spaghettification": 73
+        }
+      },
+      "minimum_cross_split_dhash_distance": 0,
+      "cross_split_group_pairs_at_or_below_4_bits": 257
+    },
+    {
+      "purge_source_groups_each_boundary_side": 16,
+      "kept_source_groups": 317,
+      "excluded_source_groups": 230,
+      "split_source_groups": {
+        "train": 248,
+        "val": 19,
+        "test": 50
+      },
+      "split_images": {
+        "train": 552,
+        "val": 43,
+        "test": 110
+      },
+      "split_class_images": {
+        "train": {
+          "background": 36,
+          "underextrusion": 229,
+          "spaghettification": 287
+        },
+        "val": {
+          "underextrusion": 6,
+          "spaghettification": 37
+        },
+        "test": {
+          "underextrusion": 40,
+          "spaghettification": 70
+        }
+      },
+      "minimum_cross_split_dhash_distance": 0,
+      "cross_split_group_pairs_at_or_below_4_bits": 216
+    },
+    {
+      "purge_source_groups_each_boundary_side": 17,
+      "kept_source_groups": 306,
+      "excluded_source_groups": 241,
+      "split_source_groups": {
+        "train": 243,
+        "test": 48,
+        "val": 15
+      },
+      "split_images": {
+        "train": 545,
+        "test": 106,
+        "val": 33
+      },
+      "split_class_images": {
+        "train": {
+          "background": 34,
+          "underextrusion": 225,
+          "spaghettification": 286
+        },
+        "test": {
+          "underextrusion": 37,
+          "spaghettification": 69
+        },
+        "val": {
+          "spaghettification": 33
+        }
+      },
+      "minimum_cross_split_dhash_distance": 0,
+      "cross_split_group_pairs_at_or_below_4_bits": 175
+    },
+    {
+      "purge_source_groups_each_boundary_side": 18,
+      "kept_source_groups": 297,
+      "excluded_source_groups": 250,
+      "split_source_groups": {
+        "train": 238,
+        "test": 46,
+        "val": 13
+      },
+      "split_images": {
+        "train": 536,
+        "test": 102,
+        "val": 29
+      },
+      "split_class_images": {
+        "train": {
+          "background": 30,
+          "underextrusion": 221,
+          "spaghettification": 285
+        },
+        "test": {
+          "underextrusion": 34,
+          "spaghettification": 68
+        },
+        "val": {
+          "spaghettification": 29
+        }
+      },
+      "minimum_cross_split_dhash_distance": 0,
+      "cross_split_group_pairs_at_or_below_4_bits": 164
+    },
+    {
+      "purge_source_groups_each_boundary_side": 19,
+      "kept_source_groups": 288,
+      "excluded_source_groups": 259,
+      "split_source_groups": {
+        "train": 233,
+        "test": 44,
+        "val": 11
+      },
+      "split_images": {
+        "train": 523,
+        "test": 98,
+        "val": 23
+      },
+      "split_class_images": {
+        "train": {
+          "background": 24,
+          "underextrusion": 217,
+          "spaghettification": 282
+        },
+        "test": {
+          "underextrusion": 33,
+          "spaghettification": 65
+        },
+        "val": {
+          "spaghettification": 23
+        }
+      },
+      "minimum_cross_split_dhash_distance": 0,
+      "cross_split_group_pairs_at_or_below_4_bits": 144
+    },
+    {
+      "purge_source_groups_each_boundary_side": 20,
+      "kept_source_groups": 279,
+      "excluded_source_groups": 268,
+      "split_source_groups": {
+        "train": 228,
+        "test": 42,
+        "val": 9
+      },
+      "split_images": {
+        "train": 512,
+        "test": 96,
+        "val": 19
+      },
+      "split_class_images": {
+        "train": {
+          "underextrusion": 213,
+          "spaghettification": 279,
+          "background": 20
+        },
+        "test": {
+          "underextrusion": 32,
+          "spaghettification": 64
+        },
+        "val": {
+          "spaghettification": 19
+        }
+      },
+      "minimum_cross_split_dhash_distance": 0,
+      "cross_split_group_pairs_at_or_below_4_bits": 139
+    }
+  ],
+  "perceptual_components": [
+    {
+      "threshold_bits": 0,
+      "components": 395,
+      "largest_component_source_groups": 10,
+      "components_with_multiple_classes": 3,
+      "largest_components": [
+        {
+          "source_groups": 10,
+          "images": 24,
+          "prefixes": {
+            "test2": 10
+          },
+          "classes": {
+            "underextrusion": 10
+          },
+          "frame_min": 2558,
+          "frame_max": 2712
+        },
+        {
+          "source_groups": 10,
+          "images": 18,
+          "prefixes": {
+            "test2": 10
+          },
+          "classes": {
+            "underextrusion": 10
+          },
+          "frame_min": 2676,
+          "frame_max": 2708
+        },
+        {
+          "source_groups": 7,
+          "images": 19,
+          "prefixes": {
+            "test2": 7
+          },
+          "classes": {
+            "background": 1,
+            "underextrusion": 6
+          },
+          "frame_min": 2328,
+          "frame_max": 2587
+        },
+        {
+          "source_groups": 7,
+          "images": 19,
+          "prefixes": {
+            "test5": 7
+          },
+          "classes": {
+            "spaghettification": 7
+          },
+          "frame_min": 1813,
+          "frame_max": 1920
+        },
+        {
+          "source_groups": 6,
+          "images": 10,
+          "prefixes": {
+            "test2": 6
+          },
+          "classes": {
+            "underextrusion": 6
+          },
+          "frame_min": 2444,
+          "frame_max": 2568
+        },
+        {
+          "source_groups": 6,
+          "images": 14,
+          "prefixes": {
+            "test2": 6
+          },
+          "classes": {
+            "underextrusion": 6
+          },
+          "frame_min": 2601,
+          "frame_max": 2716
+        },
+        {
+          "source_groups": 5,
+          "images": 11,
+          "prefixes": {
+            "test2": 5
+          },
+          "classes": {
+            "underextrusion": 5
+          },
+          "frame_min": 2440,
+          "frame_max": 2481
+        },
+        {
+          "source_groups": 5,
+          "images": 11,
+          "prefixes": {
+            "test2": 5
+          },
+          "classes": {
+            "underextrusion": 5
+          },
+          "frame_min": 2554,
+          "frame_max": 2575
+        },
+        {
+          "source_groups": 5,
+          "images": 13,
+          "prefixes": {
+            "test2": 5
+          },
+          "classes": {
+            "underextrusion": 5
+          },
+          "frame_min": 2673,
+          "frame_max": 2699
+        },
+        {
+          "source_groups": 5,
+          "images": 9,
+          "prefixes": {
+            "test5": 5
+          },
+          "classes": {
+            "spaghettification": 5
+          },
+          "frame_min": 1980,
+          "frame_max": 2040
+        }
+      ]
+    },
+    {
+      "threshold_bits": 1,
+      "components": 222,
+      "largest_component_source_groups": 39,
+      "components_with_multiple_classes": 7,
+      "largest_components": [
+        {
+          "source_groups": 39,
+          "images": 87,
+          "prefixes": {
+            "test2": 39
+          },
+          "classes": {
+            "underextrusion": 39
+          },
+          "frame_min": 2444,
+          "frame_max": 2716
+        },
+        {
+          "source_groups": 37,
+          "images": 87,
+          "prefixes": {
+            "test2": 37
+          },
+          "classes": {
+            "background": 2,
+            "underextrusion": 35
+          },
+          "frame_min": 2330,
+          "frame_max": 2709
+        },
+        {
+          "source_groups": 31,
+          "images": 83,
+          "prefixes": {
+            "test2": 31
+          },
+          "classes": {
+            "background": 8,
+            "underextrusion": 23
+          },
+          "frame_min": 2317,
+          "frame_max": 2699
+        },
+        {
+          "source_groups": 24,
+          "images": 54,
+          "prefixes": {
+            "test2": 24
+          },
+          "classes": {
+            "background": 6,
+            "underextrusion": 18
+          },
+          "frame_min": 2326,
+          "frame_max": 2594
+        },
+        {
+          "source_groups": 22,
+          "images": 48,
+          "prefixes": {
+            "test5": 22
+          },
+          "classes": {
+            "spaghettification": 22
+          },
+          "frame_min": 2053,
+          "frame_max": 2574
+        },
+        {
+          "source_groups": 15,
+          "images": 35,
+          "prefixes": {
+            "test5": 15
+          },
+          "classes": {
+            "spaghettification": 15
+          },
+          "frame_min": 2508,
+          "frame_max": 2664
+        },
+        {
+          "source_groups": 14,
+          "images": 34,
+          "prefixes": {
+            "test5": 14
+          },
+          "classes": {
+            "spaghettification": 14
+          },
+          "frame_min": 2232,
+          "frame_max": 2538
+        },
+        {
+          "source_groups": 13,
+          "images": 35,
+          "prefixes": {
+            "test5": 13
+          },
+          "classes": {
+            "spaghettification": 13
+          },
+          "frame_min": 1717,
+          "frame_max": 1945
+        },
+        {
+          "source_groups": 11,
+          "images": 23,
+          "prefixes": {
+            "test5": 11
+          },
+          "classes": {
+            "spaghettification": 11
+          },
+          "frame_min": 1956,
+          "frame_max": 2040
+        },
+        {
+          "source_groups": 9,
+          "images": 17,
+          "prefixes": {
+            "test2": 9
+          },
+          "classes": {
+            "underextrusion": 9
+          },
+          "frame_min": 2552,
+          "frame_max": 2718
+        }
+      ]
+    },
+    {
+      "threshold_bits": 2,
+      "components": 91,
+      "largest_component_source_groups": 116,
+      "components_with_multiple_classes": 6,
+      "largest_components": [
+        {
+          "source_groups": 116,
+          "images": 262,
+          "prefixes": {
+            "test2": 116
+          },
+          "classes": {
+            "background": 15,
+            "underextrusion": 101
+          },
+          "frame_min": 2319,
+          "frame_max": 2716
+        },
+        {
+          "source_groups": 75,
+          "images": 175,
+          "prefixes": {
+            "test5": 75
+          },
+          "classes": {
+            "spaghettification": 75
+          },
+          "frame_min": 1710,
+          "frame_max": 2664
+        },
+        {
+          "source_groups": 56,
+          "images": 130,
+          "prefixes": {
+            "test5": 56
+          },
+          "classes": {
+            "spaghettification": 56
+          },
+          "frame_min": 1716,
+          "frame_max": 2574
+        },
+        {
+          "source_groups": 33,
+          "images": 89,
+          "prefixes": {
+            "test2": 33
+          },
+          "classes": {
+            "background": 8,
+            "underextrusion": 25
+          },
+          "frame_min": 2317,
+          "frame_max": 2699
+        },
+        {
+          "source_groups": 33,
+          "images": 71,
+          "prefixes": {
+            "test2": 33
+          },
+          "classes": {
+            "background": 6,
+            "underextrusion": 27
+          },
+          "frame_min": 2326,
+          "frame_max": 2718
+        },
+        {
+          "source_groups": 24,
+          "images": 56,
+          "prefixes": {
+            "test6": 24
+          },
+          "classes": {
+            "background": 4,
+            "underextrusion": 20
+          },
+          "frame_min": 2290,
+          "frame_max": 2762
+        },
+        {
+          "source_groups": 22,
+          "images": 48,
+          "prefixes": {
+            "test5": 22
+          },
+          "classes": {
+            "spaghettification": 22
+          },
+          "frame_min": 2137,
+          "frame_max": 2526
+        },
+        {
+          "source_groups": 15,
+          "images": 35,
+          "prefixes": {
+            "test5": 15
+          },
+          "classes": {
+            "spaghettification": 15
+          },
+          "frame_min": 1722,
+          "frame_max": 2058
+        },
+        {
+          "source_groups": 13,
+          "images": 33,
+          "prefixes": {
+            "test6": 13
+          },
+          "classes": {
+            "background": 13
+          },
+          "frame_min": 2070,
+          "frame_max": 2218
+        },
+        {
+          "source_groups": 12,
+          "images": 24,
+          "prefixes": {
+            "test5": 12
+          },
+          "classes": {
+            "spaghettification": 12
+          },
+          "frame_min": 1956,
+          "frame_max": 2040
+        }
+      ]
+    },
+    {
+      "threshold_bits": 4,
+      "components": 9,
+      "largest_component_source_groups": 539,
+      "components_with_multiple_classes": 1,
+      "largest_components": [
+        {
+          "source_groups": 539,
+          "images": 1221,
+          "prefixes": {
+            "test2": 199,
+            "test5": 240,
+            "test6": 100
+          },
+          "classes": {
+            "background": 78,
+            "underextrusion": 221,
+            "spaghettification": 240
+          },
+          "frame_min": 1705,
+          "frame_max": 2822
+        },
+        {
+          "source_groups": 1,
+          "images": 1,
+          "prefixes": {
+            "test2": 1
+          },
+          "classes": {
+            "background": 1
+          },
+          "frame_min": 2325,
+          "frame_max": 2325
+        },
+        {
+          "source_groups": 1,
+          "images": 1,
+          "prefixes": {
+            "test2": 1
+          },
+          "classes": {
+            "background": 1
+          },
+          "frame_min": 2335,
+          "frame_max": 2335
+        },
+        {
+          "source_groups": 1,
+          "images": 3,
+          "prefixes": {
+            "test2": 1
+          },
+          "classes": {
+            "underextrusion": 1
+          },
+          "frame_min": 2720,
+          "frame_max": 2720
+        },
+        {
+          "source_groups": 1,
+          "images": 3,
+          "prefixes": {
+            "test2": 1
+          },
+          "classes": {
+            "underextrusion": 1
+          },
+          "frame_min": 2721,
+          "frame_max": 2721
+        },
+        {
+          "source_groups": 1,
+          "images": 1,
+          "prefixes": {
+            "test2": 1
+          },
+          "classes": {
+            "underextrusion": 1
+          },
+          "frame_min": 2722,
+          "frame_max": 2722
+        },
+        {
+          "source_groups": 1,
+          "images": 1,
+          "prefixes": {
+            "test2": 1
+          },
+          "classes": {
+            "underextrusion": 1
+          },
+          "frame_min": 2723,
+          "frame_max": 2723
+        },
+        {
+          "source_groups": 1,
+          "images": 3,
+          "prefixes": {
+            "test5": 1
+          },
+          "classes": {
+            "spaghettification": 1
+          },
+          "frame_min": 2622,
+          "frame_max": 2622
+        },
+        {
+          "source_groups": 1,
+          "images": 1,
+          "prefixes": {
+            "test5": 1
+          },
+          "classes": {
+            "spaghettification": 1
+          },
+          "frame_min": 2670,
+          "frame_max": 2670
+        }
+      ]
+    }
+  ],
+  "decision_rule": "A development split is acceptable only if every split retains every class and no cross-split source-group pair has dHash distance <=4. This does not establish independent-print generalization."
+}

@@ -1,0 +1,133 @@
+{
+  "schema_version": 1,
+  "purpose": "detection_benchmark",
+  "scientific_use": "Frozen-split evaluation; threshold and calibration must have been fixed on validation data.",
+  "model": {
+    "path": "runs\\detection\\clinic_v2_purged_yolo11n_detect_seed43\\weights\\best.pt",
+    "sha256": "4a48d0f6035aac3d90f29d70416035a8f499573652a6e0f6da4eb6febbab7934",
+    "size_mb": 5.46985
+  },
+  "dataset": {
+    "data_yaml": "data\\processed\\clinic_v2_purged_detection\\data.yaml",
+    "data_yaml_sha256": "d899aaa438a5fc957d9d2cf4a3767d7b123ca4c487d1fb4d435d5455522f3aa1",
+    "manifest": "data\\manifests\\clinic_v2_purged_manifest.csv",
+    "manifest_sha256": "60a40aad70e8f1c36c5a4497b0c70d9b04bcaa9a1af0d385db01e0500c55f7f8",
+    "split": "test",
+    "images": 219,
+    "source_groups": 99,
+    "shared_classes": [
+      "background",
+      "spaghettification",
+      "underextrusion"
+    ]
+  },
+  "shared_image_level_metrics": {
+    "accuracy": 0.9863013698630136,
+    "balanced_accuracy": 0.9726062467997952,
+    "macro_precision": 0.980562122406094,
+    "macro_recall_sensitivity": 0.9726062467997952,
+    "macro_specificity_ovr": 0.9929637940109144,
+    "macro_f1": 0.9764705882352941,
+    "weighted_f1": 0.9862134642150759,
+    "multiclass_brier": 0.24672452612103554,
+    "log_loss": 0.4340369375003151,
+    "expected_calibration_error_15bin": 0.32870407609318486
+  },
+  "shared_metric_confidence_intervals": {
+    "accuracy": {
+      "lower_95": 0.9683257918552036,
+      "upper_95": 1.0,
+      "valid_replicates": 2000
+    },
+    "balanced_accuracy": {
+      "lower_95": 0.9365079365079364,
+      "upper_95": 1.0,
+      "valid_replicates": 2000
+    },
+    "macro_precision": {
+      "lower_95": 0.945050242563019,
+      "upper_95": 1.0,
+      "valid_replicates": 2000
+    },
+    "macro_recall_sensitivity": {
+      "lower_95": 0.9365079365079364,
+      "upper_95": 1.0,
+      "valid_replicates": 2000
+    },
+    "macro_specificity_ovr": {
+      "lower_95": 0.9835758644605693,
+      "upper_95": 1.0,
+      "valid_replicates": 2000
+    },
+    "macro_f1": {
+      "lower_95": 0.9458431058257806,
+      "upper_95": 1.0,
+      "valid_replicates": 2000
+    },
+    "weighted_f1": {
+      "lower_95": 0.9679591884913429,
+      "upper_95": 1.0,
+      "valid_replicates": 2000
+    },
+    "multiclass_brier": {
+      "lower_95": 0.22498393157566193,
+      "upper_95": 0.2702036273875575,
+      "valid_replicates": 2000
+    },
+    "log_loss": {
+      "lower_95": 0.3982269639253099,
+      "upper_95": 0.4811807881241759,
+      "valid_replicates": 2000
+    },
+    "expected_calibration_error_15bin": {
+      "lower_95": 0.3083505210474714,
+      "upper_95": 0.3506307159440795,
+      "valid_replicates": 2000
+    }
+  },
+  "localization_metrics": {
+    "precision": 0.7329336198485542,
+    "recall": 0.6389081832867413,
+    "ap50": 0.7060108149744838,
+    "ap50_95": 0.4275025723868307,
+    "per_class": {
+      "spaghettification": {
+        "precision": 0.6902256015719059,
+        "recall": 0.5498163665734825,
+        "ap50": 0.5606728333598923,
+        "ap50_95": 0.3541587784591633
+      },
+      "underextrusion": {
+        "precision": 0.7756416381252025,
+        "recall": 0.728,
+        "ap50": 0.8513487965890754,
+        "ap50_95": 0.5008463663144982
+      }
+    }
+  },
+  "score_note": "Shared image-level scores are an uncalibrated decision-score normalization: the validation-selected confidence threshold is the background score and each defect score is the maximum box confidence for that class. Treat calibration metrics as diagnostic unless a calibration model is fit on validation data and frozen before test evaluation.",
+  "latency": {
+    "measurement": "Batch-one end-to-end wall time after warm-up, CUDA-synchronized; includes file input, preprocessing, inference, and postprocessing.",
+    "sample_images": 100,
+    "median_ms": 12.075799982994795,
+    "p95_ms": 12.975790066411719,
+    "mean_model_reported_inference_ms": 32.35218036530716,
+    "prediction_pass_wall_seconds": 8.820432499982417
+  },
+  "arguments": {
+    "model": "runs\\detection\\clinic_v2_purged_yolo11n_detect_seed43\\weights\\best.pt",
+    "data_yaml": "data\\processed\\clinic_v2_purged_detection\\data.yaml",
+    "dataset_manifest": "data\\manifests\\clinic_v2_purged_manifest.csv",
+    "output": "runs\\detection\\clinic_v2_purged_yolo11n_detect_seed43\\test_evaluation",
+    "split": "test",
+    "imgsz": 640,
+    "batch": 4,
+    "device": "0",
+    "workers": 0,
+    "confidence": 0.29,
+    "bootstrap": 2000,
+    "latency_sample": 100,
+    "seed": 43,
+    "smoke_test": false
+  }
+}

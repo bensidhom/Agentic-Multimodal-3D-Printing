@@ -1,0 +1,18 @@
+# Portable functional environment. Original measured versions are in configs/environment.lock.txt.
+numpy
+pandas
+scipy
+scikit-learn
+matplotlib
+Pillow
+PyYAML
+requests
+joblib
+catboost
+xgboost
+torch
+torchvision
+ultralytics
+openpyxl
+lxml
+python-docx

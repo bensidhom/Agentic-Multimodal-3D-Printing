@@ -1,0 +1,133 @@
+{
+  "schema_version": 1,
+  "purpose": "detection_benchmark",
+  "scientific_use": "Frozen-split evaluation; threshold and calibration must have been fixed on validation data.",
+  "model": {
+    "path": "runs\\detection\\clinic_v2_yolo11n_detect_seed17\\weights\\best.pt",
+    "sha256": "9426c3b95746861677359f4303f96b8906130c3dbec40978b6e198063c63b4c5",
+    "size_mb": 5.470106
+  },
+  "dataset": {
+    "data_yaml": "data\\processed\\clinic_v2_detection_boxes\\data.yaml",
+    "data_yaml_sha256": "da1faea3d3e412b7de8496e259967c006db9018de1b20b0fd6b687c42bfa02cd",
+    "manifest": "data\\manifests\\clinic_v2_task_comparison_manifest.csv",
+    "manifest_sha256": "17b3ea65bd883bd9eead12b28aa2e936d844622c760fc6b922e9dc5a2959278e",
+    "split": "test",
+    "images": 93,
+    "source_groups": 93,
+    "shared_classes": [
+      "background",
+      "spaghettification",
+      "underextrusion"
+    ]
+  },
+  "shared_image_level_metrics": {
+    "accuracy": 0.989247311827957,
+    "balanced_accuracy": 0.9930555555555555,
+    "macro_precision": 0.9629629629629629,
+    "macro_recall_sensitivity": 0.9930555555555555,
+    "macro_specificity_ovr": 0.996078431372549,
+    "macro_f1": 0.9768833849329205,
+    "weighted_f1": 0.9895069742667865,
+    "multiclass_brier": 0.1848838920407348,
+    "log_loss": 0.3515663498148478,
+    "expected_calibration_error_15bin": 0.28489551386680295
+  },
+  "shared_metric_confidence_intervals": {
+    "accuracy": {
+      "lower_95": 0.967741935483871,
+      "upper_95": 1.0,
+      "valid_replicates": 1999
+    },
+    "balanced_accuracy": {
+      "lower_95": 0.9777777777777779,
+      "upper_95": 1.0,
+      "valid_replicates": 1999
+    },
+    "macro_precision": {
+      "lower_95": 0.8888888888888888,
+      "upper_95": 1.0,
+      "valid_replicates": 1999
+    },
+    "macro_recall_sensitivity": {
+      "lower_95": 0.9777777777777779,
+      "upper_95": 1.0,
+      "valid_replicates": 1999
+    },
+    "macro_specificity_ovr": {
+      "lower_95": 0.9879518072289156,
+      "upper_95": 1.0,
+      "valid_replicates": 1999
+    },
+    "macro_f1": {
+      "lower_95": 0.9202380952380953,
+      "upper_95": 1.0,
+      "valid_replicates": 1999
+    },
+    "weighted_f1": {
+      "lower_95": 0.9692604738913395,
+      "upper_95": 1.0,
+      "valid_replicates": 1999
+    },
+    "multiclass_brier": {
+      "lower_95": 0.16306967449374557,
+      "upper_95": 0.21396820619431756,
+      "valid_replicates": 1999
+    },
+    "log_loss": {
+      "lower_95": 0.32136518389751023,
+      "upper_95": 0.3871651761474057,
+      "valid_replicates": 1999
+    },
+    "expected_calibration_error_15bin": {
+      "lower_95": 0.26612580996691493,
+      "upper_95": 0.30543077496814364,
+      "valid_replicates": 1999
+    }
+  },
+  "localization_metrics": {
+    "precision": 0.6027893712695037,
+    "recall": 0.7231811990282457,
+    "ap50": 0.7272596919304928,
+    "ap50_95": 0.4263066827922758,
+    "per_class": {
+      "spaghettification": {
+        "precision": 0.6311711658588878,
+        "recall": 0.5383931161298797,
+        "ap50": 0.6021380595199752,
+        "ap50_95": 0.35777379731661385
+      },
+      "underextrusion": {
+        "precision": 0.5744075766801197,
+        "recall": 0.9079692819266119,
+        "ap50": 0.8523813243410102,
+        "ap50_95": 0.49483956826793796
+      }
+    }
+  },
+  "score_note": "Shared image-level scores are an uncalibrated decision-score normalization: the validation-selected confidence threshold is the background score and each defect score is the maximum box confidence for that class. Treat calibration metrics as diagnostic unless a calibration model is fit on validation data and frozen before test evaluation.",
+  "latency": {
+    "measurement": "Batch-one end-to-end wall time after warm-up, CUDA-synchronized; includes file input, preprocessing, inference, and postprocessing.",
+    "sample_images": 93,
+    "median_ms": 20.284099970012903,
+    "p95_ms": 31.522240024060004,
+    "mean_model_reported_inference_ms": 5.1223548387067135,
+    "prediction_pass_wall_seconds": 1.7442631999729201
+  },
+  "arguments": {
+    "model": "validation_platform\\runs\\detection\\clinic_v2_yolo11n_detect_seed17\\weights\\best.pt",
+    "data_yaml": "validation_platform\\data\\processed\\clinic_v2_detection_boxes\\data.yaml",
+    "dataset_manifest": "validation_platform\\data\\manifests\\clinic_v2_task_comparison_manifest.csv",
+    "output": "validation_platform\\runs\\detection\\clinic_v2_yolo11n_detect_seed17\\test_evaluation",
+    "split": "test",
+    "imgsz": 640,
+    "batch": 4,
+    "device": "0",
+    "workers": 0,
+    "confidence": 0.25,
+    "bootstrap": 2000,
+    "latency_sample": 93,
+    "seed": 17,
+    "smoke_test": false
+  }
+}

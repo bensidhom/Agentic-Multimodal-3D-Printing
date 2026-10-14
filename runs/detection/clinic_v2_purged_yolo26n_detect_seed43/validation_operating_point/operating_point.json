@@ -1,0 +1,115 @@
+{
+  "schema_version": 1,
+  "purpose": "validation_only_detector_operating_point_selection",
+  "selection_rule": {
+    "primary": "maximize_macro_f1",
+    "secondary": "maximize_balanced_accuracy",
+    "tie_breaker": "lowest_threshold",
+    "grid": {
+      "minimum": 0.05,
+      "maximum": 0.95,
+      "steps": 91
+    }
+  },
+  "selected_threshold": 0.05,
+  "selected_split_metrics": {
+    "accuracy": 1.0,
+    "balanced_accuracy": 1.0,
+    "macro_precision": 1.0,
+    "macro_recall_sensitivity": 1.0,
+    "macro_specificity_ovr": 1.0,
+    "macro_f1": 1.0,
+    "weighted_f1": 1.0,
+    "multiclass_brier": 0.019076313329839792,
+    "log_loss": 0.09184956446300521,
+    "expected_calibration_error_15bin": 0.08633832581091933
+  },
+  "selected_split_group_bootstrap_95_ci": {
+    "accuracy": {
+      "lower_95": 1.0,
+      "upper_95": 1.0,
+      "valid_replicates": 1999
+    },
+    "balanced_accuracy": {
+      "lower_95": 1.0,
+      "upper_95": 1.0,
+      "valid_replicates": 1999
+    },
+    "macro_precision": {
+      "lower_95": 1.0,
+      "upper_95": 1.0,
+      "valid_replicates": 1999
+    },
+    "macro_recall_sensitivity": {
+      "lower_95": 1.0,
+      "upper_95": 1.0,
+      "valid_replicates": 1999
+    },
+    "macro_specificity_ovr": {
+      "lower_95": 1.0,
+      "upper_95": 1.0,
+      "valid_replicates": 1999
+    },
+    "macro_f1": {
+      "lower_95": 1.0,
+      "upper_95": 1.0,
+      "valid_replicates": 1999
+    },
+    "weighted_f1": {
+      "lower_95": 1.0,
+      "upper_95": 1.0,
+      "valid_replicates": 1999
+    },
+    "multiclass_brier": {
+      "lower_95": 0.015365539648221783,
+      "upper_95": 0.023400419236088266,
+      "valid_replicates": 1999
+    },
+    "log_loss": {
+      "lower_95": 0.08433300481099494,
+      "upper_95": 0.10015059602269856,
+      "valid_replicates": 1999
+    },
+    "expected_calibration_error_15bin": {
+      "lower_95": 0.079890982729015,
+      "upper_95": 0.09339033724163448,
+      "valid_replicates": 1999
+    }
+  },
+  "model": {
+    "path": "runs\\detection\\clinic_v2_purged_yolo26n_detect_seed43\\weights\\best.pt",
+    "sha256": "00b1db1258fa560dc3c29a6dfd03eb9fc1fde88ec3d05ebc37e9a00c12e431ff"
+  },
+  "dataset": {
+    "data_yaml": "data\\processed\\clinic_v2_purged_detection\\data.yaml",
+    "data_yaml_sha256": "d899aaa438a5fc957d9d2cf4a3767d7b123ca4c487d1fb4d435d5455522f3aa1",
+    "manifest": "data\\manifests\\clinic_v2_purged_manifest.csv",
+    "manifest_sha256": "60a40aad70e8f1c36c5a4497b0c70d9b04bcaa9a1af0d385db01e0500c55f7f8",
+    "split": "val",
+    "images": 200,
+    "source_groups": 90,
+    "shared_classes": [
+      "background",
+      "spaghettification",
+      "underextrusion"
+    ]
+  },
+  "prediction_pass_wall_seconds": 5.453986599924974,
+  "arguments": {
+    "model": "runs\\detection\\clinic_v2_purged_yolo26n_detect_seed43\\weights\\best.pt",
+    "data_yaml": "data\\processed\\clinic_v2_purged_detection\\data.yaml",
+    "dataset_manifest": "data\\manifests\\clinic_v2_purged_manifest.csv",
+    "output": "runs\\detection\\clinic_v2_purged_yolo26n_detect_seed43\\validation_operating_point",
+    "split": "val",
+    "imgsz": 640,
+    "batch": 4,
+    "device": "0",
+    "threshold_min": 0.05,
+    "threshold_max": 0.95,
+    "threshold_steps": 91,
+    "bootstrap": 2000,
+    "seed": 43
+  },
+  "test_usage": "Pass selected_threshold unchanged as --confidence to evaluate_yolo_detector.py on the frozen test split.",
+  "probability_note": "The normalized shared scores reproduce the thresholded hard decision but are not calibrated probabilities."
+}

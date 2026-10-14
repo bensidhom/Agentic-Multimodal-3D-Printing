@@ -1,0 +1,181 @@
+{
+  "schema_version": 1,
+  "purpose": "pipeline_smoke_test",
+  "scientific_use": "Pipeline verification only; do not report as a paper result.",
+  "model": {
+    "path": "runs\\smoke\\yolo11n_cls\\weights\\best.pt",
+    "sha256": "96d89c48fe4d89bc4b17965399f910ad02a739329a91f957deade2d1df531207",
+    "size_mb": 3.192898
+  },
+  "dataset": {
+    "root": "data\\processed\\hu_fdm_classification_1280",
+    "split": "test",
+    "manifest": "data\\manifests\\hu_fdm_classification_manifest.csv",
+    "manifest_sha256": "ed6dce5a1ef22e7bfbfad31cb51d0fe0871f24a494eda60fb2939895c6583f57",
+    "images": 294,
+    "source_groups": 8,
+    "classes": [
+      "Cracking",
+      "Layer_shifting",
+      "Off_platform",
+      "Stringing",
+      "Warping"
+    ]
+  },
+  "metrics": {
+    "accuracy": 0.5136054421768708,
+    "balanced_accuracy": 0.47260239325967024,
+    "macro_precision": 0.5229376257545272,
+    "macro_recall_sensitivity": 0.47260239325967024,
+    "macro_specificity_ovr": 0.869480304848523,
+    "macro_f1": 0.463174076097165,
+    "weighted_f1": 0.4659324922487525,
+    "multiclass_brier": 0.7903113524549599,
+    "log_loss": 1.862938507995178,
+    "expected_calibration_error_15bin": 0.3731376775489542
+  },
+  "confidence_intervals": {
+    "accuracy": {
+      "lower_95": 0.3979291971757322,
+      "upper_95": 0.5932735593536939,
+      "valid_replicates": 13
+    },
+    "balanced_accuracy": {
+      "lower_95": 0.4712332001973171,
+      "upper_95": 0.5178181818181817,
+      "valid_replicates": 13
+    },
+    "macro_precision": {
+      "lower_95": 0.46697160293934487,
+      "upper_95": 0.5698991797676008,
+      "valid_replicates": 13
+    },
+    "macro_recall_sensitivity": {
+      "lower_95": 0.4712332001973171,
+      "upper_95": 0.5178181818181817,
+      "valid_replicates": 13
+    },
+    "macro_specificity_ovr": {
+      "lower_95": 0.8472900911651792,
+      "upper_95": 0.9056562753147148,
+      "valid_replicates": 13
+    },
+    "macro_f1": {
+      "lower_95": 0.4074012426347525,
+      "upper_95": 0.4984323781586226,
+      "valid_replicates": 13
+    },
+    "weighted_f1": {
+      "lower_95": 0.3556418765487809,
+      "upper_95": 0.5623574988472566,
+      "valid_replicates": 13
+    },
+    "multiclass_brier": {
+      "lower_95": 0.6523709610734643,
+      "upper_95": 0.9754750558141682,
+      "valid_replicates": 13
+    },
+    "log_loss": {
+      "lower_95": 1.3486828708136658,
+      "upper_95": 2.3058064891886536,
+      "valid_replicates": 13
+    },
+    "expected_calibration_error_15bin": {
+      "lower_95": 0.2885812054415022,
+      "upper_95": 0.4678578183739069,
+      "valid_replicates": 13
+    }
+  },
+  "per_class": {
+    "Cracking": {
+      "precision": 0.14285714285714285,
+      "recall": 0.1267605633802817,
+      "f1": 0.13432835820895522,
+      "support": 71
+    },
+    "Layer_shifting": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "support": 54
+    },
+    "Off_platform": {
+      "precision": 1.0,
+      "recall": 0.4090909090909091,
+      "f1": 0.5806451612903226,
+      "support": 22
+    },
+    "Stringing": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "support": 66
+    },
+    "Warping": {
+      "precision": 0.47183098591549294,
+      "recall": 0.8271604938271605,
+      "f1": 0.600896860986547,
+      "support": 81
+    }
+  },
+  "confusion_matrix": [
+    [
+      9,
+      0,
+      0,
+      0,
+      62
+    ],
+    [
+      54,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      9,
+      0,
+      13
+    ],
+    [
+      0,
+      0,
+      0,
+      66,
+      0
+    ],
+    [
+      0,
+      14,
+      0,
+      0,
+      67
+    ]
+  ],
+  "latency": {
+    "measurement": "Batch-one end-to-end wall time after warm-up, CUDA-synchronized; includes file input, preprocessing, inference, and postprocessing.",
+    "sample_images": 20,
+    "median_ms": 39.07739999704063,
+    "p95_ms": 51.55610500951309,
+    "mean_model_reported_inference_ms": 0.6827387755236201,
+    "prediction_pass_wall_seconds": 12.47282880009152
+  },
+  "false_alarm_note": "A normal/no-defect class is absent, so operational false alarms and specificity versus normal prints cannot be estimated from this dataset.",
+  "arguments": {
+    "model": "validation_platform\\runs\\smoke\\yolo11n_cls\\weights\\best.pt",
+    "data": "validation_platform\\data\\processed\\hu_fdm_classification_1280",
+    "split": "test",
+    "dataset_manifest": "validation_platform\\data\\manifests\\hu_fdm_classification_manifest.csv",
+    "output": "validation_platform\\runs\\smoke\\yolo11n_cls\\test_evaluation",
+    "imgsz": 224,
+    "device": "0",
+    "batch": 16,
+    "bootstrap": 50,
+    "latency_sample": 20,
+    "seed": 17,
+    "smoke_test": true
+  }
+}

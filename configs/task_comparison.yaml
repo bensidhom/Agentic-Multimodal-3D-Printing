@@ -1,0 +1,60 @@
+schema_version: 1
+status: version_2_audited_and_seed17_candidate_complete
+
+source:
+  project_url: "https://universe.roboflow.com/clinic-project-peqdq/clinic-3d-printing-defect-detect"
+  historical_version: 2
+  credential_policy: "Accept a newly issued credential through the ROBOFLOW_API_KEY environment variable or a user-downloaded ZIP. Never reuse, print, or commit the credential embedded in the old notebook."
+  historical_label_space: [spaghettification, underextrusion]
+  current_page_label_space: [overextrusion, spaghettification, stringing, underextrusion]
+  label_space_gate: "Audit the downloaded data.yaml and annotations before choosing a track. Never combine the two- and four-class results in one headline metric."
+
+derived_views:
+  detection:
+    annotations: original_yolo_boxes
+    split: original_source_split
+  classification:
+    source: same_images_as_detection
+    split: original_source_split
+    zero_box_target: background
+    one_unique_box_class_target: that_class
+    multiple_box_classes: exclude_from_single_label_primary_and_retain_for_multilabel_secondary
+
+primary_same_image_models:
+  classification:
+    - resnet18_classifier
+    - mobilenet_v3_small_classifier
+    - efficientnet_b0_classifier
+    - yolo11n_classifier
+    - yolo26n_classifier
+  detection:
+    - supplied_yolov5s
+    - yolo11n
+    - yolo26n
+    - rtdetr
+
+shared_endpoints:
+  - image_level_macro_f1
+  - image_level_sensitivity
+  - image_level_specificity_if_background_present
+  - false_positive_rate_if_background_present
+  - brier_score
+  - expected_calibration_error
+  - median_batch1_end_to_end_latency_ms
+  - p95_batch1_end_to_end_latency_ms
+  - model_size_mb
+
+task_specific_endpoints:
+  classification: [balanced_accuracy, macro_pr_auc, macro_roc_auc]
+  detection: [precision, recall, ap50, ap50_95, localization_iou]
+
+decision_rule:
+  validation_only: "Choose thresholds and calibrators using validation data only."
+  shared_cohort: "Compute headline task-comparison metrics on the exact same eligible image IDs."
+  test_once: "Evaluate the frozen test partition only after model, threshold and calibrator are fixed."
+  selection: "Prefer the least complex model meeting sensitivity and false-alarm gates; use detection when localization materially improves the control or operator workflow."
+
+reporting:
+  historical_baseline: "Report the supplied YOLOv5s validation result as development evidence until version 2 and an independent test cohort are available."
+  modernization_wording: "Models were evaluated as successive generations under a common protocol; do not imply undocumented chronological deployment."
+  prohibited_comparison: "Do not equate classification accuracy with detection mAP."

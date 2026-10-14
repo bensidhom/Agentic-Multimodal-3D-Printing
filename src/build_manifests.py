@@ -1,0 +1,534 @@
+"""Build deterministic provenance, sensor-record, and quarantine manifests.
+
+This script never modifies source repositories or source datasets. It records
+what is actually available and refuses to invent print/job group identifiers.
+"""
+
+from __future__ import annotations
+
+import csv
+import hashlib
+import json
+import os
+import re
+from collections import Counter, defaultdict
+from datetime import datetime, timezone
+from pathlib import Path
+from typing import Any, Iterable
+
+from openpyxl import load_workbook
+
+
+PLATFORM_ROOT = Path(__file__).resolve().parents[1]
+WORKSPACE_ROOT = PLATFORM_ROOT.parent
+MANIFEST_ROOT = PLATFORM_ROOT / "data" / "manifests"
+
+AE_ROOT = (
+    WORKSPACE_ROOT
+    / "journal_work"
+    / "repo_sources"
+    / "Acoustic_Emission_Edge_src"
+    / "Acoustic-Emission-Monitoring-at-the-Edge-for-Real-Time-Artificial-Intelligence-Applications-main"
+)
+VISION_ROOT = (
+    WORKSPACE_ROOT
+    / "journal_work"
+    / "repo_sources"
+    / "Novel_Cyber_Infrastructure_src"
+    / "Novel-Cyber-Infrastructure-Enabling-AI-Driven-Analytics-and-Digital-Twins-for-Real-Time-3D-Printing-main"
+)
+SCADA_ROOT = (
+    WORKSPACE_ROOT
+    / "journal_work"
+    / "repo_sources"
+    / "MultiAgent_SCADA_src"
+    / "MultiAgent_SCADA-main"
+)
+HU_ROOT = PLATFORM_ROOT / "data" / "external" / "hu_fdm_defect_dataset"
+
+SOURCE_ROOTS = {
+    "acoustic_emission_edge": AE_ROOT,
+    "novel_cyber_infrastructure": VISION_ROOT,
+    "multiagent_scada": SCADA_ROOT,
+    "hu_fdm_external": HU_ROOT,
+}
+
+INVENTORY_EXTENSIONS = {
+    ".csv",
+    ".xlsx",
+    ".db",
+    ".sqlite",
+    ".pt",
+    ".h5",
+    ".onnx",
+    ".ipynb",
+    ".jpg",
+    ".jpeg",
+    ".png",
+    ".wav",
+    ".mp3",
+    ".mp4",
+    ".gcode",
+    ".json",
+    ".yaml",
+    ".yml",
+    ".md",
+}
+
+FEATURE_ALIASES = {
+    "amplitude": "amplitude",
+    "duration": "duration",
+    "energy": "energy",
+    "rms": "rms",
+    "rise_time": "rise_time",
+    "risetime": "rise_time",
+    "rise time": "rise_time",
+    "counts": "counts",
+    "count": "counts",
+}
+LABEL_ALIASES = {"label", "class", "target", "defect", "category"}
+EXPECTED_FEATURES = ["amplitude", "duration", "energy", "rms", "rise_time", "counts"]
+
+
+def rel(path: Path) -> str:
+    return path.resolve().relative_to(WORKSPACE_ROOT.resolve()).as_posix()
+
+
+def sha256_file(path: Path, chunk_size: int = 1024 * 1024) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as handle:
+        while chunk := handle.read(chunk_size):
+            digest.update(chunk)
+    return digest.hexdigest()
+
+
+def sha256_text(text: str) -> str:
+    return hashlib.sha256(text.encode("utf-8")).hexdigest()
+
+
+def canonical_scalar(value: Any) -> str:
+    if value is None:
+        return ""
+    if isinstance(value, bool):
+        return "1" if value else "0"
+    if isinstance(value, int):
+        return str(value)
+    if isinstance(value, float):
+        return format(value, ".17g")
+    return str(value).strip()
+
+
+def normalized_header(value: Any) -> str:
+    text = canonical_scalar(value).strip().lower().replace("-", "_")
+    return re.sub(r"\s+", " ", text)
+
+
+def write_csv(path: Path, rows: Iterable[dict[str, Any]], fieldnames: list[str]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("w", newline="", encoding="utf-8") as handle:
+        writer = csv.DictWriter(handle, fieldnames=fieldnames, extrasaction="ignore")
+        writer.writeheader()
+        writer.writerows(rows)
+
+
+def classify_file(path: Path) -> str:
+    suffix = path.suffix.lower()
+    if suffix in {".jpg", ".jpeg", ".png"}:
+        return "image"
+    if suffix in {".wav", ".mp3", ".mp4"}:
+        return "media"
+    if suffix in {".csv", ".xlsx", ".db", ".sqlite"}:
+        return "data"
+    if suffix in {".pt", ".h5", ".onnx"}:
+        return "model"
+    if suffix == ".ipynb":
+        return "notebook"
+    if suffix == ".gcode":
+        return "gcode"
+    return "metadata"
+
+
+def inventory_source_files() -> list[dict[str, Any]]:
+    rows: list[dict[str, Any]] = []
+    for source_id, root in SOURCE_ROOTS.items():
+        if not root.exists():
+            continue
+        for path in sorted(root.rglob("*")):
+            if not path.is_file() or ".git" in path.parts:
+                continue
+            if path.suffix.lower() not in INVENTORY_EXTENSIONS and path.name not in {"LICENSE", "README"}:
+                continue
+            stat = path.stat()
+            rows.append(
+                {
+                    "source_id": source_id,
+                    "category": classify_file(path),
+                    "relative_path": rel(path),
+                    "bytes": stat.st_size,
+                    "sha256": sha256_file(path),
+                    "modified_utc": datetime.fromtimestamp(stat.st_mtime, tz=timezone.utc).isoformat(),
+                }
+            )
+    # Some inherited Windows ACLs expose the operational camera files to
+    # PowerShell but not to the bundled Python runtime. Preserve the hashes
+    # generated by build_vision_manifest.ps1 when Python cannot traverse them.
+    existing_path = MANIFEST_ROOT / "source_file_manifest.csv"
+    known_paths = {row["relative_path"] for row in rows}
+    if existing_path.exists():
+        with existing_path.open("r", newline="", encoding="utf-8-sig") as handle:
+            for old_row in csv.DictReader(handle):
+                old_path = old_row.get("relative_path", "")
+                if "/database/dynamic/" in old_path and old_row.get("category") == "image" and old_path not in known_paths:
+                    rows.append(dict(old_row))
+                    known_paths.add(old_path)
+    return rows
+
+
+def build_vision_operational_manifest() -> list[dict[str, Any]]:
+    dynamic_root = VISION_ROOT / "database" / "dynamic"
+    rows: list[dict[str, Any]] = []
+    if not dynamic_root.exists():
+        return rows
+    for path in sorted(dynamic_root.rglob("*")):
+        if not path.is_file() or path.suffix.lower() not in {".jpg", ".jpeg", ".png"}:
+            continue
+        relative_to_dynamic = path.relative_to(dynamic_root)
+        if len(relative_to_dynamic.parts) < 3:
+            continue
+        session_id, stream = relative_to_dynamic.parts[0], relative_to_dynamic.parts[1]
+        capture_id = re.sub(r"_(raw|processed)$", "", path.stem)
+        timestamp_match = re.match(r"(\d{8}_\d{6}_\d{6})", capture_id)
+        rows.append(
+            {
+                "record_id": sha256_text(rel(path))[:20],
+                "dataset_id": "local_operational_camera",
+                "source_type": "recorded_operational",
+                "source_group_id": session_id,
+                "capture_id": capture_id,
+                "capture_timestamp_token": timestamp_match.group(1) if timestamp_match else "",
+                "stream": stream,
+                "relative_path": rel(path),
+                "bytes": path.stat().st_size,
+                "sha256": sha256_file(path),
+                "label_status": "unlabeled",
+                "partition": "replay_only",
+                "confirmatory_eligible": 0,
+                "exclusion_reason": "no_detection_ground_truth_and_only_two_source_sessions",
+            }
+        )
+    if rows:
+        return rows
+    existing_path = MANIFEST_ROOT / "vision_operational_manifest.csv"
+    if existing_path.exists():
+        with existing_path.open("r", newline="", encoding="utf-8-sig") as handle:
+            return [dict(row) for row in csv.DictReader(handle)]
+    return rows
+
+
+def resolve_columns(headers: list[Any]) -> tuple[list[tuple[int, str]], int]:
+    features: list[tuple[int, str]] = []
+    label_index = -1
+    for index, raw_header in enumerate(headers):
+        header = normalized_header(raw_header)
+        compact = header.replace("_", " ")
+        if header in LABEL_ALIASES or compact in LABEL_ALIASES:
+            label_index = index
+            continue
+        canonical = FEATURE_ALIASES.get(header) or FEATURE_ALIASES.get(compact)
+        if canonical:
+            features.append((index, canonical))
+    feature_names = {name for _, name in features}
+    if feature_names != set(EXPECTED_FEATURES):
+        raise ValueError(f"Expected AE features {EXPECTED_FEATURES}, found {sorted(feature_names)}")
+    if label_index < 0:
+        label_index = len(headers) - 1
+    return features, label_index
+
+
+def iter_csv_ae(path: Path) -> tuple[list[str], list[dict[str, Any]]]:
+    with path.open("r", newline="", encoding="utf-8-sig") as handle:
+        reader = csv.reader(handle)
+        headers = next(reader)
+        feature_columns, label_index = resolve_columns(headers)
+        rows: list[dict[str, Any]] = []
+        for row_number, row in enumerate(reader, start=2):
+            if not row or all(not canonical_scalar(value) for value in row):
+                continue
+            features = {name: canonical_scalar(row[index]) for index, name in feature_columns}
+            label = canonical_scalar(row[label_index])
+            feature_payload = json.dumps(features, sort_keys=True, separators=(",", ":"))
+            rows.append(
+                {
+                    "row_number": row_number,
+                    "features": features,
+                    "feature_hash": sha256_text(feature_payload),
+                    "label": label,
+                }
+            )
+    return [name for _, name in feature_columns], rows
+
+
+def iter_xlsx_ae(path: Path) -> tuple[str, list[str], list[dict[str, Any]]]:
+    workbook = load_workbook(path, read_only=True, data_only=True)
+    worksheet = workbook[workbook.sheetnames[0]]
+    row_iterator = worksheet.iter_rows(values_only=True)
+    headers = list(next(row_iterator))
+    feature_columns, label_index = resolve_columns(headers)
+    rows: list[dict[str, Any]] = []
+    for row_number, row in enumerate(row_iterator, start=2):
+        if not row or all(not canonical_scalar(value) for value in row):
+            continue
+        features = {name: canonical_scalar(row[index]) for index, name in feature_columns}
+        label = canonical_scalar(row[label_index])
+        feature_payload = json.dumps(features, sort_keys=True, separators=(",", ":"))
+        rows.append(
+            {
+                "row_number": row_number,
+                "features": features,
+                "feature_hash": sha256_text(feature_payload),
+                "label": label,
+            }
+        )
+    workbook.close()
+    return worksheet.title, [name for _, name in feature_columns], rows
+
+
+def build_ae_manifest() -> tuple[list[dict[str, Any]], list[dict[str, Any]], dict[str, Any]]:
+    sources = [
+        ("ae_training_with_labels", AE_ROOT / "data" / "training_with_labels.csv", "csv"),
+        ("ae_overflow", AE_ROOT / "data" / "overflow.csv", "csv"),
+        ("ae_vallen_multiclass", AE_ROOT / "data" / "vallen_training_dataset.xlsx", "xlsx"),
+    ]
+    manifest_rows: list[dict[str, Any]] = []
+    conflict_rows: list[dict[str, Any]] = []
+    summary: dict[str, Any] = {}
+
+    for dataset_id, path, kind in sources:
+        if kind == "csv":
+            feature_names, rows = iter_csv_ae(path)
+            sheet = ""
+        else:
+            sheet, feature_names, rows = iter_xlsx_ae(path)
+
+        labels_by_feature: dict[str, set[str]] = defaultdict(set)
+        for row in rows:
+            labels_by_feature[row["feature_hash"]].add(row["label"])
+        conflict_hashes = {key for key, labels in labels_by_feature.items() if len(labels) > 1}
+        label_counts = Counter(row["label"] for row in rows)
+        conflict_label_counts = Counter(row["label"] for row in rows if row["feature_hash"] in conflict_hashes)
+
+        for feature_hash in sorted(conflict_hashes):
+            conflict_rows.append(
+                {
+                    "dataset_id": dataset_id,
+                    "feature_hash": feature_hash,
+                    "labels": "|".join(sorted(labels_by_feature[feature_hash])),
+                    "row_count": sum(1 for row in rows if row["feature_hash"] == feature_hash),
+                }
+            )
+
+        for row in rows:
+            is_conflict = row["feature_hash"] in conflict_hashes
+            reason = (
+                "conflicting_labels_for_identical_features"
+                if is_conflict
+                else "missing_independent_print_or_specimen_group_identifier"
+            )
+            manifest_rows.append(
+                {
+                    "record_id": sha256_text(f"{dataset_id}:{row['row_number']}")[:20],
+                    "dataset_id": dataset_id,
+                    "source_type": "recorded_engineered_features",
+                    "source_file": rel(path),
+                    "sheet": sheet,
+                    "row_number": row["row_number"],
+                    "feature_names": "|".join(feature_names),
+                    "feature_hash": row["feature_hash"],
+                    "label": row["label"],
+                    "source_group_id": "",
+                    "partition": "quarantine" if is_conflict else "development_only",
+                    "confirmatory_eligible": 0,
+                    "exclusion_reason": reason,
+                }
+            )
+
+        summary[dataset_id] = {
+            "source_file": rel(path),
+            "sheet": sheet,
+            "row_count": len(rows),
+            "label_counts": dict(sorted(label_counts.items())),
+            "unique_feature_vectors": len(labels_by_feature),
+            "conflicting_feature_vectors": len(conflict_hashes),
+            "conflicting_rows": sum(conflict_label_counts.values()),
+            "conflicting_label_counts": dict(sorted(conflict_label_counts.items())),
+            "confirmatory_eligible_rows": 0,
+        }
+
+    return manifest_rows, conflict_rows, summary
+
+
+def read_git_head_without_git(repo_root: Path) -> str:
+    git_root = repo_root / ".git"
+    head_path = git_root / "HEAD"
+    if not head_path.exists():
+        return ""
+    head = head_path.read_text(encoding="utf-8").strip()
+    if head.startswith("ref: "):
+        ref_path = git_root / head.removeprefix("ref: ")
+        if ref_path.exists():
+            return ref_path.read_text(encoding="utf-8").strip()
+        packed_refs = git_root / "packed-refs"
+        if packed_refs.exists():
+            ref_name = head.removeprefix("ref: ")
+            for line in packed_refs.read_text(encoding="utf-8").splitlines():
+                if line and not line.startswith("#") and not line.startswith("^"):
+                    commit, name = line.split(" ", 1)
+                    if name == ref_name:
+                        return commit
+        return ""
+    return head
+
+
+def main() -> None:
+    MANIFEST_ROOT.mkdir(parents=True, exist_ok=True)
+
+    source_files = inventory_source_files()
+    write_csv(
+        MANIFEST_ROOT / "source_file_manifest.csv",
+        source_files,
+        ["source_id", "category", "relative_path", "bytes", "sha256", "modified_utc"],
+    )
+
+    vision_rows = build_vision_operational_manifest()
+    write_csv(
+        MANIFEST_ROOT / "vision_operational_manifest.csv",
+        vision_rows,
+        [
+            "record_id",
+            "dataset_id",
+            "source_type",
+            "source_group_id",
+            "capture_id",
+            "capture_timestamp_token",
+            "stream",
+            "relative_path",
+            "bytes",
+            "sha256",
+            "label_status",
+            "partition",
+            "confirmatory_eligible",
+            "exclusion_reason",
+        ],
+    )
+
+    ae_rows, conflict_rows, ae_summary = build_ae_manifest()
+    write_csv(
+        MANIFEST_ROOT / "ae_row_manifest.csv",
+        ae_rows,
+        [
+            "record_id",
+            "dataset_id",
+            "source_type",
+            "source_file",
+            "sheet",
+            "row_number",
+            "feature_names",
+            "feature_hash",
+            "label",
+            "source_group_id",
+            "partition",
+            "confirmatory_eligible",
+            "exclusion_reason",
+        ],
+    )
+    write_csv(
+        MANIFEST_ROOT / "ae_conflicting_feature_vectors.csv",
+        conflict_rows,
+        ["dataset_id", "feature_hash", "labels", "row_count"],
+    )
+
+    vision_groups = Counter(row["source_group_id"] for row in vision_rows)
+    vision_streams = Counter(row["stream"] for row in vision_rows)
+    summary = {
+        "generated_utc": datetime.now(tz=timezone.utc).isoformat(),
+        "generator": rel(Path(__file__)),
+        "policy": {
+            "group_assignment": "observed identifiers only; no inferred print jobs",
+            "confirmatory_test_freeze": "not_created_no_eligible_local_labeled_groups",
+            "synthetic_data": "must be separately identified and evaluated",
+        },
+        "source_inventory": {
+            "file_count": len(source_files),
+            "total_bytes": sum(int(row["bytes"]) for row in source_files),
+            "counts_by_source": dict(Counter(row["source_id"] for row in source_files)),
+            "counts_by_category": dict(Counter(row["category"] for row in source_files)),
+        },
+        "vision_operational": {
+            "record_count": len(vision_rows),
+            "groups": dict(sorted(vision_groups.items())),
+            "streams": dict(sorted(vision_streams.items())),
+            "confirmatory_eligible_records": 0,
+            "use": "replay_only",
+        },
+        "acoustic_emission": ae_summary,
+        "external_hu_fdm": {
+            "repository_present": HU_ROOT.exists(),
+            "repository_commit": read_git_head_without_git(HU_ROOT),
+            "image_count": sum(
+                1
+                for path in HU_ROOT.rglob("*")
+                if path.is_file() and path.suffix.lower() in {".jpg", ".jpeg", ".png"}
+            )
+            if HU_ROOT.exists()
+            else 0,
+            "materialization_status": "metadata_only_dataset_download_required",
+        },
+    }
+    summary_path = MANIFEST_ROOT / "manifest_summary.json"
+    summary_path.write_text(json.dumps(summary, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+
+    registry = {
+        "schema_version": 1,
+        "datasets": [
+            {
+                "id": "local_operational_camera",
+                "modality": "vision",
+                "status": "replay_only",
+                "manifest": "data/manifests/vision_operational_manifest.csv",
+            },
+            {
+                "id": "ae_training_with_labels",
+                "modality": "acoustic_emission_features",
+                "status": "development_only_missing_groups",
+                "manifest": "data/manifests/ae_row_manifest.csv",
+            },
+            {
+                "id": "ae_overflow",
+                "modality": "acoustic_emission_features",
+                "status": "development_only_missing_groups",
+                "manifest": "data/manifests/ae_row_manifest.csv",
+            },
+            {
+                "id": "ae_vallen_multiclass",
+                "modality": "acoustic_emission_features",
+                "status": "partly_quarantined_and_missing_groups",
+                "manifest": "data/manifests/ae_row_manifest.csv",
+            },
+            {
+                "id": "hu_fdm_external",
+                "modality": "vision",
+                "status": "metadata_downloaded_images_pending",
+                "source": "https://github.com/wengmhu/FDM-3D-Printing-Defect-Dataset",
+                "repository_commit": read_git_head_without_git(HU_ROOT),
+            },
+        ],
+    }
+    (MANIFEST_ROOT / "dataset_registry.json").write_text(
+        json.dumps(registry, indent=2, sort_keys=True) + "\n", encoding="utf-8"
+    )
+
+    print(json.dumps(summary, indent=2, sort_keys=True))
+
+
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "source_yaml": "data\\external\\clinic_v2_yolov5\\data.yaml",
+  "source_yaml_sha256": "55765a78d5aa64ec04d8f9cc97fa7245935ca78837f05c794ca92259a9202b0e",
+  "dataset_root": "data\\external\\clinic_v2_yolov5",
+  "classes": [
+    "spaghettification",
+    "underextrusion"
+  ],
+  "images": 1235,
+  "splits": {
+    "train": 1032,
+    "val": 110,
+    "test": 93
+  },
+  "comparison_eligibility": {
+    "single_label_background": 192,
+    "single_label_defect": 1043
+  },
+  "annotation_issue_rows": 0,
+  "annotations": {
+    "box_instances": 1583,
+    "polygon_instances_converted_to_boxes": 75,
+    "total_instances": 1658
+  },
+  "cross_split_exact_duplicate_hashes": 0,
+  "cross_split_hash_examples": [],
+  "source_groups": 547,
+  "cross_split_source_group_leaks": 0,
+  "cross_split_source_group_examples": [],
+  "classification_policy": "Preserve source split; map zero-box images to background, one-unique-class images to that class, and exclude multi-class images from single-label training.",
+  "detection_policy": "Preserve source split and image bytes; retain YOLO boxes and convert normalized polygons to their tight axis-aligned bounding boxes.",
+  "fair_comparison_rule": "Evaluate classification and detection on the intersection of eligible image IDs and report shared image/event endpoints; retain mAP only as a detection-specific endpoint."
+}

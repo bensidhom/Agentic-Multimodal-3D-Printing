@@ -1,0 +1,77 @@
+schema_version: 1
+frozen_utc: "2026-09-23T03:00:00Z"
+status: frozen_matrix_with_post_audit_cohort_amendment
+dataset_manifest: ../data/manifests/clinic_v2_task_comparison_manifest.csv
+execution_amendment:
+  date: "2026-09-22"
+  reason: "Post-hoc shortcut audit found that all three acquisition sequences cross the original partitions and adjacent-frame similarity is high."
+  primary_development_cohort: ../data/manifests/clinic_v2_purged_manifest.csv
+  original_cohort_role: optimistic_development_reference_only
+  purged_cohort_role: temporal_overlap_sensitivity_not_independent_print_validation
+  independent_print_confirmation: still_required
+seeds: [17, 29, 43]
+selection_data: validation_only
+test_policy: evaluate_every_frozen_candidate_once_without_test-driven_tuning
+
+classification:
+  execution_status: complete_for_all_registered_architectures_and_seeds_on_purged_view
+  report: ../reports/metrics/vision_classifier_multiseed.json
+  epochs: 30
+  patience: 8
+  image_size: 224
+  candidates:
+    - id: yolo11n_cls
+      trainer: ultralytics
+      checkpoint: yolo11n-cls.pt
+      batch_size: 8
+    - id: resnet18
+      trainer: torchvision
+      pretrained: imagenet
+      batch_size: 16
+    - id: mobilenet_v3_small
+      trainer: torchvision
+      pretrained: imagenet
+      batch_size: 16
+    - id: efficientnet_b0
+      trainer: torchvision
+      pretrained: imagenet
+      batch_size: 12
+
+detection:
+  execution_status: yolo11n_and_yolo26n_complete_all_seeds_rtdetr_l_smoke_gate_passed_confirmatory_training_not_run
+  yolo11n_report: ../reports/metrics/vision_task_multiseed.json
+  detector_architecture_report: ../reports/metrics/vision_detector_architectures.json
+  epochs: 30
+  patience: 8
+  image_size: 640
+  candidates:
+    - id: yolo11n
+      checkpoint: yolo11n.pt
+      batch_size: 4
+    - id: yolo26n
+      checkpoint: yolo26n.pt
+      batch_size: 4
+    - id: rtdetr_l
+      checkpoint: rtdetr-l.pt
+      batch_size: 1
+      conditional_gate: run_only_if_local_4gb_gpu_smoke_test_passes
+      gate_status: passed_one_epoch_pipeline_smoke_on_rtx_3050_4gb
+      gate_run: ../runs/detection/clinic_v2_purged_rtdetr_l_smoke_seed17
+      scientific_use: feasibility_only_excluded_from_confirmatory_ranking
+      confirmatory_status: not_run_due_to_disproportionate_compute_and_edge_cost
+
+external_domain:
+  clinic_to_hu_direct_transfer: prohibited_label_mismatch
+  reason: "Hu classes are Cracking, Layer_shifting, Off_platform, Stringing and Warping; Clinic v2 classes are background, spaghettification and underextrusion. A direct accuracy score would be semantically invalid."
+  allowed_uses:
+    - separate_five_class_architecture_benchmark
+    - out_of_distribution_confidence_audit_without_accuracy_claim
+
+shortcut_audit:
+  status: post_hoc_diagnostic_after_seed17_result
+  checks:
+    - global_appearance_logistic_baseline
+    - cross_split_perceptual_hash_nearest_neighbors
+    - image_geometry_and_file_size_distributions
+    - exif_camera_metadata
+    - source_family_and_exact_hash_leakage

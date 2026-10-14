@@ -1,0 +1,147 @@
+{
+  "schema_version": 1,
+  "purpose": "pipeline_smoke_test",
+  "scientific_use": "Pipeline verification only; do not report as a paper result.",
+  "model": {
+    "path": "runs\\smoke\\clinic_v2_yolo11n_cls_b8\\weights\\best.pt",
+    "sha256": "4d661d4680e1c1d12b7bd8263f01600fdff9e334d3a8f812a8454f37839edfea",
+    "size_mb": 3.187778
+  },
+  "dataset": {
+    "root": "data\\processed\\clinic_v2_classification",
+    "split": "test",
+    "manifest": "data\\manifests\\clinic_v2_task_comparison_manifest.csv",
+    "manifest_sha256": "17b3ea65bd883bd9eead12b28aa2e936d844622c760fc6b922e9dc5a2959278e",
+    "images": 93,
+    "source_groups": 93,
+    "classes": [
+      "background",
+      "spaghettification",
+      "underextrusion"
+    ]
+  },
+  "metrics": {
+    "accuracy": 0.9354838709677419,
+    "balanced_accuracy": 0.9459459459459459,
+    "macro_precision": 0.8571428571428571,
+    "macro_recall_sensitivity": 0.9459459459459459,
+    "macro_specificity_ovr": 0.9764705882352942,
+    "macro_f1": 0.8796791443850268,
+    "weighted_f1": 0.9414352251164396,
+    "multiclass_brier": 0.08139860615094262,
+    "log_loss": 0.13951628657650716,
+    "expected_calibration_error_15bin": 0.06456248322188103
+  },
+  "confidence_intervals": {
+    "accuracy": {
+      "lower_95": 0.8817204301075269,
+      "upper_95": 0.978494623655914,
+      "valid_replicates": 500
+    },
+    "balanced_accuracy": {
+      "lower_95": 0.9019607843137255,
+      "upper_95": 0.981981981981982,
+      "valid_replicates": 500
+    },
+    "macro_precision": {
+      "lower_95": 0.7666666666666666,
+      "upper_95": 0.9444444444444445,
+      "valid_replicates": 500
+    },
+    "macro_recall_sensitivity": {
+      "lower_95": 0.9019607843137255,
+      "upper_95": 0.981981981981982,
+      "valid_replicates": 500
+    },
+    "macro_specificity_ovr": {
+      "lower_95": 0.9563170328372314,
+      "upper_95": 0.9922047423620611,
+      "valid_replicates": 500
+    },
+    "macro_f1": {
+      "lower_95": 0.7780141843971631,
+      "upper_95": 0.9589442815249267,
+      "valid_replicates": 500
+    },
+    "weighted_f1": {
+      "lower_95": 0.8957781828749571,
+      "upper_95": 0.9794907044553836,
+      "valid_replicates": 500
+    },
+    "multiclass_brier": {
+      "lower_95": 0.04540174857748385,
+      "upper_95": 0.12252650540500712,
+      "valid_replicates": 500
+    },
+    "log_loss": {
+      "lower_95": 0.09139576917646274,
+      "upper_95": 0.19347886862224425,
+      "valid_replicates": 500
+    },
+    "expected_calibration_error_15bin": {
+      "lower_95": 0.04511640427912897,
+      "upper_95": 0.10441772760792763,
+      "valid_replicates": 500
+    }
+  },
+  "per_class": {
+    "background": {
+      "precision": 0.5714285714285714,
+      "recall": 1.0,
+      "f1": 0.7272727272727273,
+      "support": 8
+    },
+    "spaghettification": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "support": 48
+    },
+    "underextrusion": {
+      "precision": 1.0,
+      "recall": 0.8378378378378378,
+      "f1": 0.9117647058823529,
+      "support": 37
+    }
+  },
+  "confusion_matrix": [
+    [
+      8,
+      0,
+      0
+    ],
+    [
+      0,
+      48,
+      0
+    ],
+    [
+      6,
+      0,
+      31
+    ]
+  ],
+  "latency": {
+    "measurement": "Batch-one end-to-end wall time after warm-up, CUDA-synchronized; includes file input, preprocessing, inference, and postprocessing.",
+    "sample_images": 50,
+    "median_ms": 9.990550053771585,
+    "p95_ms": 13.573839952005073,
+    "mean_model_reported_inference_ms": 0.6495225806570343,
+    "prediction_pass_wall_seconds": 0.9166785000124946
+  },
+  "false_alarm_note": "A normal/no-defect class is absent, so operational false alarms and specificity versus normal prints cannot be estimated from this dataset.",
+  "arguments": {
+    "model": "validation_platform\\runs\\smoke\\clinic_v2_yolo11n_cls_b8\\weights\\best.pt",
+    "data": "validation_platform\\data\\processed\\clinic_v2_classification",
+    "split": "test",
+    "dataset_manifest": "validation_platform\\data\\manifests\\clinic_v2_task_comparison_manifest.csv",
+    "output": "validation_platform\\runs\\smoke\\clinic_v2_yolo11n_cls_b8\\test_evaluation",
+    "imgsz": 224,
+    "device": "0",
+    "batch": 16,
+    "bootstrap": 500,
+    "latency_sample": 50,
+    "seed": 17,
+    "smoke_test": true
+  }
+}

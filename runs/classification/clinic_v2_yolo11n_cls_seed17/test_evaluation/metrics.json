@@ -1,0 +1,147 @@
+{
+  "schema_version": 1,
+  "purpose": "classification_benchmark",
+  "scientific_use": "Frozen-split evaluation; interpret confidence intervals with source-group limitations.",
+  "model": {
+    "path": "runs\\classification\\clinic_v2_yolo11n_cls_seed17\\weights\\best.pt",
+    "sha256": "f59af2fa31b9b4b18edfd1d61c1f9eb3eb007e0a1ec70aeb22f614814e17c402",
+    "size_mb": 3.188994
+  },
+  "dataset": {
+    "root": "data\\processed\\clinic_v2_classification",
+    "split": "test",
+    "manifest": "data\\manifests\\clinic_v2_task_comparison_manifest.csv",
+    "manifest_sha256": "17b3ea65bd883bd9eead12b28aa2e936d844622c760fc6b922e9dc5a2959278e",
+    "images": 93,
+    "source_groups": 93,
+    "classes": [
+      "background",
+      "spaghettification",
+      "underextrusion"
+    ]
+  },
+  "metrics": {
+    "accuracy": 1.0,
+    "balanced_accuracy": 1.0,
+    "macro_precision": 1.0,
+    "macro_recall_sensitivity": 1.0,
+    "macro_specificity_ovr": 1.0,
+    "macro_f1": 1.0,
+    "weighted_f1": 1.0,
+    "multiclass_brier": 0.001659133514419721,
+    "log_loss": 0.006413642418122145,
+    "expected_calibration_error_15bin": 0.005945200784050159
+  },
+  "confidence_intervals": {
+    "accuracy": {
+      "lower_95": 1.0,
+      "upper_95": 1.0,
+      "valid_replicates": 2000
+    },
+    "balanced_accuracy": {
+      "lower_95": 1.0,
+      "upper_95": 1.0,
+      "valid_replicates": 2000
+    },
+    "macro_precision": {
+      "lower_95": 1.0,
+      "upper_95": 1.0,
+      "valid_replicates": 2000
+    },
+    "macro_recall_sensitivity": {
+      "lower_95": 1.0,
+      "upper_95": 1.0,
+      "valid_replicates": 2000
+    },
+    "macro_specificity_ovr": {
+      "lower_95": 1.0,
+      "upper_95": 1.0,
+      "valid_replicates": 2000
+    },
+    "macro_f1": {
+      "lower_95": 1.0,
+      "upper_95": 1.0,
+      "valid_replicates": 2000
+    },
+    "weighted_f1": {
+      "lower_95": 1.0,
+      "upper_95": 1.0,
+      "valid_replicates": 2000
+    },
+    "multiclass_brier": {
+      "lower_95": 6.570068554240065e-05,
+      "upper_95": 0.0038748400322175494,
+      "valid_replicates": 2000
+    },
+    "log_loss": {
+      "lower_95": 0.0008181776054807207,
+      "upper_95": 0.01341771489606104,
+      "valid_replicates": 2000
+    },
+    "expected_calibration_error_15bin": {
+      "lower_95": 0.0008013631229864815,
+      "upper_95": 0.012462420110821833,
+      "valid_replicates": 2000
+    }
+  },
+  "per_class": {
+    "background": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "support": 8
+    },
+    "spaghettification": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "support": 48
+    },
+    "underextrusion": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "support": 37
+    }
+  },
+  "confusion_matrix": [
+    [
+      8,
+      0,
+      0
+    ],
+    [
+      0,
+      48,
+      0
+    ],
+    [
+      0,
+      0,
+      37
+    ]
+  ],
+  "latency": {
+    "measurement": "Batch-one end-to-end wall time after warm-up, CUDA-synchronized; includes file input, preprocessing, inference, and postprocessing.",
+    "sample_images": 93,
+    "median_ms": 9.841399965807796,
+    "p95_ms": 10.404199967160821,
+    "mean_model_reported_inference_ms": 0.6147086024484648,
+    "prediction_pass_wall_seconds": 0.9162975999061018
+  },
+  "false_alarm_note": "A normal/no-defect class is absent, so operational false alarms and specificity versus normal prints cannot be estimated from this dataset.",
+  "arguments": {
+    "model": "validation_platform\\runs\\classification\\clinic_v2_yolo11n_cls_seed17\\weights\\best.pt",
+    "data": "validation_platform\\data\\processed\\clinic_v2_classification",
+    "split": "test",
+    "dataset_manifest": "validation_platform\\data\\manifests\\clinic_v2_task_comparison_manifest.csv",
+    "output": "validation_platform\\runs\\classification\\clinic_v2_yolo11n_cls_seed17\\test_evaluation",
+    "imgsz": 224,
+    "device": "0",
+    "batch": 8,
+    "bootstrap": 2000,
+    "latency_sample": 93,
+    "seed": 17,
+    "smoke_test": false
+  }
+}

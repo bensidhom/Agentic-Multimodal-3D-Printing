@@ -1,0 +1,464 @@
+{
+  "schema_version": 1,
+  "purpose": "three-seed classifier architecture comparison on purged chronological sensitivity view",
+  "interpretation_guard": "Only three acquisition sequences exist; this is not independent-print validation.",
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "rows": [
+    {
+      "model": "YOLO11n-cls",
+      "seed": 17,
+      "test_images": 219,
+      "source_groups": 99,
+      "accuracy": 0.9360730593607306,
+      "balanced_accuracy": 0.8333333333333334,
+      "macro_f1": 0.8655555555555555,
+      "brier": 0.1270540437207106,
+      "ece_15bin": 0.06440016305238802,
+      "median_latency_ms": 9.539149992633611,
+      "p95_latency_ms": 13.619545026449487,
+      "checkpoint_mb": 3.188674,
+      "metrics_path": "runs\\classification\\clinic_v2_purged_yolo11n_cls_seed17\\test_evaluation\\metrics.json"
+    },
+    {
+      "model": "YOLO11n-cls",
+      "seed": 29,
+      "test_images": 219,
+      "source_groups": 99,
+      "accuracy": 0.9863013698630136,
+      "balanced_accuracy": 0.9726062467997952,
+      "macro_f1": 0.9806146800274401,
+      "brier": 0.016973497585251057,
+      "ece_15bin": 0.008959659617732523,
+      "median_latency_ms": 10.756300005596131,
+      "p95_latency_ms": 12.03446495346725,
+      "checkpoint_mb": 3.188482,
+      "metrics_path": "runs\\classification\\clinic_v2_purged_yolo11n_cls_seed29\\test_evaluation\\metrics.json"
+    },
+    {
+      "model": "YOLO11n-cls",
+      "seed": 43,
+      "test_images": 219,
+      "source_groups": 99,
+      "accuracy": 0.9406392694063926,
+      "balanced_accuracy": 0.8452380952380952,
+      "macro_f1": 0.8774492618129406,
+      "brier": 0.09855093774057146,
+      "ece_15bin": 0.05118839968038655,
+      "median_latency_ms": 8.304750022944063,
+      "p95_latency_ms": 8.834565005963668,
+      "checkpoint_mb": 3.188674,
+      "metrics_path": "runs\\classification\\clinic_v2_purged_yolo11n_cls_seed43\\test_evaluation\\metrics.json"
+    },
+    {
+      "model": "ResNet-18",
+      "seed": 17,
+      "test_images": 219,
+      "source_groups": 99,
+      "accuracy": 0.9406392694063926,
+      "balanced_accuracy": 0.8452380952380952,
+      "macro_f1": 0.8774492618129406,
+      "brier": 0.09592349704097936,
+      "ece_15bin": 0.07666585801943249,
+      "median_latency_ms": 7.186849950812757,
+      "p95_latency_ms": 8.230165025452152,
+      "checkpoint_mb": 44.784907,
+      "metrics_path": "runs\\classification\\clinic_v2_purged_resnet18_seed17\\test_evaluation\\metrics.json"
+    },
+    {
+      "model": "ResNet-18",
+      "seed": 29,
+      "test_images": 219,
+      "source_groups": 99,
+      "accuracy": 0.9223744292237442,
+      "balanced_accuracy": 0.7976190476190476,
+      "macro_f1": 0.8267862405793439,
+      "brier": 0.1372535643596549,
+      "ece_15bin": 0.07959886936292254,
+      "median_latency_ms": 6.988750013988465,
+      "p95_latency_ms": 8.729875041171908,
+      "checkpoint_mb": 44.784907,
+      "metrics_path": "runs\\classification\\clinic_v2_purged_resnet18_seed29\\test_evaluation\\metrics.json"
+    },
+    {
+      "model": "ResNet-18",
+      "seed": 43,
+      "test_images": 219,
+      "source_groups": 99,
+      "accuracy": 0.9406392694063926,
+      "balanced_accuracy": 0.8452380952380952,
+      "macro_f1": 0.8774492618129406,
+      "brier": 0.08963629400849911,
+      "ece_15bin": 0.06086011673217495,
+      "median_latency_ms": 7.438150001689792,
+      "p95_latency_ms": 9.046199935255572,
+      "checkpoint_mb": 44.784907,
+      "metrics_path": "runs\\classification\\clinic_v2_purged_resnet18_seed43\\test_evaluation\\metrics.json"
+    },
+    {
+      "model": "MobileNetV3-Small",
+      "seed": 17,
+      "test_images": 219,
+      "source_groups": 99,
+      "accuracy": 0.958904109589041,
+      "balanced_accuracy": 0.8928571428571429,
+      "macro_f1": 0.9207855973813421,
+      "brier": 0.06641707548253412,
+      "ece_15bin": 0.05511425646472739,
+      "median_latency_ms": 9.452449972741306,
+      "p95_latency_ms": 13.811820017872378,
+      "checkpoint_mb": 6.207145,
+      "metrics_path": "runs\\classification\\clinic_v2_purged_mobilenet_v3_small_seed17\\test_evaluation\\metrics.json"
+    },
+    {
+      "model": "MobileNetV3-Small",
+      "seed": 29,
+      "test_images": 219,
+      "source_groups": 99,
+      "accuracy": 0.9406392694063926,
+      "balanced_accuracy": 0.8452380952380952,
+      "macro_f1": 0.8774492618129406,
+      "brier": 0.0944442658945889,
+      "ece_15bin": 0.07908487102212422,
+      "median_latency_ms": 9.171050041913986,
+      "p95_latency_ms": 13.708824949571863,
+      "checkpoint_mb": 6.207145,
+      "metrics_path": "runs\\classification\\clinic_v2_purged_mobilenet_v3_small_seed29\\test_evaluation\\metrics.json"
+    },
+    {
+      "model": "MobileNetV3-Small",
+      "seed": 43,
+      "test_images": 219,
+      "source_groups": 99,
+      "accuracy": 0.9315068493150684,
+      "balanced_accuracy": 0.8214285714285715,
+      "macro_f1": 0.8531731585972576,
+      "brier": 0.13213632212452361,
+      "ece_15bin": 0.03147337643523191,
+      "median_latency_ms": 9.606099978554994,
+      "p95_latency_ms": 13.925354997627435,
+      "checkpoint_mb": 6.207145,
+      "metrics_path": "runs\\classification\\clinic_v2_purged_mobilenet_v3_small_seed43\\test_evaluation\\metrics.json"
+    },
+    {
+      "model": "EfficientNet-B0",
+      "seed": 17,
+      "test_images": 219,
+      "source_groups": 99,
+      "accuracy": 0.9954337899543378,
+      "balanced_accuracy": 0.9880952380952381,
+      "macro_f1": 0.9921568627450981,
+      "brier": 0.02669740502564285,
+      "ece_15bin": 0.06719775150900016,
+      "median_latency_ms": 12.840100040193647,
+      "p95_latency_ms": 17.952980054542422,
+      "checkpoint_mb": 16.325157,
+      "metrics_path": "runs\\classification\\clinic_v2_purged_efficientnet_b0_seed17\\test_evaluation\\metrics.json"
+    },
+    {
+      "model": "EfficientNet-B0",
+      "seed": 29,
+      "test_images": 219,
+      "source_groups": 99,
+      "accuracy": 0.9497716894977168,
+      "balanced_accuracy": 0.8773681515616999,
+      "macro_f1": 0.903182396799418,
+      "brier": 0.07731002638454722,
+      "ece_15bin": 0.06557016557754447,
+      "median_latency_ms": 12.769399967510253,
+      "p95_latency_ms": 18.937150010606274,
+      "checkpoint_mb": 16.325157,
+      "metrics_path": "runs\\classification\\clinic_v2_purged_efficientnet_b0_seed29\\test_evaluation\\metrics.json"
+    },
+    {
+      "model": "EfficientNet-B0",
+      "seed": 43,
+      "test_images": 219,
+      "source_groups": 99,
+      "accuracy": 0.954337899543379,
+      "balanced_accuracy": 0.889272913466462,
+      "macro_f1": 0.913373424971363,
+      "brier": 0.06082270962917752,
+      "ece_15bin": 0.07731250921885172,
+      "median_latency_ms": 12.623449962120503,
+      "p95_latency_ms": 15.783664997434242,
+      "checkpoint_mb": 16.325157,
+      "metrics_path": "runs\\classification\\clinic_v2_purged_efficientnet_b0_seed43\\test_evaluation\\metrics.json"
+    }
+  ],
+  "summaries": [
+    {
+      "model": "YOLO11n-cls",
+      "seeds": 3,
+      "accuracy_mean": 0.954337899543379,
+      "accuracy_sd": 0.02777517137122473,
+      "accuracy_min": 0.9360730593607306,
+      "accuracy_max": 0.9863013698630136,
+      "balanced_accuracy_mean": 0.883725891790408,
+      "balanced_accuracy_sd": 0.07720245442308363,
+      "balanced_accuracy_min": 0.8333333333333334,
+      "balanced_accuracy_max": 0.9726062467997952,
+      "macro_f1_mean": 0.9078731657986454,
+      "macro_f1_sd": 0.06327606957893085,
+      "macro_f1_min": 0.8655555555555555,
+      "macro_f1_max": 0.9806146800274401,
+      "brier_mean": 0.08085949301551104,
+      "brier_sd": 0.057132933337219444,
+      "brier_min": 0.016973497585251057,
+      "brier_max": 0.1270540437207106,
+      "ece_15bin_mean": 0.0415160741168357,
+      "ece_15bin_sd": 0.028958207241255484,
+      "ece_15bin_min": 0.008959659617732523,
+      "ece_15bin_max": 0.06440016305238802,
+      "median_latency_ms_mean": 9.533400007057935,
+      "median_latency_ms_sd": 1.2257851060079532,
+      "median_latency_ms_min": 8.304750022944063,
+      "median_latency_ms_max": 10.756300005596131,
+      "p95_latency_ms_mean": 11.496191661960134,
+      "p95_latency_ms_sd": 2.437480677128445,
+      "p95_latency_ms_min": 8.834565005963668,
+      "p95_latency_ms_max": 13.619545026449487,
+      "checkpoint_mb_mean": 3.1886099999999993,
+      "checkpoint_mb_sd": 0.00011085125168426261,
+      "checkpoint_mb_min": 3.188482,
+      "checkpoint_mb_max": 3.188674
+    },
+    {
+      "model": "ResNet-18",
+      "seeds": 3,
+      "accuracy_mean": 0.9345509893455098,
+      "accuracy_sd": 0.010545210396157547,
+      "accuracy_min": 0.9223744292237442,
+      "accuracy_max": 0.9406392694063926,
+      "balanced_accuracy_mean": 0.8293650793650794,
+      "balanced_accuracy_sd": 0.027492869961410784,
+      "balanced_accuracy_min": 0.7976190476190476,
+      "balanced_accuracy_max": 0.8452380952380952,
+      "macro_f1_mean": 0.8605615880684083,
+      "macro_f1_sd": 0.029250308947176763,
+      "macro_f1_min": 0.8267862405793439,
+      "macro_f1_max": 0.8774492618129406,
+      "brier_mean": 0.10760445180304445,
+      "brier_sd": 0.02586860330668867,
+      "brier_min": 0.08963629400849911,
+      "brier_max": 0.1372535643596549,
+      "ece_15bin_mean": 0.07237494803817666,
+      "ece_15bin_sd": 0.010079392039677696,
+      "ece_15bin_min": 0.06086011673217495,
+      "ece_15bin_max": 0.07959886936292254,
+      "median_latency_ms_mean": 7.204583322163671,
+      "median_latency_ms_sd": 0.2252242029203127,
+      "median_latency_ms_min": 6.988750013988465,
+      "median_latency_ms_max": 7.438150001689792,
+      "p95_latency_ms_mean": 8.668746667293211,
+      "p95_latency_ms_sd": 0.4114374218204507,
+      "p95_latency_ms_min": 8.230165025452152,
+      "p95_latency_ms_max": 9.046199935255572,
+      "checkpoint_mb_mean": 44.784907,
+      "checkpoint_mb_sd": 0.0,
+      "checkpoint_mb_min": 44.784907,
+      "checkpoint_mb_max": 44.784907
+    },
+    {
+      "model": "MobileNetV3-Small",
+      "seeds": 3,
+      "accuracy_mean": 0.9436834094368342,
+      "accuracy_sd": 0.01395000211554289,
+      "accuracy_min": 0.9315068493150684,
+      "accuracy_max": 0.958904109589041,
+      "balanced_accuracy_mean": 0.8531746031746033,
+      "balanced_accuracy_sd": 0.03636964837266539,
+      "balanced_accuracy_min": 0.8214285714285715,
+      "balanced_accuracy_max": 0.8928571428571429,
+      "macro_f1_mean": 0.88380267259718,
+      "macro_f1_sd": 0.03425105605711833,
+      "macro_f1_min": 0.8531731585972576,
+      "macro_f1_max": 0.9207855973813421,
+      "brier_mean": 0.0976658878338822,
+      "brier_sd": 0.03297785591480234,
+      "brier_min": 0.06641707548253412,
+      "brier_max": 0.13213632212452361,
+      "ece_15bin_mean": 0.05522416797402784,
+      "ece_15bin_sd": 0.023805937591372586,
+      "ece_15bin_min": 0.03147337643523191,
+      "ece_15bin_max": 0.07908487102212422,
+      "median_latency_ms_mean": 9.40986666440343,
+      "median_latency_ms_sd": 0.2206289089276046,
+      "median_latency_ms_min": 9.171050041913986,
+      "median_latency_ms_max": 9.606099978554994,
+      "p95_latency_ms_mean": 13.81533332169056,
+      "p95_latency_ms_sd": 0.10830776936825108,
+      "p95_latency_ms_min": 13.708824949571863,
+      "p95_latency_ms_max": 13.925354997627435,
+      "checkpoint_mb_mean": 6.207145,
+      "checkpoint_mb_sd": 0.0,
+      "checkpoint_mb_min": 6.207145,
+      "checkpoint_mb_max": 6.207145
+    },
+    {
+      "model": "EfficientNet-B0",
+      "seeds": 3,
+      "accuracy_mean": 0.9665144596651446,
+      "accuracy_sd": 0.025148723960210496,
+      "accuracy_min": 0.9497716894977168,
+      "accuracy_max": 0.9954337899543378,
+      "balanced_accuracy_mean": 0.9182454343744667,
+      "balanced_accuracy_sd": 0.06078385598886429,
+      "balanced_accuracy_min": 0.8773681515616999,
+      "balanced_accuracy_max": 0.9880952380952381,
+      "macro_f1_mean": 0.936237561505293,
+      "macro_f1_sd": 0.04869487090198916,
+      "macro_f1_min": 0.903182396799418,
+      "macro_f1_max": 0.9921568627450981,
+      "brier_mean": 0.05494338034645586,
+      "brier_sd": 0.025813450850592543,
+      "brier_min": 0.02669740502564285,
+      "brier_max": 0.07731002638454722,
+      "ece_15bin_mean": 0.07002680876846544,
+      "ece_15bin_sd": 0.006361865471749392,
+      "ece_15bin_min": 0.06557016557754447,
+      "ece_15bin_max": 0.07731250921885172,
+      "median_latency_ms_mean": 12.744316656608135,
+      "median_latency_ms_sd": 0.11048164303011655,
+      "median_latency_ms_min": 12.623449962120503,
+      "median_latency_ms_max": 12.840100040193647,
+      "p95_latency_ms_mean": 17.557931687527645,
+      "p95_latency_ms_sd": 1.6134324718704325,
+      "p95_latency_ms_min": 15.783664997434242,
+      "p95_latency_ms_max": 18.937150010606274,
+      "checkpoint_mb_mean": 16.325157,
+      "checkpoint_mb_sd": 0.0,
+      "checkpoint_mb_min": 16.325157,
+      "checkpoint_mb_max": 16.325157
+    }
+  ],
+  "source_files": [
+    {
+      "path": "runs\\classification\\clinic_v2_purged_yolo11n_cls_seed17\\test_evaluation\\metrics.json",
+      "sha256": "07d7f729c9bb101b303a7b3f7c0421be7253a98678300ad5ec8b78b7244d20cc",
+      "bytes": 4697
+    },
+    {
+      "path": "runs\\classification\\clinic_v2_purged_yolo11n_cls_seed17\\test_evaluation\\predictions.csv",
+      "sha256": "9d36330177bc13039a001637a77708b49d3cff411b23a322a5f1ae87f211cb6a",
+      "bytes": 75298
+    },
+    {
+      "path": "runs\\classification\\clinic_v2_purged_yolo11n_cls_seed29\\test_evaluation\\metrics.json",
+      "sha256": "b018d580b0deb98f15fcd2dec9f42ad87aabd18db2cef7bd07e29643df4e026d",
+      "bytes": 4669
+    },
+    {
+      "path": "runs\\classification\\clinic_v2_purged_yolo11n_cls_seed29\\test_evaluation\\predictions.csv",
+      "sha256": "cce7741eee1b99973a6ea4d76a119fb2162106a55d7424bae36632773a554a56",
+      "bytes": 75383
+    },
+    {
+      "path": "runs\\classification\\clinic_v2_purged_yolo11n_cls_seed43\\test_evaluation\\metrics.json",
+      "sha256": "2d50b6596dc95d1876fc7e584291d84d38e99e74fef57fe1d3787d9e1740c0dc",
+      "bytes": 4722
+    },
+    {
+      "path": "runs\\classification\\clinic_v2_purged_yolo11n_cls_seed43\\test_evaluation\\predictions.csv",
+      "sha256": "77c472523636fbfdb3e1f1619399d30c22ea8b731ffdfb763303473cb37ad4fd",
+      "bytes": 75310
+    },
+    {
+      "path": "runs\\classification\\clinic_v2_purged_resnet18_seed17\\test_evaluation\\metrics.json",
+      "sha256": "955b8383aff1400eac0c9e2a7401cb9d2271feff81892f36f6dfd796400bc1ad",
+      "bytes": 3896
+    },
+    {
+      "path": "runs\\classification\\clinic_v2_purged_resnet18_seed17\\test_evaluation\\predictions.csv",
+      "sha256": "3c4ac806c5f2291a98c78a8f24b9f82d528068d44e218aca6a99e65d9319f62e",
+      "bytes": 69382
+    },
+    {
+      "path": "runs\\classification\\clinic_v2_purged_resnet18_seed29\\test_evaluation\\metrics.json",
+      "sha256": "9e6c779a93cc94a4b168ecd9afa0fbf42c80fab1ec388d18a1365b6b4771ac19",
+      "bytes": 3892
+    },
+    {
+      "path": "runs\\classification\\clinic_v2_purged_resnet18_seed29\\test_evaluation\\predictions.csv",
+      "sha256": "bf93e0824b5be87efcb49b29024a8818fe48f297b2ecbd9eea73261383102169",
+      "bytes": 69516
+    },
+    {
+      "path": "runs\\classification\\clinic_v2_purged_resnet18_seed43\\test_evaluation\\metrics.json",
+      "sha256": "d4c9bd237473b6f10b27be91f1bb28a21d2d4ed2e05845c6603f4b0ac9598515",
+      "bytes": 3894
+    },
+    {
+      "path": "runs\\classification\\clinic_v2_purged_resnet18_seed43\\test_evaluation\\predictions.csv",
+      "sha256": "1afa3e30294a3ba5d41ade5a14caa57a46ac3730509c9907e69b76544053dc18",
+      "bytes": 69353
+    },
+    {
+      "path": "runs\\classification\\clinic_v2_purged_mobilenet_v3_small_seed17\\test_evaluation\\metrics.json",
+      "sha256": "92c393455256658edc7f9ba46e4acb6b54d54f006a4d25d938e80ceea7d3f237",
+      "bytes": 3933
+    },
+    {
+      "path": "runs\\classification\\clinic_v2_purged_mobilenet_v3_small_seed17\\test_evaluation\\predictions.csv",
+      "sha256": "9dbfe111583563fcea1337dbeb20a1e30ec38081431833cd74703fe31e4c9205",
+      "bytes": 69402
+    },
+    {
+      "path": "runs\\classification\\clinic_v2_purged_mobilenet_v3_small_seed29\\test_evaluation\\metrics.json",
+      "sha256": "a4a189af180d113d10b39b88abc53a58693422fbeaddcee5e13a2911637a8216",
+      "bytes": 3930
+    },
+    {
+      "path": "runs\\classification\\clinic_v2_purged_mobilenet_v3_small_seed29\\test_evaluation\\predictions.csv",
+      "sha256": "a4b750712ad0cb169e0593da5eb19a7f2a8a3c92e727160b7522d5cf65e6f82e",
+      "bytes": 69291
+    },
+    {
+      "path": "runs\\classification\\clinic_v2_purged_mobilenet_v3_small_seed43\\test_evaluation\\metrics.json",
+      "sha256": "7ad05880a0ff60c9614799862e4c0dabad3d12cdd9be4124cbb1d27248118529",
+      "bytes": 3934
+    },
+    {
+      "path": "runs\\classification\\clinic_v2_purged_mobilenet_v3_small_seed43\\test_evaluation\\predictions.csv",
+      "sha256": "01736bdb8420eeaf742b1ad241b5697e578b4b529b814fca80eaf25423f646ac",
+      "bytes": 69341
+    },
+    {
+      "path": "runs\\classification\\clinic_v2_purged_efficientnet_b0_seed17\\test_evaluation\\metrics.json",
+      "sha256": "851aa899ee4e14c3e7d350a993667579523227666bad338fa79999fae965a73c",
+      "bytes": 3823
+    },
+    {
+      "path": "runs\\classification\\clinic_v2_purged_efficientnet_b0_seed17\\test_evaluation\\predictions.csv",
+      "sha256": "03ffe29e919eb824765e20b8c9ca44072afc1af9f7809a693a84f47563f868da",
+      "bytes": 69395
+    },
+    {
+      "path": "runs\\classification\\clinic_v2_purged_efficientnet_b0_seed29\\test_evaluation\\metrics.json",
+      "sha256": "0d440355dfafb5ca9b0471127e19d97112d1e32a70fcebf742fbeb0ada79905d",
+      "bytes": 3924
+    },
+    {
+      "path": "runs\\classification\\clinic_v2_purged_efficientnet_b0_seed29\\test_evaluation\\predictions.csv",
+      "sha256": "05d1294c876297d60897799a2d7f7e61d24858fa23c20bb9b3b86b0dde1ba9b3",
+      "bytes": 69363
+    },
+    {
+      "path": "runs\\classification\\clinic_v2_purged_efficientnet_b0_seed43\\test_evaluation\\metrics.json",
+      "sha256": "c3cf1bdc10e5533468ae8ae97b9f13c1b3a77a894982e22a5908ffa7a7c079f2",
+      "bytes": 3919
+    },
+    {
+      "path": "runs\\classification\\clinic_v2_purged_efficientnet_b0_seed43\\test_evaluation\\predictions.csv",
+      "sha256": "dde35553cab5e3a55d7cd436405bd0b7f0f50374e2e71d98430dbb868fe94346",
+      "bytes": 69321
+    }
+  ],
+  "figures": [
+    "reports\\figures\\vision_classifier_multiseed.pdf",
+    "reports\\figures\\vision_classifier_multiseed.png"
+  ]
+}

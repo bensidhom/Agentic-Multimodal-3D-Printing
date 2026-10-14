@@ -1,0 +1,95 @@
+{
+  "acoustic_emission": {
+    "ae_overflow": {
+      "confirmatory_eligible_rows": 0,
+      "conflicting_feature_vectors": 0,
+      "conflicting_label_counts": {},
+      "conflicting_rows": 0,
+      "label_counts": {
+        "0.0": 479,
+        "1.0": 361
+      },
+      "row_count": 840,
+      "sheet": "",
+      "source_file": "journal_work/repo_sources/Acoustic_Emission_Edge_src/Acoustic-Emission-Monitoring-at-the-Edge-for-Real-Time-Artificial-Intelligence-Applications-main/data/overflow.csv",
+      "unique_feature_vectors": 839
+    },
+    "ae_training_with_labels": {
+      "confirmatory_eligible_rows": 0,
+      "conflicting_feature_vectors": 0,
+      "conflicting_label_counts": {},
+      "conflicting_rows": 0,
+      "label_counts": {
+        "0": 95,
+        "1": 69
+      },
+      "row_count": 164,
+      "sheet": "",
+      "source_file": "journal_work/repo_sources/Acoustic_Emission_Edge_src/Acoustic-Emission-Monitoring-at-the-Edge-for-Real-Time-Artificial-Intelligence-Applications-main/data/training_with_labels.csv",
+      "unique_feature_vectors": 164
+    },
+    "ae_vallen_multiclass": {
+      "confirmatory_eligible_rows": 0,
+      "conflicting_feature_vectors": 6929,
+      "conflicting_label_counts": {
+        "1": 6929,
+        "3": 6929
+      },
+      "conflicting_rows": 13858,
+      "label_counts": {
+        "0": 7011,
+        "1": 6929,
+        "2": 6988,
+        "3": 6929
+      },
+      "row_count": 27857,
+      "sheet": "Sheet1",
+      "source_file": "journal_work/repo_sources/Acoustic_Emission_Edge_src/Acoustic-Emission-Monitoring-at-the-Edge-for-Real-Time-Artificial-Intelligence-Applications-main/data/vallen_training_dataset.xlsx",
+      "unique_feature_vectors": 20928
+    }
+  },
+  "external_hu_fdm": {
+    "image_count": 0,
+    "materialization_status": "metadata_only_dataset_download_required",
+    "repository_commit": "432474f6ee906912632e1cab49e32cccc9a50f12",
+    "repository_present": true
+  },
+  "generated_utc": "2026-09-23T00:35:06.424302+00:00",
+  "generator": "validation_platform/src/build_manifests.py",
+  "policy": {
+    "confirmatory_test_freeze": "not_created_no_eligible_local_labeled_groups",
+    "group_assignment": "observed identifiers only; no inferred print jobs",
+    "synthetic_data": "must be separately identified and evaluated"
+  },
+  "source_inventory": {
+    "counts_by_category": {
+      "data": 6,
+      "gcode": 2,
+      "image": 6419,
+      "metadata": 117,
+      "model": 12,
+      "notebook": 13
+    },
+    "counts_by_source": {
+      "acoustic_emission_edge": 25,
+      "hu_fdm_external": 2,
+      "multiagent_scada": 72,
+      "novel_cyber_infrastructure": 6470
+    },
+    "file_count": 6569,
+    "total_bytes": 529170963
+  },
+  "vision_operational": {
+    "confirmatory_eligible_records": 0,
+    "groups": {
+      "Unnamed1111_20250818_140210": 7,
+      "Unnamed11_20250815_124331": 6374
+    },
+    "record_count": 6381,
+    "streams": {
+      "processed_images": 3165,
+      "raw_images": 3216
+    },
+    "use": "replay_only"
+  }
+}

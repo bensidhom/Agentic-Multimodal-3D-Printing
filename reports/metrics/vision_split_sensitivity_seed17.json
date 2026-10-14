@@ -1,0 +1,139 @@
+{
+  "schema_version": 1,
+  "purpose": "post_hoc temporal-overlap sensitivity analysis; not independent-print validation",
+  "interpretation": {
+    "original": "Optimistic development split; frames from all three acquisition sequences cross partitions.",
+    "purged": "Chronological within sequence/class strata with boundary purging; still only three sequences and class is partly sequence-confounded."
+  },
+  "purged_detector_threshold_selected_on_validation": 0.14,
+  "rows": [
+    {
+      "split_view": "original",
+      "task": "classification",
+      "model": "YOLO11n-cls",
+      "seed": 17,
+      "test_images": 93,
+      "accuracy": 1.0,
+      "balanced_accuracy": 1.0,
+      "macro_f1": 1.0,
+      "ap50": "",
+      "ap50_95": "",
+      "median_latency_ms": 9.841399965807796,
+      "p95_latency_ms": 10.404199967160821,
+      "checkpoint_mb": 3.188994
+    },
+    {
+      "split_view": "original",
+      "task": "detection",
+      "model": "YOLO11n",
+      "seed": 17,
+      "test_images": 93,
+      "accuracy": 0.989247311827957,
+      "balanced_accuracy": 0.9930555555555555,
+      "macro_f1": 0.9768833849329205,
+      "ap50": 0.7272596919304928,
+      "ap50_95": 0.4263066827922758,
+      "median_latency_ms": 20.284099970012903,
+      "p95_latency_ms": 31.522240024060004,
+      "checkpoint_mb": 5.470106
+    },
+    {
+      "split_view": "purged_chronological",
+      "task": "classification",
+      "model": "YOLO11n-cls",
+      "seed": 17,
+      "test_images": 219,
+      "accuracy": 0.9360730593607306,
+      "balanced_accuracy": 0.8333333333333334,
+      "macro_f1": 0.8655555555555555,
+      "ap50": "",
+      "ap50_95": "",
+      "median_latency_ms": 9.539149992633611,
+      "p95_latency_ms": 13.619545026449487,
+      "checkpoint_mb": 3.188674
+    },
+    {
+      "split_view": "purged_chronological",
+      "task": "detection",
+      "model": "YOLO11n",
+      "seed": 17,
+      "test_images": 219,
+      "accuracy": 0.9452054794520548,
+      "balanced_accuracy": 0.865463389656938,
+      "macro_f1": 0.8926353149955634,
+      "ap50": 0.7218796617802435,
+      "ap50_95": 0.422796851514527,
+      "median_latency_ms": 14.408799994271249,
+      "p95_latency_ms": 16.702235001139343,
+      "checkpoint_mb": 5.470106
+    }
+  ],
+  "source_files": [
+    {
+      "path": "runs\\classification\\clinic_v2_yolo11n_cls_seed17\\test_evaluation\\metrics.json",
+      "sha256": "c19e7332b9efd4afd21ad7d9a297a35faa91e3463159bdcfe2245406c1f3d8de",
+      "bytes": 4385
+    },
+    {
+      "path": "runs\\detection\\clinic_v2_yolo11n_detect_seed17\\test_evaluation\\metrics.json",
+      "sha256": "86f5f4b3eb34c51fc4d8df8f977efa4b633480d0ffeeeada33d1bd64037c4502",
+      "bytes": 5032
+    },
+    {
+      "path": "runs\\classification\\clinic_v2_purged_yolo11n_cls_seed17\\test_evaluation\\metrics.json",
+      "sha256": "07d7f729c9bb101b303a7b3f7c0421be7253a98678300ad5ec8b78b7244d20cc",
+      "bytes": 4697
+    },
+    {
+      "path": "runs\\detection\\clinic_v2_purged_yolo11n_detect_seed17\\test_evaluation\\metrics.json",
+      "sha256": "463ae7c499e32b4280a4f4d3b9d2c320162df308ccc9c181e0dcaa02887925c0",
+      "bytes": 5048
+    },
+    {
+      "path": "runs\\classification\\clinic_v2_yolo11n_cls_seed17\\test_evaluation\\predictions.csv",
+      "sha256": "0feba6e527e17745f5b1a391eab3c685a7bd6718675818a115eef7a53fe515dd",
+      "bytes": 37667
+    },
+    {
+      "path": "runs\\detection\\clinic_v2_yolo11n_detect_seed17\\test_evaluation\\predictions.csv",
+      "sha256": "f4853bf8d6d8f81693f6998a55339159f3cbac52e51202d4ceeb95c1bde4de7d",
+      "bytes": 35004
+    },
+    {
+      "path": "runs\\classification\\clinic_v2_purged_yolo11n_cls_seed17\\test_evaluation\\predictions.csv",
+      "sha256": "9d36330177bc13039a001637a77708b49d3cff411b23a322a5f1ae87f211cb6a",
+      "bytes": 75298
+    },
+    {
+      "path": "runs\\detection\\clinic_v2_purged_yolo11n_detect_seed17\\test_evaluation\\predictions.csv",
+      "sha256": "1d81254ad4ab7dcb866189ea0e6d404b286ab4aaec82c896592492c0a82595cb",
+      "bytes": 82545
+    },
+    {
+      "path": "reports\\metrics\\clinic_v2_shortcut_audit.json",
+      "sha256": "2001b40a384264ba28ae37d91e596d0a97cc59031e7c9cd663ef53ac9acd4dbb",
+      "bytes": 3184
+    },
+    {
+      "path": "reports\\metrics\\clinic_v2_purged_shortcut_audit.json",
+      "sha256": "e2bbace7efd83eb04dd2fc36691a188bdfc4528c47c1748b8d1b79326918df83",
+      "bytes": 3174
+    },
+    {
+      "path": "data\\manifests\\clinic_v2_purged_summary.json",
+      "sha256": "b19e376a049c9594efabbe8c94f8d02416546556362c15448dbd426a470fb6b7",
+      "bytes": 1699
+    },
+    {
+      "path": "runs\\detection\\clinic_v2_purged_yolo11n_detect_seed17\\validation_operating_point\\operating_point.json",
+      "sha256": "26080b696289738bd9c92c035a599360716889107d001f853a51b7ac9d7a3c70",
+      "bytes": 3869
+    }
+  ],
+  "figure_files": [
+    "reports\\figures\\vision_split_confusion_matrices_seed17.pdf",
+    "reports\\figures\\vision_split_confusion_matrices_seed17.png",
+    "reports\\figures\\vision_split_sensitivity_seed17.pdf",
+    "reports\\figures\\vision_split_sensitivity_seed17.png"
+  ]
+}

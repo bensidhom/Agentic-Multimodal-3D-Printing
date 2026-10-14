@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "started_utc": "2026-09-23T03:17:24.297909+00:00",
+  "purpose": "classification_benchmark",
+  "scientific_use": "Candidate benchmark; report only after the frozen protocol is satisfied.",
+  "arguments": {
+    "model": "yolo11n-cls.pt",
+    "data": "validation_platform\\data\\processed\\clinic_v2_purged_classification",
+    "dataset_manifest": "validation_platform\\data\\manifests\\clinic_v2_purged_manifest.csv",
+    "epochs": 30,
+    "imgsz": 224,
+    "batch": 8,
+    "device": "0",
+    "workers": 0,
+    "seed": 17,
+    "patience": 8,
+    "project": "validation_platform\\runs\\classification",
+    "name": "clinic_v2_purged_yolo11n_cls_seed17",
+    "smoke_test": false
+  },
+  "dataset": {
+    "root": "data\\processed\\clinic_v2_purged_classification",
+    "manifest": "data\\manifests\\clinic_v2_purged_manifest.csv",
+    "manifest_sha256": "60a40aad70e8f1c36c5a4497b0c70d9b04bcaa9a1af0d385db01e0500c55f7f8"
+  },
+  "software": {
+    "python": "3.12.14",
+    "torch": "2.11.0+cu128",
+    "ultralytics": "8.4.100",
+    "cuda_runtime": "12.8"
+  },
+  "hardware": {
+    "cuda_available": true,
+    "cuda_device": "NVIDIA GeForce RTX 3050 Laptop GPU"
+  },
+  "git_revision": null,
+  "completed_utc": "2026-09-23T03:21:01.458515+00:00",
+  "best_checkpoint": "runs\\classification\\clinic_v2_purged_yolo11n_cls_seed17\\weights\\best.pt"
+}

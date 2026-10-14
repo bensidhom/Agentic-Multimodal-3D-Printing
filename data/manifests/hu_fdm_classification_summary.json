@@ -1,0 +1,85 @@
+{
+  "annotation_type": "class_folder_only",
+  "bounding_boxes_available": false,
+  "counts": {
+    "by_class": {
+      "Cracking": 472,
+      "Layer_shifting": 364,
+      "Off_platform": 91,
+      "Stringing": 447,
+      "Warping": 538
+    },
+    "by_partition": {
+      "test": 294,
+      "train": 1342,
+      "val": 276
+    },
+    "by_partition_and_class": {
+      "test": {
+        "Cracking": 71,
+        "Layer_shifting": 54,
+        "Off_platform": 22,
+        "Stringing": 66,
+        "Warping": 81
+      },
+      "train": {
+        "Cracking": 331,
+        "Layer_shifting": 248,
+        "Off_platform": 66,
+        "Stringing": 321,
+        "Warping": 376
+      },
+      "val": {
+        "Cracking": 70,
+        "Layer_shifting": 62,
+        "Off_platform": 3,
+        "Stringing": 60,
+        "Warping": 81
+      }
+    },
+    "by_variant": {
+      "augmented": 81,
+      "base": 1751,
+      "original_variant": 80
+    },
+    "total": 1912
+  },
+  "generated_utc": "2026-09-23T00:54:24.127842+00:00",
+  "integrity": {
+    "augmentation_group_count": 1751,
+    "cross_split_augmentation_group_leaks": 0,
+    "cross_split_exact_duplicate_hashes": 0,
+    "cross_split_source_group_leaks": 0,
+    "source_group_count": 41,
+    "unique_processed_hashes": 1895
+  },
+  "manifest": {
+    "path": "validation_platform/data/manifests/hu_fdm_classification_manifest.csv",
+    "sha256": "ed6dce5a1ef22e7bfbfad31cb51d0fe0871f24a494eda60fb2939895c6583f57"
+  },
+  "processing": {
+    "jpeg_quality": 90,
+    "max_edge": 1280,
+    "output_root": "validation_platform/data/processed/hu_fdm_classification_1280"
+  },
+  "schema_version": 1,
+  "source": {
+    "archive_bytes": 6280927992,
+    "archive_sha256": "32cea4e3a09463e42fa69d2e9ce90e517314c0615c4c83a3aa4d98b95163868e",
+    "download_record": "https://drive.google.com/file/d/1kRmKws66yzoQFHBcoUd4sF6HLPnHlXE4/view",
+    "license": "MIT as stated in the source repository; verify image-level rights before publication",
+    "repository": "https://github.com/wengmhu/FDM-3D-Printing-Defect-Dataset"
+  },
+  "split_policy": {
+    "assignment_unit": "class_specific_temporal_segment",
+    "limitation": "temporal segments are not verified independent print jobs",
+    "target_ratios": {
+      "test": 0.15,
+      "train": 0.7,
+      "val": 0.15
+    },
+    "temporal_gap_seconds": 300,
+    "variants_kept_together": true
+  },
+  "task": "image_classification"
+}

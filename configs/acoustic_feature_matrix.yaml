@@ -1,0 +1,29 @@
+schema_version: 1
+frozen_utc: "2026-09-23T00:00:00Z"
+execution_status: complete_development_only
+source: ../../journal_work/repo_sources/Acoustic_Emission_Edge_src/Acoustic-Emission-Monitoring-at-the-Edge-for-Real-Time-Artificial-Intelligence-Applications-main/data/overflow.csv
+source_rows: 840
+features: [amplitude, duration, energy, rms, rise_time, counts]
+class_counts:
+  normal: 479
+  defective: 361
+independence_status: missing_print_job_and_acquisition_group_identifiers
+scientific_role: frozen_row_level_development_sensitivity_only
+split:
+  seed: 17
+  train_fraction: 0.60
+  validation_fraction: 0.20
+  test_fraction: 0.20
+  stratified: true
+model_seeds: [17, 29, 43]
+selection_data: validation_only
+threshold_rule: maximize_macro_f1_then_balanced_accuracy_then_choose_lower_threshold
+test_policy: evaluate_each_fitted_candidate_once_after_threshold_selection
+candidates:
+  - logistic_regression
+  - random_forest_500_trees
+  - xgboost
+  - catboost
+  - small_mlp_32_16
+report: ../reports/metrics/ae_feature_benchmark.json
+confirmatory_requirement: acquire_or_recover_job_grouped_raw_waveforms_and_evaluate_a_frozen_independent_print_cohort

@@ -1,0 +1,109 @@
+{
+  "schema_version": 1,
+  "purpose": "torchvision_classification_benchmark",
+  "model": {
+    "architecture": "mobilenet_v3_small",
+    "checkpoint": "runs\\classification\\clinic_v2_purged_mobilenet_v3_small_seed43\\best.pt",
+    "checkpoint_sha256": "8657cebf93b76318b8caf18edf69b68af785d47799e11ea7b7bcb971e12d10ed",
+    "checkpoint_size_mb": 6.207145,
+    "selected_epoch": 12
+  },
+  "dataset": {
+    "root": "data\\processed\\clinic_v2_purged_classification",
+    "manifest": "data\\manifests\\clinic_v2_purged_manifest.csv",
+    "manifest_sha256": "60a40aad70e8f1c36c5a4497b0c70d9b04bcaa9a1af0d385db01e0500c55f7f8",
+    "split": "test",
+    "images": 219,
+    "source_groups": 99,
+    "classes": [
+      "background",
+      "spaghettification",
+      "underextrusion"
+    ]
+  },
+  "metrics": {
+    "accuracy": 0.9315068493150684,
+    "balanced_accuracy": 0.8214285714285715,
+    "macro_precision": 0.9537037037037037,
+    "macro_recall_sensitivity": 0.8214285714285715,
+    "macro_specificity_ovr": 0.9603174603174603,
+    "macro_f1": 0.8531731585972576,
+    "weighted_f1": 0.9215333290114746,
+    "multiclass_brier": 0.13213632212452361,
+    "log_loss": 0.29129815101623535,
+    "expected_calibration_error_15bin": 0.03147337643523191
+  },
+  "confidence_intervals": {
+    "accuracy": {
+      "lower_95": 0.873299856527977,
+      "upper_95": 0.9806763285024155,
+      "valid_replicates": 2000
+    },
+    "balanced_accuracy": {
+      "lower_95": 0.7192845394736842,
+      "upper_95": 0.9259259259259259,
+      "valid_replicates": 2000
+    },
+    "macro_precision": {
+      "lower_95": 0.9141860960289577,
+      "upper_95": 0.9857565011820331,
+      "valid_replicates": 2000
+    },
+    "macro_recall_sensitivity": {
+      "lower_95": 0.7192845394736842,
+      "upper_95": 0.9259259259259259,
+      "valid_replicates": 2000
+    },
+    "macro_specificity_ovr": {
+      "lower_95": 0.928744227688248,
+      "upper_95": 0.9879906692406691,
+      "valid_replicates": 2000
+    },
+    "macro_f1": {
+      "lower_95": 0.7251435563946578,
+      "upper_95": 0.9500034191278495,
+      "valid_replicates": 2000
+    },
+    "weighted_f1": {
+      "lower_95": 0.8466409320996243,
+      "upper_95": 0.979329293193732,
+      "valid_replicates": 2000
+    },
+    "multiclass_brier": {
+      "lower_95": 0.045170148739596086,
+      "upper_95": 0.2359760846479896,
+      "valid_replicates": 2000
+    },
+    "log_loss": {
+      "lower_95": 0.14045360125601292,
+      "upper_95": 0.47410632446408263,
+      "valid_replicates": 2000
+    },
+    "expected_calibration_error_15bin": {
+      "lower_95": 0.013191743788406344,
+      "upper_95": 0.06951083383721736,
+      "valid_replicates": 2000
+    }
+  },
+  "latency": {
+    "measurement": "Batch-one end-to-end wall time after warm-up, CUDA-synchronized; includes file input, CPU transforms, host-to-device transfer, inference, and probability postprocessing.",
+    "sample_images": 100,
+    "median_ms": 9.606099978554994,
+    "p95_ms": 13.925354997627435,
+    "mean_batched_forward_ms_per_image": 1.6634429233004104,
+    "prediction_pass_wall_seconds": 1.317967800074257
+  },
+  "arguments": {
+    "checkpoint": "runs\\classification\\clinic_v2_purged_mobilenet_v3_small_seed43\\best.pt",
+    "data": "data\\processed\\clinic_v2_purged_classification",
+    "dataset_manifest": "data\\manifests\\clinic_v2_purged_manifest.csv",
+    "output": "runs\\classification\\clinic_v2_purged_mobilenet_v3_small_seed43\\test_evaluation",
+    "split": "test",
+    "batch": 16,
+    "workers": 0,
+    "device": "0",
+    "bootstrap": 2000,
+    "latency_sample": 100,
+    "seed": 43
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "model": "XGBoost",
+  "seed": 17,
+  "threshold": 0.37999999999999995,
+  "validation_macro_f1": 0.8183129055515501,
+  "validation_balanced_accuracy": 0.8194444444444444,
+  "training_seconds": 1.407588699948974,
+  "latency_ms": 0.31610007863491774,
+  "accuracy": 0.7380952380952381,
+  "balanced_accuracy": 0.7482638888888888,
+  "macro_f1": 0.7377607492550021,
+  "defect_precision": 0.6555555555555556,
+  "defect_sensitivity": 0.8194444444444444,
+  "specificity": 0.6770833333333334,
+  "defect_f1": 0.7283950617283951,
+  "auroc": 0.8271122685185186,
+  "brier": 0.1782454252243042,
+  "ece_15bin": 0.1099061929132967,
+  "tn": 65,
+  "fp": 31,
+  "fn": 13,
+  "tp": 59
+}

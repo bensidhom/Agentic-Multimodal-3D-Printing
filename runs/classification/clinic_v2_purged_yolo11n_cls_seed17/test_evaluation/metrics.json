@@ -1,0 +1,147 @@
+{
+  "schema_version": 1,
+  "purpose": "classification_benchmark",
+  "scientific_use": "Frozen-split evaluation; interpret confidence intervals with source-group limitations.",
+  "model": {
+    "path": "runs\\classification\\clinic_v2_purged_yolo11n_cls_seed17\\weights\\best.pt",
+    "sha256": "adca84fd8adfaf806549f5dd639beeb82efce3627c778a4cf53deafbbeda7cd9",
+    "size_mb": 3.188674
+  },
+  "dataset": {
+    "root": "data\\processed\\clinic_v2_purged_classification",
+    "split": "test",
+    "manifest": "data\\manifests\\clinic_v2_purged_manifest.csv",
+    "manifest_sha256": "60a40aad70e8f1c36c5a4497b0c70d9b04bcaa9a1af0d385db01e0500c55f7f8",
+    "images": 219,
+    "source_groups": 99,
+    "classes": [
+      "background",
+      "spaghettification",
+      "underextrusion"
+    ]
+  },
+  "metrics": {
+    "accuracy": 0.9360730593607306,
+    "balanced_accuracy": 0.8333333333333334,
+    "macro_precision": 0.9563862928348911,
+    "macro_recall_sensitivity": 0.8333333333333334,
+    "macro_specificity_ovr": 0.9629629629629629,
+    "macro_f1": 0.8655555555555555,
+    "weighted_f1": 0.9276560121765601,
+    "multiclass_brier": 0.1270540437207106,
+    "log_loss": 0.6530563373189303,
+    "expected_calibration_error_15bin": 0.06440016305238802
+  },
+  "confidence_intervals": {
+    "accuracy": {
+      "lower_95": 0.8818544615576479,
+      "upper_95": 0.9812250245660006,
+      "valid_replicates": 2000
+    },
+    "balanced_accuracy": {
+      "lower_95": 0.7368238304093567,
+      "upper_95": 0.9305675287356321,
+      "valid_replicates": 2000
+    },
+    "macro_precision": {
+      "lower_95": 0.9184397163120567,
+      "upper_95": 0.9866666666666667,
+      "valid_replicates": 2000
+    },
+    "macro_recall_sensitivity": {
+      "lower_95": 0.7368238304093567,
+      "upper_95": 0.9305675287356321,
+      "valid_replicates": 2000
+    },
+    "macro_specificity_ovr": {
+      "lower_95": 0.9322481741766571,
+      "upper_95": 0.9887029388026397,
+      "valid_replicates": 2000
+    },
+    "macro_f1": {
+      "lower_95": 0.7502105677035433,
+      "upper_95": 0.9530211253657814,
+      "valid_replicates": 2000
+    },
+    "weighted_f1": {
+      "lower_95": 0.8591362959750524,
+      "upper_95": 0.9801566025688654,
+      "valid_replicates": 2000
+    },
+    "multiclass_brier": {
+      "lower_95": 0.036618920928576146,
+      "upper_95": 0.23572616675641297,
+      "valid_replicates": 2000
+    },
+    "log_loss": {
+      "lower_95": 0.16794360403293435,
+      "upper_95": 1.2569453365673116,
+      "valid_replicates": 2000
+    },
+    "expected_calibration_error_15bin": {
+      "lower_95": 0.018029058007587254,
+      "upper_95": 0.11902924116956533,
+      "valid_replicates": 2000
+    }
+  },
+  "per_class": {
+    "background": {
+      "precision": 1.0,
+      "recall": 0.5,
+      "f1": 0.6666666666666666,
+      "support": 28
+    },
+    "spaghettification": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "support": 98
+    },
+    "underextrusion": {
+      "precision": 0.8691588785046729,
+      "recall": 1.0,
+      "f1": 0.93,
+      "support": 93
+    }
+  },
+  "confusion_matrix": [
+    [
+      14,
+      0,
+      14
+    ],
+    [
+      0,
+      98,
+      0
+    ],
+    [
+      0,
+      0,
+      93
+    ]
+  ],
+  "latency": {
+    "measurement": "Batch-one end-to-end wall time after warm-up, CUDA-synchronized; includes file input, preprocessing, inference, and postprocessing.",
+    "sample_images": 100,
+    "median_ms": 9.539149992633611,
+    "p95_ms": 13.619545026449487,
+    "mean_model_reported_inference_ms": 0.45207214645922306,
+    "prediction_pass_wall_seconds": 2.5190987000241876
+  },
+  "false_alarm_note": "The background class permits image-level false-positive and one-versus-rest specificity estimates. False alarms per print hour still require time-indexed, independent print runs.",
+  "arguments": {
+    "model": "runs\\classification\\clinic_v2_purged_yolo11n_cls_seed17\\weights\\best.pt",
+    "data": "data\\processed\\clinic_v2_purged_classification",
+    "split": "test",
+    "dataset_manifest": "data\\manifests\\clinic_v2_purged_manifest.csv",
+    "output": "runs\\classification\\clinic_v2_purged_yolo11n_cls_seed17\\test_evaluation",
+    "imgsz": 224,
+    "device": "0",
+    "batch": 8,
+    "bootstrap": 2000,
+    "latency_sample": 100,
+    "seed": 17,
+    "smoke_test": false
+  }
+}

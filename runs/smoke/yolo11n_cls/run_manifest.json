@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "started_utc": "2026-09-23T01:21:13.372525+00:00",
+  "purpose": "pipeline_smoke_test",
+  "scientific_use": "Pipeline verification only; do not report as a paper result.",
+  "arguments": {
+    "model": "yolo11n-cls.pt",
+    "data": "validation_platform\\data\\processed\\hu_fdm_classification_1280",
+    "dataset_manifest": "validation_platform\\data\\manifests\\hu_fdm_classification_manifest.csv",
+    "epochs": 1,
+    "imgsz": 224,
+    "batch": 16,
+    "device": "0",
+    "workers": 2,
+    "seed": 17,
+    "patience": 10,
+    "project": "validation_platform\\runs\\smoke",
+    "name": "yolo11n_cls",
+    "smoke_test": true
+  },
+  "dataset": {
+    "root": "data\\processed\\hu_fdm_classification_1280",
+    "manifest": "data\\manifests\\hu_fdm_classification_manifest.csv",
+    "manifest_sha256": "ed6dce5a1ef22e7bfbfad31cb51d0fe0871f24a494eda60fb2939895c6583f57"
+  },
+  "software": {
+    "python": "3.12.14",
+    "torch": "2.11.0+cu128",
+    "ultralytics": "8.4.100",
+    "cuda_runtime": "12.8"
+  },
+  "hardware": {
+    "cuda_available": true,
+    "cuda_device": "NVIDIA GeForce RTX 3050 Laptop GPU"
+  },
+  "git_revision": null,
+  "completed_utc": "2026-09-23T01:22:18.598598+00:00",
+  "best_checkpoint": "runs\\smoke\\yolo11n_cls\\weights\\best.pt"
+}

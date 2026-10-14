@@ -1,0 +1,435 @@
+{
+  "schema_version": 1,
+  "purpose": "three-seed YOLO11n versus YOLO26n detector comparison on the purged chronological sensitivity view",
+  "interpretation_guard": "Only three acquisition sequences exist; this is not independent-print validation.",
+  "rows": [
+    {
+      "model": "YOLO11n",
+      "seed": 17,
+      "accuracy": 0.9452054794520548,
+      "balanced_accuracy": 0.865463389656938,
+      "macro_f1": 0.8926353149955634,
+      "ap50": 0.7218796617802435,
+      "ap50_95": 0.422796851514527,
+      "median_latency_ms": 14.408799994271249,
+      "p95_latency_ms": 16.702235001139343,
+      "checkpoint_mb": 5.470106,
+      "selected_threshold": 0.14,
+      "spaghettification_precision": 0.7723028523249496,
+      "spaghettification_recall": 0.5194805194805194,
+      "spaghettification_ap50": 0.5832223475337701,
+      "spaghettification_ap50_95": 0.3687365098162818,
+      "underextrusion_precision": 0.9127422251456315,
+      "underextrusion_recall": 0.672,
+      "underextrusion_ap50": 0.860536976026717,
+      "underextrusion_ap50_95": 0.47685719321277203
+    },
+    {
+      "model": "YOLO11n",
+      "seed": 29,
+      "accuracy": 0.9726027397260274,
+      "balanced_accuracy": 0.9452124935995904,
+      "macro_f1": 0.9523246650906225,
+      "ap50": 0.7317249163820017,
+      "ap50_95": 0.41301044461083913,
+      "median_latency_ms": 12.30320002650842,
+      "p95_latency_ms": 15.431795042240992,
+      "checkpoint_mb": 5.469466,
+      "selected_threshold": 0.34,
+      "spaghettification_precision": 0.7960919387406856,
+      "spaghettification_recall": 0.5323877267809657,
+      "spaghettification_ap50": 0.6186289778288062,
+      "spaghettification_ap50_95": 0.3606754572902465,
+      "underextrusion_precision": 0.9448361087247329,
+      "underextrusion_recall": 0.704,
+      "underextrusion_ap50": 0.844820854935197,
+      "underextrusion_ap50_95": 0.4653454319314318
+    },
+    {
+      "model": "YOLO11n",
+      "seed": 43,
+      "accuracy": 0.9863013698630136,
+      "balanced_accuracy": 0.9726062467997952,
+      "macro_f1": 0.9764705882352941,
+      "ap50": 0.7060108149744838,
+      "ap50_95": 0.4275025723868307,
+      "median_latency_ms": 12.075799982994795,
+      "p95_latency_ms": 12.975790066411719,
+      "checkpoint_mb": 5.46985,
+      "selected_threshold": 0.29000000000000004,
+      "spaghettification_precision": 0.6902256015719059,
+      "spaghettification_recall": 0.5498163665734825,
+      "spaghettification_ap50": 0.5606728333598923,
+      "spaghettification_ap50_95": 0.3541587784591633,
+      "underextrusion_precision": 0.7756416381252025,
+      "underextrusion_recall": 0.728,
+      "underextrusion_ap50": 0.8513487965890754,
+      "underextrusion_ap50_95": 0.5008463663144982
+    },
+    {
+      "model": "YOLO26n",
+      "seed": 17,
+      "accuracy": 0.9452054794520548,
+      "balanced_accuracy": 0.8739667910174823,
+      "macro_f1": 0.8961538461538462,
+      "ap50": 0.6659783208203542,
+      "ap50_95": 0.3975327775611905,
+      "median_latency_ms": 12.863799987826496,
+      "p95_latency_ms": 22.208640043390915,
+      "checkpoint_mb": 5.385285,
+      "selected_threshold": 0.13,
+      "spaghettification_precision": 0.6396323009572494,
+      "spaghettification_recall": 0.551948051948052,
+      "spaghettification_ap50": 0.5625699252212395,
+      "spaghettification_ap50_95": 0.33032976750052956,
+      "underextrusion_precision": 0.5889094280856509,
+      "underextrusion_recall": 0.7334787463888801,
+      "underextrusion_ap50": 0.7693867164194691,
+      "underextrusion_ap50_95": 0.4647357876218514
+    },
+    {
+      "model": "YOLO26n",
+      "seed": 29,
+      "accuracy": 0.908675799086758,
+      "balanced_accuracy": 0.8035074244751664,
+      "macro_f1": 0.8210588583259391,
+      "ap50": 0.6738793280866091,
+      "ap50_95": 0.3905975008749328,
+      "median_latency_ms": 13.154649990610778,
+      "p95_latency_ms": 21.949595061596483,
+      "checkpoint_mb": 5.385285,
+      "selected_threshold": 0.12,
+      "spaghettification_precision": 0.6263450777276197,
+      "spaghettification_recall": 0.5714285714285714,
+      "spaghettification_ap50": 0.5772823654319235,
+      "spaghettification_ap50_95": 0.34519108911080676,
+      "underextrusion_precision": 0.7024650727311921,
+      "underextrusion_recall": 0.592,
+      "underextrusion_ap50": 0.7704762907412948,
+      "underextrusion_ap50_95": 0.4360039126390588
+    },
+    {
+      "model": "YOLO26n",
+      "seed": 43,
+      "accuracy": 0.954337899543379,
+      "balanced_accuracy": 0.889272913466462,
+      "macro_f1": 0.913373424971363,
+      "ap50": 0.6864235517262844,
+      "ap50_95": 0.39656657799531514,
+      "median_latency_ms": 13.034300005529076,
+      "p95_latency_ms": 13.611250050598755,
+      "checkpoint_mb": 5.385157,
+      "selected_threshold": 0.05,
+      "spaghettification_precision": 0.7322716153300104,
+      "spaghettification_recall": 0.5064935064935064,
+      "spaghettification_ap50": 0.5584663676687474,
+      "spaghettification_ap50_95": 0.3139488318263854,
+      "underextrusion_precision": 0.9468032088373693,
+      "underextrusion_recall": 0.592,
+      "underextrusion_ap50": 0.8143807357838216,
+      "underextrusion_ap50_95": 0.47918432416424495
+    }
+  ],
+  "summaries": [
+    {
+      "model": "YOLO11n",
+      "seeds": 3,
+      "accuracy_mean": 0.9680365296803654,
+      "accuracy_sd": 0.020925003173314312,
+      "accuracy_min": 0.9452054794520548,
+      "accuracy_max": 0.9863013698630136,
+      "balanced_accuracy_mean": 0.9277607100187746,
+      "balanced_accuracy_sd": 0.055662568408198713,
+      "balanced_accuracy_min": 0.865463389656938,
+      "balanced_accuracy_max": 0.9726062467997952,
+      "macro_f1_mean": 0.94047685610716,
+      "macro_f1_sd": 0.043155140980844206,
+      "macro_f1_min": 0.8926353149955634,
+      "macro_f1_max": 0.9764705882352941,
+      "ap50_mean": 0.719871797712243,
+      "ap50_sd": 0.012974104646784052,
+      "ap50_min": 0.7060108149744838,
+      "ap50_max": 0.7317249163820017,
+      "ap50_95_mean": 0.4211032895040656,
+      "ap50_95_sd": 0.007393007242075116,
+      "ap50_95_min": 0.41301044461083913,
+      "ap50_95_max": 0.4275025723868307,
+      "median_latency_ms_mean": 12.929266667924821,
+      "median_latency_ms_sd": 1.2863482587444166,
+      "median_latency_ms_min": 12.075799982994795,
+      "median_latency_ms_max": 14.408799994271249,
+      "p95_latency_ms_mean": 15.036606703264018,
+      "p95_latency_ms_sd": 1.8943939216374261,
+      "p95_latency_ms_min": 12.975790066411719,
+      "p95_latency_ms_max": 16.702235001139343,
+      "checkpoint_mb_mean": 5.469807333333333,
+      "checkpoint_mb_sd": 0.0003221262692385408,
+      "checkpoint_mb_min": 5.469466,
+      "checkpoint_mb_max": 5.470106,
+      "selected_threshold_mean": 0.25666666666666665,
+      "selected_threshold_sd": 0.10408329997330665,
+      "selected_threshold_min": 0.14,
+      "selected_threshold_max": 0.34,
+      "spaghettification_precision_mean": 0.7528734642125138,
+      "spaghettification_precision_sd": 0.05554319200587218,
+      "spaghettification_precision_min": 0.6902256015719059,
+      "spaghettification_precision_max": 0.7960919387406856,
+      "spaghettification_recall_mean": 0.5338948709449892,
+      "spaghettification_recall_sd": 0.015223978368359311,
+      "spaghettification_recall_min": 0.5194805194805194,
+      "spaghettification_recall_max": 0.5498163665734825,
+      "spaghettification_ap50_mean": 0.5875080529074895,
+      "spaghettification_ap50_sd": 0.02921479288542282,
+      "spaghettification_ap50_min": 0.5606728333598923,
+      "spaghettification_ap50_max": 0.6186289778288062,
+      "spaghettification_ap50_95_mean": 0.36119024852189724,
+      "spaghettification_ap50_95_sd": 0.007302487274156471,
+      "spaghettification_ap50_95_min": 0.3541587784591633,
+      "spaghettification_ap50_95_max": 0.3687365098162818,
+      "underextrusion_precision_mean": 0.877739990665189,
+      "underextrusion_precision_sd": 0.08986411705642999,
+      "underextrusion_precision_min": 0.7756416381252025,
+      "underextrusion_precision_max": 0.9448361087247329,
+      "underextrusion_recall_mean": 0.7013333333333334,
+      "underextrusion_recall_sd": 0.02809507667427394,
+      "underextrusion_recall_min": 0.672,
+      "underextrusion_recall_max": 0.728,
+      "underextrusion_ap50_mean": 0.8522355425169964,
+      "underextrusion_ap50_sd": 0.007895495823337715,
+      "underextrusion_ap50_min": 0.844820854935197,
+      "underextrusion_ap50_max": 0.860536976026717,
+      "underextrusion_ap50_95_mean": 0.481016330486234,
+      "underextrusion_ap50_95_sd": 0.018112230747821263,
+      "underextrusion_ap50_95_min": 0.4653454319314318,
+      "underextrusion_ap50_95_max": 0.5008463663144982
+    },
+    {
+      "model": "YOLO26n",
+      "seeds": 3,
+      "accuracy_mean": 0.9360730593607306,
+      "accuracy_sd": 0.02416211242981361,
+      "accuracy_min": 0.908675799086758,
+      "accuracy_max": 0.954337899543379,
+      "balanced_accuracy_mean": 0.8555823763197036,
+      "balanced_accuracy_sd": 0.04574297545322054,
+      "balanced_accuracy_min": 0.8035074244751664,
+      "balanced_accuracy_max": 0.889272913466462,
+      "macro_f1_mean": 0.8768620431503827,
+      "macro_f1_sd": 0.049087931827246856,
+      "macro_f1_min": 0.8210588583259391,
+      "macro_f1_max": 0.913373424971363,
+      "ap50_mean": 0.6754270668777492,
+      "ap50_sd": 0.010310115820076944,
+      "ap50_min": 0.6659783208203542,
+      "ap50_max": 0.6864235517262844,
+      "ap50_95_mean": 0.3948989521438128,
+      "ap50_95_sd": 0.00375636096031606,
+      "ap50_95_min": 0.3905975008749328,
+      "ap50_95_max": 0.3975327775611905,
+      "median_latency_ms_mean": 13.017583327988783,
+      "median_latency_ms_sd": 0.14614382132301657,
+      "median_latency_ms_min": 12.863799987826496,
+      "median_latency_ms_max": 13.154649990610778,
+      "p95_latency_ms_mean": 19.25649505186205,
+      "p95_latency_ms_sd": 4.890641002860912,
+      "p95_latency_ms_min": 13.611250050598755,
+      "p95_latency_ms_max": 22.208640043390915,
+      "checkpoint_mb_mean": 5.385242333333333,
+      "checkpoint_mb_sd": 7.390083445583322e-05,
+      "checkpoint_mb_min": 5.385157,
+      "checkpoint_mb_max": 5.385285,
+      "selected_threshold_mean": 0.09999999999999999,
+      "selected_threshold_sd": 0.04358898943540673,
+      "selected_threshold_min": 0.05,
+      "selected_threshold_max": 0.13,
+      "spaghettification_precision_mean": 0.6660829980049598,
+      "spaghettification_precision_sd": 0.057704743070565605,
+      "spaghettification_precision_min": 0.6263450777276197,
+      "spaghettification_precision_max": 0.7322716153300104,
+      "spaghettification_recall_mean": 0.5432900432900433,
+      "spaghettification_recall_sd": 0.03332208726913563,
+      "spaghettification_recall_min": 0.5064935064935064,
+      "spaghettification_recall_max": 0.5714285714285714,
+      "spaghettification_ap50_mean": 0.5661062194406368,
+      "spaghettification_ap50_sd": 0.009893911034599462,
+      "spaghettification_ap50_min": 0.5584663676687474,
+      "spaghettification_ap50_max": 0.5772823654319235,
+      "spaghettification_ap50_95_mean": 0.32982322947924053,
+      "spaghettification_ap50_95_sd": 0.015627286892859988,
+      "spaghettification_ap50_95_min": 0.3139488318263854,
+      "spaghettification_ap50_95_max": 0.34519108911080676,
+      "underextrusion_precision_mean": 0.746059236551404,
+      "underextrusion_precision_sd": 0.18288610640116265,
+      "underextrusion_precision_min": 0.5889094280856509,
+      "underextrusion_precision_max": 0.9468032088373693,
+      "underextrusion_recall_mean": 0.6391595821296266,
+      "underextrusion_recall_sd": 0.08168279231223075,
+      "underextrusion_recall_min": 0.592,
+      "underextrusion_recall_max": 0.7334787463888801,
+      "underextrusion_ap50_mean": 0.7847479143148619,
+      "underextrusion_ap50_sd": 0.025668558085898196,
+      "underextrusion_ap50_min": 0.7693867164194691,
+      "underextrusion_ap50_max": 0.8143807357838216,
+      "underextrusion_ap50_95_mean": 0.45997467480838505,
+      "underextrusion_ap50_95_sd": 0.02198040334680013,
+      "underextrusion_ap50_95_min": 0.4360039126390588,
+      "underextrusion_ap50_95_max": 0.47918432416424495
+    }
+  ],
+  "source_files": [
+    {
+      "path": "runs\\detection\\clinic_v2_purged_yolo11n_detect_seed17\\test_evaluation\\metrics.json",
+      "sha256": "463ae7c499e32b4280a4f4d3b9d2c320162df308ccc9c181e0dcaa02887925c0",
+      "bytes": 5048
+    },
+    {
+      "path": "runs\\detection\\clinic_v2_purged_yolo11n_detect_seed17\\test_evaluation\\predictions.csv",
+      "sha256": "1d81254ad4ab7dcb866189ea0e6d404b286ab4aaec82c896592492c0a82595cb",
+      "bytes": 82545
+    },
+    {
+      "path": "runs\\detection\\clinic_v2_purged_yolo11n_detect_seed17\\validation_operating_point\\operating_point.json",
+      "sha256": "26080b696289738bd9c92c035a599360716889107d001f853a51b7ac9d7a3c70",
+      "bytes": 3869
+    },
+    {
+      "path": "runs\\detection\\clinic_v2_purged_yolo11n_detect_seed17\\results.csv",
+      "sha256": "fc2be7810ddf9ce4b1643ee020a7bdfe9eb070778421e7fc2e67eaf492267133",
+      "bytes": 3940
+    },
+    {
+      "path": "runs\\detection\\clinic_v2_purged_yolo11n_detect_seed17\\run_manifest.json",
+      "sha256": "f7f0ff46cb0ba72907259fbadba2b46acc7c7740d069574c350fc76bb7a4b765",
+      "bytes": 1728
+    },
+    {
+      "path": "runs\\detection\\clinic_v2_purged_yolo11n_detect_seed29\\test_evaluation\\metrics.json",
+      "sha256": "49f4603926cab58d35f38eb09050de57b35b49aed3eecbd98f9b00efebfdfb51",
+      "bytes": 5038
+    },
+    {
+      "path": "runs\\detection\\clinic_v2_purged_yolo11n_detect_seed29\\test_evaluation\\predictions.csv",
+      "sha256": "ea7f2831670b4a7e94ebc0d4ddac26d1c54e23fec684fcb3b18ec00717c3432b",
+      "bytes": 84103
+    },
+    {
+      "path": "runs\\detection\\clinic_v2_purged_yolo11n_detect_seed29\\validation_operating_point\\operating_point.json",
+      "sha256": "0d3d40db3164725bb70fe86d5b1d1201b0f04e9d096895af495646903a675c09",
+      "bytes": 3862
+    },
+    {
+      "path": "runs\\detection\\clinic_v2_purged_yolo11n_detect_seed29\\results.csv",
+      "sha256": "0228a332861486e4faee32b9bb072aec8f61935acb06ef4d19945de1490e070a",
+      "bytes": 3311
+    },
+    {
+      "path": "runs\\detection\\clinic_v2_purged_yolo11n_detect_seed29\\run_manifest.json",
+      "sha256": "a9d0907a3af9bdf31ca951b2173e91637c422be07c792090259e663da088337a",
+      "bytes": 1669
+    },
+    {
+      "path": "runs\\detection\\clinic_v2_purged_yolo11n_detect_seed43\\test_evaluation\\metrics.json",
+      "sha256": "fc05cf98ce6a6b3d6af1a8a2d51e47fb35475616d00bcdc05e75643c2b9a4cff",
+      "bytes": 4936
+    },
+    {
+      "path": "runs\\detection\\clinic_v2_purged_yolo11n_detect_seed43\\test_evaluation\\predictions.csv",
+      "sha256": "8eaad966479e482bcd4574944c844bdf610bf88f0bdea03b946b9fd6ca129ff6",
+      "bytes": 83853
+    },
+    {
+      "path": "runs\\detection\\clinic_v2_purged_yolo11n_detect_seed43\\validation_operating_point\\operating_point.json",
+      "sha256": "90174d93342da4ccb1d8b40be031a88cdf4245e5869f6d61920c658f9756bd51",
+      "bytes": 3878
+    },
+    {
+      "path": "runs\\detection\\clinic_v2_purged_yolo11n_detect_seed43\\results.csv",
+      "sha256": "3c570310af8b1c7d96663aab0c7c6d49cd8d9286f53401c7af733b61cb33576c",
+      "bytes": 3696
+    },
+    {
+      "path": "runs\\detection\\clinic_v2_purged_yolo11n_detect_seed43\\run_manifest.json",
+      "sha256": "a6745d69530874fafeb8ae053445beceb3e33d8a12736e8fb2772b189c15f134",
+      "bytes": 1669
+    },
+    {
+      "path": "runs\\detection\\clinic_v2_purged_yolo26n_detect_seed17\\test_evaluation\\metrics.json",
+      "sha256": "a5c1ec669b5719d891c5b9c24c053802727614d2dca9b19e043b2268cea19c3d",
+      "bytes": 5061
+    },
+    {
+      "path": "runs\\detection\\clinic_v2_purged_yolo26n_detect_seed17\\test_evaluation\\predictions.csv",
+      "sha256": "067e544ca5874333f1a59942abfa7d1b4453cd69e994981070680b924e0ca250",
+      "bytes": 82699
+    },
+    {
+      "path": "runs\\detection\\clinic_v2_purged_yolo26n_detect_seed17\\validation_operating_point\\operating_point.json",
+      "sha256": "f09dc5b94f4fd3df71911e0c9147995586201c0be8c497eacaf66c9e36b05f9f",
+      "bytes": 4062
+    },
+    {
+      "path": "runs\\detection\\clinic_v2_purged_yolo26n_detect_seed17\\results.csv",
+      "sha256": "e6896c0b91bea1343c99a648e96d238748342735e929998aad9e9139eca14b12",
+      "bytes": 3932
+    },
+    {
+      "path": "runs\\detection\\clinic_v2_purged_yolo26n_detect_seed17\\run_manifest.json",
+      "sha256": "739d5f921e2bebbd131ef153e40b2b75975b80339cc0b4fdbb38e25c3b2f75ad",
+      "bytes": 1669
+    },
+    {
+      "path": "runs\\detection\\clinic_v2_purged_yolo26n_detect_seed29\\test_evaluation\\metrics.json",
+      "sha256": "a0fa4cfe253d5a9ed73c1043a77010fc5879a68934947828e06b311967bf7377",
+      "bytes": 5043
+    },
+    {
+      "path": "runs\\detection\\clinic_v2_purged_yolo26n_detect_seed29\\test_evaluation\\predictions.csv",
+      "sha256": "d62cdea0e9d95b53d3aa9cd99c4dd9fd446243b13efddd03de3fe0c01b5d4328",
+      "bytes": 82061
+    },
+    {
+      "path": "runs\\detection\\clinic_v2_purged_yolo26n_detect_seed29\\validation_operating_point\\operating_point.json",
+      "sha256": "12a65a003dd404708303fe912756fa1da7369bd7cef6be8bdd6757919838cc5c",
+      "bytes": 4051
+    },
+    {
+      "path": "runs\\detection\\clinic_v2_purged_yolo26n_detect_seed29\\results.csv",
+      "sha256": "df5a93671f7a4a960767ac289da12f539382cade2c7ef29e5d441a2c1a4ace27",
+      "bytes": 3941
+    },
+    {
+      "path": "runs\\detection\\clinic_v2_purged_yolo26n_detect_seed29\\run_manifest.json",
+      "sha256": "1d0837d8c3db4d7256fca45ec534589c6e20015d6598a476e591904951141ddc",
+      "bytes": 1669
+    },
+    {
+      "path": "runs\\detection\\clinic_v2_purged_yolo26n_detect_seed43\\test_evaluation\\metrics.json",
+      "sha256": "810ea63569c976661957d424ee9071662669279a464649cd4676b93197413105",
+      "bytes": 5046
+    },
+    {
+      "path": "runs\\detection\\clinic_v2_purged_yolo26n_detect_seed43\\test_evaluation\\predictions.csv",
+      "sha256": "9b7bcdb2ad115d8c22ec1a5b1b4e64738c635026f01580ecb2a83146801570c7",
+      "bytes": 83451
+    },
+    {
+      "path": "runs\\detection\\clinic_v2_purged_yolo26n_detect_seed43\\validation_operating_point\\operating_point.json",
+      "sha256": "f21a1057f06cc155ca1eee61d1351415ad37aa2d609fa1756a691e06660d5800",
+      "bytes": 3870
+    },
+    {
+      "path": "runs\\detection\\clinic_v2_purged_yolo26n_detect_seed43\\results.csv",
+      "sha256": "2a49448142a8baf8a76014b7f51ef0e6dcf700abb4933e6eb0a36a47a8569ba1",
+      "bytes": 3810
+    },
+    {
+      "path": "runs\\detection\\clinic_v2_purged_yolo26n_detect_seed43\\run_manifest.json",
+      "sha256": "cbb83483f4edcb44969f17f69ddcffc46ba44db22110eafec08523cd7c17d755",
+      "bytes": 1669
+    }
+  ],
+  "figures": [
+    "reports\\figures\\vision_detector_architectures.png",
+    "reports\\figures\\vision_detector_architectures.pdf"
+  ]
+}
