@@ -73,7 +73,7 @@ External raw images and pretrained/checkpoint weights are deliberately not bundl
 
 ![Recorded G-code geometry and acoustic waveforms](assets/figures/figure_05.png)
 
-The geometry is reconstructed from the real rectangular-specimen G-code at layer 64/127, Z = 12.8 mm. The waveform axes use millivolts and microseconds. The 1 microsecond interval is inferred from the saved record structure and is distinct from the acquisition unit's rated 2 MHz capability. AE1–AE3 links are schematic commanded-position associations, not measured source locations. One contact sensor cannot triangulate a defect within the specimen.
+The geometry is reconstructed from the real rectangular-specimen G-code at layer 64/127, Z = 12.8 mm. The source is included as `data/recorded/specimen.gcode`, together with the 35-hit archive `ae_hits.tsv` and the plotted waveform CSVs. G-code is supplied for inspection, not automatic execution on a printer. The waveform axes use millivolts and microseconds. The 1 microsecond interval is inferred from the saved record structure and is distinct from the acquisition unit's rated 2 MHz capability. AE1–AE3 links are schematic commanded-position associations, not measured source locations. One contact sensor cannot triangulate a defect within the specimen.
 
 The timeline in the model-workflow figure marks Hit A at 458.95 s. Blue means before Hit A and red means from Hit A onward. It does not establish defect onset: all 35 archived hits are labeled defective.
 
@@ -176,7 +176,7 @@ Keep print-job context, image-level records, individual detections, acoustic fea
 
 ## Manuscript and revision policy
 
-The revised Word paper and paragraph source are in `paper/`. The original local drafts are preserved outside this publication tree. The revision keeps the accepted figures and numerical tables, corrects citation punctuation and reference typography, restores precise consecutive-event and target-temperature wording, and replaces the repository placeholder with this real repository URL. The three original repository links remain in Data and code availability, without inline self-repository author-date citations.
+The [readable full manuscript](paper/manuscript.md) and paragraph revision log are in `paper/`. The Markdown version includes all eight figures, eight tables and the equations. The edited Word version is held locally until its page-by-page layout verification is complete. The original local drafts are preserved outside this publication tree. The revision keeps the accepted figures and numerical tables, corrects citation punctuation and reference typography, restores precise consecutive-event and target-temperature wording, and replaces the repository placeholder with this real repository URL. The three original repository links remain in Data and code availability, without inline self-repository author-date citations.
 
 Before journal submission, the authors must confirm affiliations, corresponding-author details, declarations, image/logo reuse permissions and the remaining system-validation claims. The release is an evidence package and manuscript, not an assertion that every architectural requirement has been physically validated.
 

@@ -19,7 +19,7 @@ def audit():
     for path in ROOT.rglob('*'):
         if not path.is_file() or any(part in {'.git','__pycache__','.venv','artifacts'} for part in path.parts):
             continue
-        if path.suffix.lower() not in {'.py','.ps1','.md','.json','.csv','.yaml','.yml','.txt'}:
+        if path.suffix.lower() not in {'.py','.ps1','.md','.json','.csv','.tsv','.gcode','.yaml','.yml','.txt'}:
             continue
         text=path.read_text(encoding='utf-8-sig')
         count+=1
