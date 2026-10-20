@@ -18,13 +18,11 @@ def test_figure_links_and_repository_attribution():
     assert "https://github.com/bensidhom/MultiAgent_SCADA" in readme
     assert "temporal" in readme.lower() and "schematic" in readme.lower()
 
-def test_revised_manuscript_source():
+def test_readme_has_no_private_document_links():
+    import re
     root=Path(__file__).resolve().parents[1]
-    text=(root/'paper/manuscript.md').read_text(encoding='utf-8')
-    assert text.count('![Figure ')==8
-    assert 'INSERT PERMANENT REPOSITORY' not in text
-    assert '(Ben Sidhom n.d.' not in text and '(Ben Sidhom, n.d.' not in text
-    assert 'T. Chen & Guestrin, 2016' in text and 'L. Chen et al. (2023)' in text
-    assert 'three consecutive' in text.lower() and 'temperature targets' in text
-    assert '\\frac{2TP_k}' in text
-    assert 'https://github.com/bensidhom/Agentic-Multimodal-3D-Printing' in text
+    text=(root/'README.md').read_text(encoding='utf-8')
+    assert not re.search(r'\b(?:docs|paper|reports)\b', text, re.IGNORECASE)
+    for target in re.findall(r'\]\(([^)]+)\)',text):
+        if not re.match(r'[a-z]+:',target) and not target.startswith('#'):
+            assert (root/target.split('#')[0]).exists(), target

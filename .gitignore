@@ -15,6 +15,11 @@ legacy_sources/
 *.joblib
 *.h5
 ~$*.docx
-/paper/source_before_revision.docx
-/paper/JIM_revised_manuscript.docx
-/paper/manuscript_paragraphs.md
+/docs/
+/paper/
+/reports/
+# Local manuscript preparation tools are not part of the software release.
+/scripts/export_manuscript_markdown.py
+/scripts/revise_manuscript.py
+/scripts/update_author_information.py
+/scripts/verify_word_release.py

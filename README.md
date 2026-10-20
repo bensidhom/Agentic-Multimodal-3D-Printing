@@ -1,8 +1,10 @@
-# Agentic multimodal monitoring for 3D printing
+# AM-SCADA for 3D printing
 
-Reproducible evidence for a local language-model agent workflow in fused filament fabrication (FFF). This repository brings together the recognition benchmarks, experiment records, accepted journal figures, and revised manuscript. It links the original implementations rather than presenting their work as a new system built from scratch.
+**Agentic Multimodal SCADA for 3D Printing**
 
-Read the paper: [verified Word manuscript](paper/JIM_revised_manuscript_v3.docx) or [full Markdown manuscript](paper/manuscript.md).
+AM-SCADA means Agentic Multimodal Supervisory Control and Data Acquisition. The repository URL is unchanged.
+
+Software and data for a local language-model agent workflow in fused filament fabrication (FFF). This repository brings together recognition benchmarks, training logs, saved predictions and system visualizations. It links the original implementations rather than presenting their work as a new system built from scratch.
 
 The main contribution is the supervisory workflow: an operator asks a question or requests an action, a supervisor delegates to a database or printing agent, and a registered tool returns records or an OctoPrint reply. Independent sensing services can request a pause without waiting for a language-model conversation.
 
@@ -29,9 +31,9 @@ Three fitting seeds measure variation on fixed data splits. They do not create t
 | [AI-driven analytics and digital twins](https://github.com/bensidhom/Novel-Cyber-Infrastructure-Enabling-AI-Driven-Analytics-and-Digital-Twins-for-Real-Time-3D-Printing) | Camera monitoring, retained system examples and geometry resources | `d7de6fd25b700a9376ef7c8bdd79f97248f58d04` |
 | [Acoustic emission monitoring at the edge](https://github.com/bensidhom/Acoustic-Emission-Monitoring-at-the-Edge-for-Real-Time-Artificial-Intelligence-Applications) | Archived AE feature table and acquisition resources | `64adbec266ee57bcff61cb88200a2f0a55486f29` |
 
-These are current upstream references, not invented historical training commit IDs. Original run manifests retain the provenance actually recorded during the experiments, including missing Git revision values. `docs/export_inventory.json` records the local export and mechanical path redactions. Numerical observations and saved predictions are retained.
+These are upstream references, not invented historical training commit IDs. Original run manifests retain the provenance actually recorded during the experiments, including missing Git revision values. Numerical observations and saved predictions are retained in the run directories.
 
-The older repositories remain credited sources. This repository is the consolidated location for the new benchmark evidence and manuscript revision; it does not silently replace their histories.
+The older repositories remain credited sources. This repository is the consolidated location for the new benchmark code, data and saved run evidence; it does not silently replace their histories.
 
 ## Hardware and software responsibilities
 
@@ -47,7 +49,7 @@ The older repositories remain credited sources. This repository is the consolida
 | NVIDIA RTX 3050 Laptop GPU, 4 GB | Actual visual benchmark training/evaluation host |
 | CPU fitted pipelines | Acoustic feature-model training and prediction benchmarks |
 
-Qwen3.6-35B-A3B is the selected language-model upgrade through Ollama, not a measured winner on the manufacturing-agent tasks. The original application uses Qwen3-Coder 30B. Recognition scores do not establish LLM quality, AMD latency or memory acceptance. See the manuscript and `docs/EVIDENCE_REGISTER.md` for model-source links and deployment conditions.
+Qwen3.6-35B-A3B is the selected language-model upgrade through Ollama, not a measured winner on the manufacturing-agent tasks. The original application uses Qwen3-Coder 30B. Recognition scores do not establish LLM quality, AMD latency or memory acceptance. Confirm model compatibility, memory requirements and tool-call behavior on the actual deployment host.
 
 ## Agents are not tools or databases
 
@@ -96,7 +98,7 @@ The timeline in the model-workflow figure marks Hit A at 458.95 s. Blue means be
 
 Values summarize seeds 17, 29 and 43; ± is sample standard deviation. YOLO11n is selected for its image-region output, not proven statistical superiority over EfficientNet-B0. Timings include image reading and processing on the NVIDIA benchmark host. AP measures object localization and cannot be substituted for image macro F1. RT-DETR's one-epoch feasibility run is excluded from the scientific ranking.
 
-Full results: [shared endpoints](reports/tables/vision_task_multiseed.md), [classifier comparison](reports/tables/vision_classifier_multiseed.md), [detector comparison](reports/tables/vision_detector_architectures.md), and [split sensitivity](reports/tables/vision_split_sensitivity_seed17.md).
+Individual training logs, predictions and metrics are retained under `runs/`.
 
 ### Acoustic feature classification
 
@@ -110,7 +112,7 @@ Full results: [shared endpoints](reports/tables/vision_task_multiseed.md), [clas
 | Random forest | 0.755 ± 0.011 | 0.828 ± 0.002 | 49.261 ms |
 | XGBoost | 0.741 ± 0.016 | 0.829 ± 0.003 | 0.334 ms |
 
-The MLP is selected by macro F1; XGBoost has the highest descriptive mean AUROC. Decision thresholds use validation rows only. The seed-17 MLP confusion matrix contains 69 true normal, 27 false positive, 11 false negative and 61 true defective observations. Timings exclude acquisition and feature extraction. Rounded ±0.000 is not a claim of exactly zero variation. See [full acoustic results](reports/tables/ae_feature_benchmark.md).
+The MLP is selected by macro F1; XGBoost has the highest descriptive mean AUROC. Decision thresholds use validation rows only. The seed-17 MLP confusion matrix contains 69 true normal, 27 false positive, 11 false negative and 61 true defective observations. Timings exclude acquisition and feature extraction. Rounded ±0.000 is not a claim of exactly zero variation. Each acoustic run retains its own metrics under `runs/acoustic/`.
 
 ## Reproduce and inspect the evidence
 
@@ -122,11 +124,10 @@ python -m venv .venv
 python -m pip install -r requirements.txt
 python -m pip install pytest
 python scripts/verify_evidence.py
-python scripts/verify_word_release.py
 python -m pytest tests -q
 ```
 
-To refit the acoustic models without overwriting the archived publication results:
+To refit the acoustic models without overwriting the archived runs:
 
 ```bash
 python src/benchmark_ae_features.py --source data/recorded/ae_overflow.csv --output-root artifacts/ae_rerun
@@ -150,24 +151,19 @@ python src/select_detector_operating_point.py --model runs/detection/clinic_v2_p
 
 Use the selected threshold from the validation operating-point report unchanged as `--confidence` with `src/evaluate_yolo_detector.py`. Its `--help` lists the remaining required arguments. Keep test labels out of checkpoint and threshold selection. Classifier training/evaluation entry points are `train_yolo_classifier.py`, `train_torchvision_classifier.py`, `evaluate_yolo_classifier.py` and `evaluate_torchvision_classifier.py`; their required arguments are documented through `--help`.
 
-The report builders in `src/build_*report.py` aggregate saved run metrics and regenerate scientific benchmark plots. Original per-epoch `results.csv`, validation/test predictions and thresholds are committed under `runs/`. Checkpoints, fitting binaries and raw external datasets must be generated or obtained separately. Hardware/software differences can alter fitted results and timings.
+The aggregation utilities in `src/` combine saved run metrics and regenerate scientific benchmark plots. Original per-epoch `results.csv`, validation/test predictions and thresholds are committed under `runs/`. Checkpoints, fitting binaries and raw external datasets must be generated or obtained separately. Hardware/software differences can alter fitted results and timings.
 
 ## Repository map
 
 ```text
-assets/figures/       Eight accepted high-resolution paper figures
+assets/figures/       Eight high-resolution system and benchmark visualizations
 configs/             Frozen model matrices and recorded environment
 data/manifests/      Source, split, integrity and eligibility manifests
 data/recorded/       Archived author-supplied AE feature table
-docs/                Evidence register, provenance and revision notes
-paper/               Revised Word manuscript and readable paragraph source
-reports/metrics/     JSON/CSV machine-readable benchmark results
-reports/tables/      Generated benchmark summaries
-reports/figures/     Generated scientific benchmark plots
 runs/                Saved training logs, predictions and operating points
 scripts/             Verification and portable reconstruction utilities
 src/                 Actual preparation, fitting and evaluation code
-tests/               Adapter, threshold and publication-integrity tests
+tests/               Adapter, threshold and evidence-integrity tests
 artifacts/           Ignored local reruns and machine-specific outputs
 ```
 
@@ -177,14 +173,8 @@ artifacts/           Ignored local reruns and machine-specific outputs
 
 Keep print-job context, image-level records, individual detections, acoustic features and waveforms distinct. A missing detection row is not a normal observation. The diagram is the planned job linkage; it does not by itself establish that all foreign-key constraints are enforced in the original SQLite application. Event acquisition time, host receipt time and insertion time need separate fields for synchronized association.
 
-## Manuscript and revision policy
-
-The [verified Word manuscript](paper/JIM_revised_manuscript_v3.docx), [readable full manuscript](paper/manuscript.md) and paragraph revision log are in `paper/`. The Word file has 25 rendered pages; every page has been visually checked. The Markdown version includes all eight figures, eight tables and the equations. The original local drafts are preserved outside this publication tree. The revision keeps the accepted figures and numerical tables, corrects citation punctuation and reference typography, restores precise consecutive-event and target-temperature wording, and replaces the repository placeholder with this real repository URL. The three original repository links remain in Data and code availability, without inline self-repository author-date citations.
-
-Before journal submission, the authors must confirm affiliations, corresponding-author details, declarations, image/logo reuse permissions and the remaining system-validation claims. The release is an evidence package and manuscript, not an assertion that every architectural requirement has been physically validated.
-
 ## Reuse and security
 
 See [NOTICE.md](NOTICE.md) for attribution and reuse conditions. Third-party dependencies keep their own licenses; logos and marks identify products and do not imply endorsement. No blanket license for all code, datasets and artwork is inferred here. Raw external datasets are accessed upstream under their own terms.
 
-Never commit API keys, passwords, printer endpoints containing credentials, signed download links, private host paths or notebooks with embedded secrets. Generated Python and printer operations need a separately tested security boundary. See [docs/REPRODUCIBILITY.md](docs/REPRODUCIBILITY.md) for what this release can and cannot reproduce.
+Never commit API keys, passwords, printer endpoints containing credentials, signed download links, private host paths or notebooks with embedded secrets. Generated Python and printer operations need a separately tested security boundary. The evidence boundaries and reproduction commands above distinguish component checks from complete physical-system validation.

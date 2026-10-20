@@ -26,8 +26,11 @@ def verify(root=ROOT):
     grouped = defaultdict(list)
     for row in read_csv(root / "runs/acoustic/ae_overflow_feature_benchmark/test_predictions.csv"):
         grouped[(row["model"], int(row["seed"]))].append(row)
-    payload = json.loads((root / "reports/metrics/ae_feature_benchmark.json").read_text(encoding="utf-8"))
-    expected = {(r["model"],int(r["seed"])):r for r in payload["rows"]}
+    # Read the original per-run metrics rather than a generated aggregation.
+    metric_paths = sorted((root / "runs/acoustic/ae_overflow_feature_benchmark").glob("*/metrics.json"))
+    metrics = [json.loads(path.read_text(encoding="utf-8")) for path in metric_paths]
+    expected = {(r["model"], int(r["seed"])): r for r in metrics}
+    assert len(metrics) == len(expected) == 15
     for key, rows in grouped.items():
         assert len(rows) == 168
         assert Counter(r["y_true"] for r in rows) == {"0":96,"1":72}

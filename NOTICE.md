@@ -1,6 +1,6 @@
 # Attribution and reuse
 
-This repository contains the new benchmark and manuscript work assembled for Ahmed Ben Sidhom's fused-filament printing study. It refers to the three original repositories linked in the README. Their histories and terms remain separate.
+This repository contains the benchmark code, data, saved run evidence and system visualizations assembled for Ahmed Ben Sidhom's fused-filament printing study. It refers to the three original repositories linked in the README. Their histories and terms remain separate.
 
 No new blanket license is assigned to third-party code, raw datasets, published images, trademarks or logos. Authors should choose a code license and confirm dataset and artwork rights before granting broader reuse rights. Public access alone is not a reuse license.
 
